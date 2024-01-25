@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Accentify: E-commerce App Roadmap
 
-## Getting Started
+This document outlines the roadmap for Accentify, a personal e-commerce project focusing on clothing, accessories, and gadgets. It details the planned features, the tools and considerations, and the overall technology stack used for development.
 
-First, run the development server:
+## Table of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Product Management](#product-management)
+- [User Experience and Personalization](#user-experience-and-personalization)
+- [Shopping Cart and Checkout](#shopping-cart-and-checkout)
+- [Payment Processing and Security](#payment-processing-and-security)
+- [Tools Used](#tools-used)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Product Management
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* **Craft powerful search and filtering experiences** with multi-faceted criteria and user-defined filters, powered by Meilisearch.
+* **Enable customizable product bundles** to cater to unique customer preferences.
+* **Handle complex product variations with ease** and personalize product information based on user data.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## User Experience and Personalization
 
-## Learn More
+* **Enhance user engagement** with micro-animations, dynamic content loading, and potential live chat integration.
+* **Provide personalized product recommendations** based on purchase history or browsing behavior.
+* **Implement dynamic pricing rules and targeted promotions** to attract and engage customers.
 
-To learn more about Next.js, take a look at the following resources:
+## Shopping Cart and Checkout
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* **Allow multiple carts for flexible shopping** experiences (e.g., gifts, personal).
+* **Offer real-time shipping cost calculations** based on product weight and location, integrated with major providers.
+* **Streamline the checkout process** with guest checkout options and flexible payment gateways.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Payment Processing and Security
 
-## Deploy on Vercel
+* **Integrate with multiple major payment gateways** to provide diverse choices for customers.
+* **Implement basic fraud detection measures** like address verification and transaction monitoring.
+* **Securely store sensitive payment information** through tokenization and encryption.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Tools Used
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Frontend
+
+* Chakra UI: UI component library for streamlined development and design consistency.
+* Zustand: State management for complex user interactions and data management.
+* Meilisearch: Advanced search functionality with robust search capabilities and integrations.
+* Jest: Testing tools to ensure well-tested and functional front-end code.
+
+### Backend
+
+* Auth0 (planned): Secure authentication and authorization library.
+* Email Service (planned): Transactional email service like SendGrid or Nodemailer.
+* Image Processing Library (optional): Library like Sharp or Jimp for image resizing or manipulation.
+* Analytics Tools (optional): Integrate with Google Analytics or Firebase Analytics to track user behavior and website performance.
+
+## Note
