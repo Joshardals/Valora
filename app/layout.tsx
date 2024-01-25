@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { Providers } from "./providers";
 import "./globals.css";
-import { rubik } from "./fonts";
+import { open_sans, source_serif_bold, source_serif_italic } from "./fonts";
 
 export const metadata: Metadata = {
   title: "Accentify",
@@ -15,10 +14,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={rubik.variable}>
-      <body>
-        <Providers>{children}</Providers>
-      </body>
+    <html
+      lang="en"
+      className={` ${open_sans.variable} ${source_serif_italic.variable} ${source_serif_bold}`}
+    >
+      <body>{children}</body>
     </html>
   );
 }
