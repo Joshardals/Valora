@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { open_sans, source_serif_bold, source_serif_italic } from "./fonts";
+import { kanit, nunito } from "./fonts";
 
 export const metadata: Metadata = {
-  title: "Accentify",
+  title: "VALORA | Official Store - Shop Online Now",
   description:
-    "Accentify, a personal e-commerce project focusing on clothing, accessories, and gadgets.",
+    "Valora, a personal e-commerce project focusing on clothing, accessories, and gadgets.",
 };
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={` ${open_sans.variable} ${source_serif_italic.variable} ${source_serif_bold}`}
+      className={`${kanit.variable} ${nunito.variable}`}
     >
       <body>{children}</body>
     </html>

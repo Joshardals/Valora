@@ -9,9 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        header: ["var(--font-source-serif-bold)"],
-        sans: ["var(--font-open_sans)"],
-        logo: ["var(--font-source-italic)"],
+        kanit: ["var(--font-kanit)"],
+        nunito: ["var(--font-nunito)"],
       },
     },
   },

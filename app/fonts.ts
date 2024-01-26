@@ -1,22 +1,22 @@
-// app/fonts.ts
-import { Open_Sans, Source_Serif_4 } from "next/font/google";
+// Fonts for the site.
 
-export const open_sans = Open_Sans({
+import {
+  Open_Sans,
+  Source_Serif_4,
+  Kanit,
+  Nunito_Sans,
+} from "next/font/google";
+
+export const kanit = Kanit({
   subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   display: "swap",
-  variable: "--font-open_sans",
+  variable: "--font-kanit",
 });
 
-export const source_serif_italic = Source_Serif_4({
-  style: "italic",
+export const nunito = Nunito_Sans({
   subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900", "1000"],
   display: "swap",
-  variable: "--font-source-italic",
-});
-
-export const source_serif_bold = Source_Serif_4({
-  subsets: ["latin"],
-  weight: ["600", "700", "800"],
-  display: "swap",
-  variable: "--font-source-serif-bold",
+  variable: "--font-nunito",
 });
