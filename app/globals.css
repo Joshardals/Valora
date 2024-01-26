@@ -7,4 +7,16 @@
   body {
     @apply p-0 m-0 text-[15px] leading-6 w-full h-screen bg-orange-400 font-nunito;
   }
+
+  /* Hover Effects for the NavLinks and UserActions Components  */
+  .link-list li {
+    transition: 0.2s ease-in;
+  }
+  .link-list:hover li {
+    opacity: 0.4;
+  }
+
+  .link-list li:hover {
+    opacity: 1;
+  }
 }
