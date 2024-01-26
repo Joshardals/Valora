@@ -1,5 +1,6 @@
 import Logo from "../ui/Header/Logo";
 import NavLinks from "../ui/Header/NavLinks";
+import UserActions from "../ui/Header/UserActions";
 
 export default function Header() {
   return (
@@ -11,7 +12,9 @@ export default function Header() {
       <div className="justify-self-center">
         <NavLinks />
       </div>
-      <div className="justify-self-end">header</div>
+      <div className="justify-self-end">
+        <UserActions />
+      </div>
     </header>
   );
 }
