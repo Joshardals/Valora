@@ -4,10 +4,15 @@ import NavLinks from "../ui/Header/NavLinks";
 
 export default function Header() {
   return (
-    <section className="flex items-center justify-between bg-secondary text-primary p-5 select-none">
+    <section
+      className="grid grid-cols-3 items-center bg-secondary text-primary p-5 select-none
+    justify-start"
+    >
       <Logo />
-      <NavLinks />
-      <div>header</div>
+      <div className="justify-self-center">
+        <NavLinks />
+      </div>
+      <div className="justify-self-end">header</div>
     </section>
   );
 }

@@ -1,30 +1,27 @@
 import Link from "next/link";
+import { CiSearch } from "react-icons/ci";
 
 const links = [
-  {
-    label: "Shop",
-    href: "#",
-  },
-  {
-    label: "About Us",
-    href: "#",
-  },
-  {
-    label: "Search",
-    href: "#",
-    icon: "",
-  },
+  { label: "Shop", href: "#" },
+  { label: "About Us", href: "#" },
+  { label: "Search", href: "#", icon: <CiSearch size={20} /> },
 ];
 export default function NavLinks() {
   return (
     <nav>
       <ul className="flex items-center space-x-10">
-        {links.map((link, index) => {
+        {links.map((link) => {
           const { label, href, icon } = link;
           return (
-            <li key={index}>
-              <Link href={href} className="uppercase font-light">
-                {label}
+            <li key={label}>
+              <Link
+                href={href}
+                className={`uppercase font-light ${
+                  icon && "flex items-center space-x-1"
+                }`}
+              >
+                {icon}
+                <p> {label}</p>
               </Link>
             </li>
           );
