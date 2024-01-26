@@ -8,6 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: "#2C231D",
+        secondary: "#F7F1EC",
+      },
       fontFamily: {
         kanit: ["var(--font-kanit)"],
         nunito: ["var(--font-nunito)"],
