@@ -1,4 +1,4 @@
-# Accentify: E-commerce App Roadmap
+# Valora: E-commerce App Roadmap
 
 This document outlines the roadmap for Accentify, a personal e-commerce project focusing on clothing, accessories, and gadgets. It details the planned features, the tools and considerations, and the overall technology stack used for development.
 

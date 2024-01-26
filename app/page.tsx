@@ -1,11 +1,9 @@
-import { Text } from "@chakra-ui/react";
+import styled from "@emotion/styled";
 
 export default function Home() {
   return (
     <main>
-      <Text fontSize="md" className="font-header font-bold">
-        Hello World
-      </Text>
+    
     </main>
   );
 }
