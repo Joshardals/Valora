@@ -19,8 +19,8 @@ export default function NavToggle() {
       onClick={handleClick}
       aria-label="Toggle Navigation"
     >
-      <span className={` ${isOpen && "active"} hidden `}></span>
-      <span className={` ${isOpen && "active"}`}></span>
+      <span className={` bg-secondary ${isOpen && "active"}`}></span>
+      <span className={` bg-secondary ${isOpen && "active"}`}></span>
     </button>
   );
 }
