@@ -15,8 +15,12 @@
   .linkList:hover li {
     @apply opacity-40;
   }
+  .linkList li:active,
+  .linkList li:focus {
+    @apply opacity-100; /* Apply tap effect on active and focus */
+  }
   .linkList li:hover {
-    @apply opacity-100;
+    @apply md:opacity-100;
   }
 
   /* Mobile Nav toggle effects */
