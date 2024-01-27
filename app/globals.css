@@ -10,7 +10,7 @@
 
   /* Hover Effects for the NavLinks and UserActions Components  */
   .linkList li {
-    @apply transition-all duration-300;
+    @apply transition-all max-md:duration-100 md:duration-300;
   }
   .linkList:hover li {
     @apply opacity-40;
@@ -34,7 +34,7 @@
 
     background-color: #2c231d;
 
-    transform-origin: 4px 0px ;
+    transform-origin: 4px 0px;
 
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
       background-color 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
