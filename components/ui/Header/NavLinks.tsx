@@ -10,7 +10,7 @@ export default function NavLinks() {
   return (
     <nav>
       <ul className="flex items-center space-x-10 linkList">
-        {links.map((link) => {
+        {links?.map((link) => {
           const { label, href, icon } = link;
           return (
             <li key={label}>
