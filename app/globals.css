@@ -5,7 +5,7 @@
 @layer utilities {
   html,
   body {
-    @apply p-0 m-0 text-[15px] leading-6 w-full h-screen bg-orange-400 font-nunito;
+    @apply p-0 m-0 text-[14px] leading-6 w-full h-screen bg-orange-400 font-nunito;
   }
 
   /* Hover Effects for the NavLinks and UserActions Components  */
