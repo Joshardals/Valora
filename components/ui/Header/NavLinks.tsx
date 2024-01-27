@@ -9,7 +9,7 @@ const links = [
 export default function NavLinks() {
   return (
     <nav>
-      <ul className="flex items-center space-x-10 link-list">
+      <ul className="flex items-center space-x-10 linkList">
         {links.map((link) => {
           const { label, href, icon } = link;
           return (

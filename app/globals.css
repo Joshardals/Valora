@@ -5,18 +5,41 @@
 @layer utilities {
   html,
   body {
-    @apply p-0 m-0 text-[14px] leading-6 w-full h-screen bg-orange-400 font-nunito;
+    @apply p-0 m-0 text-[14px] leading-6 w-full h-screen bg-orange-700 font-nunito;
   }
 
   /* Hover Effects for the NavLinks and UserActions Components  */
-  .link-list li {
+  .linkList li {
     transition: 0.2s ease-in;
   }
-  .link-list:hover li {
+  .linkList:hover li {
     opacity: 0.4;
   }
 
-  .link-list li:hover {
+  .linkList li:hover {
     opacity: 1;
+  }
+
+  /* Mobile Nav toggle effects */
+  .navToggle {
+    display: block;
+    position: relative;
+
+    z-index: 1;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .navToggle span {
+    display: block;
+    width: 33px;
+    height: 4px;
+    position: relative;
+
+    background: #2c231d;
+    border-radius: 5px;
+
+    z-index: 1;
+    transform-origin: 4px 0px;
   }
 }
