@@ -19,14 +19,14 @@ export default function UserActions() {
         <CiSearch
           size={20}
           aria-label="Search"
-          className="max-md:min-h-7 max-md:min-w-7"
+          className="max-md:min-h-7 max-md:min-w-7 max-md:max-w-7 max-md:max-h-7"
         />
       </li>
       <li>
         <CiShoppingCart
           size={20}
           aria-label="Shopping Cart"
-          className=" max-md:min-h-7 max-md:min-w-7"
+          className=" max-md:min-h-7 max-md:min-w-7 max-md:max-w-7 max-md:max-h-7"
         />
       </li>
       <li className="md:hidden  max-h-5 pt-1">
