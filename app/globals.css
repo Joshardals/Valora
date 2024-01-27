@@ -10,7 +10,7 @@
 
   /* Hover Effects for the NavLinks and UserActions Components  */
   .linkList li {
-    @apply transition-all duration-200 ease-in;
+    /* @apply transition-all duration-200 ease-in; */
   }
   .linkList:hover li {
     @apply opacity-40;

@@ -5,7 +5,7 @@ import NavToggle from "./NavToggle";
 
 export default function UserActions() {
   return (
-    <ul className="flex items-center max-xs:space-x-3 space-x-4  linkList">
+    <ul className="flex items-center max-xs:space-x-3 space-x-4 *:cursor-pointer linkList">
       <li className="max-md:hidden">
         <PiCurrencyGbpLight size={20} aria-label="Currency" />
       </li>
