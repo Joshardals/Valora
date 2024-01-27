@@ -3,7 +3,6 @@ export default function NavToggle() {
     <div className="navToggle">
       <span></span>
       <span></span>
-      <span></span>
     </div>
   );
 }

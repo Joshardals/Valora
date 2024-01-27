@@ -1,6 +1,5 @@
 import Logo from "../ui/Header/Logo";
 import NavLinks from "../ui/Header/NavLinks";
-import NavToggle from "../ui/Header/NavToggle";
 import UserActions from "../ui/Header/UserActions";
 
 export default function Header() {
@@ -13,9 +12,8 @@ export default function Header() {
       <div className="justify-self-center max-md:hidden">
         <NavLinks />
       </div>
-      <div className="justify-self-end max-md:col-span-2 flex space-x-4 items-center">
+      <div className="justify-self-end max-md:col-span-2">
         <UserActions />
-        <NavToggle />
       </div>
     </header>
   );
