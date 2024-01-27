@@ -16,6 +16,9 @@ const config: Config = {
         kanit: ["var(--font-kanit)"],
         nunito: ["var(--font-nunito)"],
       },
+      screens: {
+        xs: "321px",
+      },
     },
   },
   plugins: [],

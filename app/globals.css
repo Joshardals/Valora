@@ -25,22 +25,28 @@
     @apply block relative z-10 cursor-pointer;
   }
 
+  .active {
+    @apply bg-red-500;
+  }
+
   .navToggle span {
     @apply relative block w-[22px] h-[1.5px] mb-[0.6rem] z-10;
 
     background-color: #2c231d;
 
-    transform-origin: 4px 0px;
+    transform-origin: 4px 0px ;
 
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
       background-color 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
   }
 
-  /* .navToggle span:first-child {
+  .navToggle span.active:first-child {
     @apply rotate-45;
   }
-  .navToggle span:nth-child(2) {
+
+  .navToggle span.active:last-child {
     @apply -rotate-45;
-  } */
+  }
+
   /* Mobile Nav toggle effects end */
 }
