@@ -16,12 +16,16 @@ export default function UserActions() {
         <CiBookmark size={20} aria-label="Wishlist" />
       </li>
       <li className="md:hidden">
-        <CiSearch size={20} aria-label="Search" />
+        <CiSearch size={20} aria-label="Search" className="max-md:size-7" />
       </li>
       <li>
-        <CiShoppingCart size={20} aria-label="Shopping Cart" />
+        <CiShoppingCart
+          size={20}
+          aria-label="Shopping Cart"
+          className="max-md:size-7"
+        />
       </li>
-      <li className="">
+      <li className="md:hidden bg-red-500 relative">
         <NavToggle />
       </li>
     </ul>
