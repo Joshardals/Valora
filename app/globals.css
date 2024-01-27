@@ -50,7 +50,7 @@
   .navToggle span {
     @apply relative block w-[22px] h-[1.5px] mb-[0.6rem] z-10;
 
-    transform-origin: 4px 0px;
+    transform-origin: 3px 1px;
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
   }
 
@@ -63,5 +63,4 @@
   }
 
   /* Mobile Nav toggle effects end */
-
 }

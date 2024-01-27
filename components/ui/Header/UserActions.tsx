@@ -25,7 +25,7 @@ export default function UserActions() {
           className="max-md:size-7"
         />
       </li>
-      <li className="md:hidden  max-h-5 pt-1">
+      <li className="md:hidden max-h-5 pt-1">
         <NavToggle />
       </li>
     </ul>
