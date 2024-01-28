@@ -25,7 +25,7 @@
 
   html,
   body {
-    @apply p-0 m-0 text-[14px] leading-6 w-full h-[200vh] bg-primary font-nunito scroll-smooth;
+    @apply p-0 m-0 text-[14px] leading-6 w-full h-[200vh] bg-black font-nunito scroll-smooth;
   }
 
   /* Hover Effects for the NavLinks and UserActions Components  */
@@ -38,6 +38,12 @@
   .linkList li:hover {
     @apply md:opacity-100;
   }
+
+  /* Header Hover Effect */
+  
+  /* Header Hover Effect End */
+
+
 
   /* Mobile Nav toggle effects */
 
