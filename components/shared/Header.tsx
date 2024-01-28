@@ -1,25 +1,17 @@
 "use client";
-import { useEffect } from "react";
 import Logo from "../ui/Header/Logo";
 import NavLinks from "../ui/Header/NavLinks";
 import UserActions from "../ui/Header/UserActions";
-import { useScrolled } from "@/lib/store/store";
+import { useScrolledDown } from "@/lib/store/store";
 import HeaderInfo from "../ui/Header/HeaderInfo";
+import useScrollPos from "@/lib/hooks/useScrollPos";
 
 export default function Header() {
-  const { scrolled, setScrolled } = useScrolled();
-  useEffect(() => {
-    const handleScroll = () => {
-      const scroll = window.scrollY;
-      setScrolled(scroll);
-    };
-
-    window.addEventListener("scroll", handleScroll as any);
-    return () => window.removeEventListener("scroll", handleScroll as any);
-  }, []);
+  const { scrolledDown } = useScrolledDown();
+  const scroll = useScrollPos();
 
   return (
-    <header>
+    <header className={`${!scrolledDown ? "block" : "hidden"}`}>
       <HeaderInfo />
       <div
         className="grid grid-cols-3 items-center text-secondary max-md:bg-secondary max-md:text-primary py-5 px-8 max-md:px-5 select-none
@@ -33,7 +25,6 @@ export default function Header() {
           <UserActions />
         </div>
       </div>
-      <p className="text-secondary">{scrolled}</p>
     </header>
   );
 }

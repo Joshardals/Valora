@@ -1,4 +1,4 @@
-import { MobileNavToggleState, ScrolledState } from "@/typings";
+import { MobileNavToggleState, ScrolledDownState } from "@/typings";
 import { create } from "zustand";
 
 export const mobileNavToggle = create<MobileNavToggleState>((set) => ({
@@ -6,7 +6,7 @@ export const mobileNavToggle = create<MobileNavToggleState>((set) => ({
   setIsOpen: (isOpen) => set(() => ({ isOpen })),
 }));
 
-export const useScrolled = create<ScrolledState>((set) => ({
-  scrolled: 0,
-  setScrolled: (scrolled) => set(() => ({ scrolled })),
+export const useScrolledDown = create<ScrolledDownState>((set) => ({
+  scrolledDown: false,
+  setScrolledDown: (scrolledDown) => set(() => ({ scrolledDown })),
 }));

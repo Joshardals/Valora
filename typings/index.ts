@@ -3,7 +3,7 @@ export interface MobileNavToggleState {
   setIsOpen: (isOpen: MobileNavToggleState["isOpen"]) => void;
 }
 
-export interface ScrolledState {
-  scrolled: number;
-  setScrolled: (isOpen: ScrolledState["scrolled"]) => void;
+export interface ScrolledDownState {
+  scrolledDown: boolean;
+  setScrolledDown: (isOpen: ScrolledDownState["scrolledDown"]) => void;
 }
