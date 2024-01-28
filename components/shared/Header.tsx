@@ -11,12 +11,7 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const scroll = window.scrollY;
-
-      if (scroll > 50) {
-        console.log(scroll.toFixed(), "Header can now disappear");
-      } else if (scroll < 50) {
-        console.log(scroll.toFixed());
-      }
+      setScrolled(scroll);
     };
 
     window.addEventListener("scroll", handleScroll as any);
@@ -28,7 +23,7 @@ export default function Header() {
       <HeaderInfo />
       <div
         className="grid grid-cols-3 items-center text-secondary max-md:bg-secondary max-md:text-primary py-5 px-8 max-md:px-5 select-none
-    justify-start headerHover"
+        justify-start headerHover"
       >
         <Logo />
         <div className="justify-self-center max-md:hidden">
@@ -38,6 +33,7 @@ export default function Header() {
           <UserActions />
         </div>
       </div>
+      <p className="text-secondary">{scrolled}</p>
     </header>
   );
 }

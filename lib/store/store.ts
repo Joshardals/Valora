@@ -7,6 +7,6 @@ export const mobileNavToggle = create<MobileNavToggleState>((set) => ({
 }));
 
 export const useScrolled = create<ScrolledState>((set) => ({
-  scrolled: false,
+  scrolled: 0,
   setScrolled: (scrolled) => set(() => ({ scrolled })),
 }));

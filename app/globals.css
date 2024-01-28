@@ -41,7 +41,7 @@
 
   /* Header Hover Effect */
   .headerHover {
-    transition: background-color 0.2s linear;
+    transition: background-color 0.5s cubic-bezier(0.2, 0.98, 0.99, 1);
   }
   .headerHover:hover {
     @apply md:bg-secondary md:text-primary;

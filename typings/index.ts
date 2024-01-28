@@ -4,6 +4,6 @@ export interface MobileNavToggleState {
 }
 
 export interface ScrolledState {
-  scrolled: boolean;
+  scrolled: number;
   setScrolled: (isOpen: ScrolledState["scrolled"]) => void;
 }
