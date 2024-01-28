@@ -27,8 +27,8 @@ export default function Header() {
     <header>
       <HeaderInfo />
       <div
-        className="grid grid-cols-3 items-center text-secondary py-5 px-8 max-md:px-5 select-none
-    justify-start transition-[bg] duration-200 ease-in-out hover:text-primary hover:bg-secondary"
+        className="grid grid-cols-3 items-center text-secondary max-md:bg-secondary max-md:text-primary py-5 px-8 max-md:px-5 select-none
+    justify-start headerHover"
       >
         <Logo />
         <div className="justify-self-center max-md:hidden">

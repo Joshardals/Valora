@@ -40,10 +40,13 @@
   }
 
   /* Header Hover Effect */
-  
+  .headerHover {
+    transition: background-color 0.2s linear;
+  }
+  .headerHover:hover {
+    @apply md:bg-secondary md:text-primary;
+  }
   /* Header Hover Effect End */
-
-
 
   /* Mobile Nav toggle effects */
 
@@ -54,7 +57,7 @@
   .navToggle span {
     @apply relative block w-[22px] h-[1.5px] mb-[0.6rem] z-10;
 
-    transform-origin: 3px 1px;
+    transform-origin: 4px 1px;
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
   }
 
