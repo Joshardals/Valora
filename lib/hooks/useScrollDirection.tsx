@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useScrolledDown } from "../store/store";
+import { useNoScroll } from "../store/store";
 
 export default function useScrollDirection() {
   const [scrollDirection, setScrollDirection] = useState("");
-  const { scrolledDown, setScrolledDown } = useScrolledDown();
+  const { setNoScroll } = useNoScroll();
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -20,6 +20,11 @@ export default function useScrollDirection() {
       }
 
       lastScrollY = scrollY > 0 ? scrollY : 0;
+      if (lastScrollY === 0) {
+        setNoScroll(true);
+      } else {
+        setNoScroll(false);
+      }
     };
 
     window.addEventListener("scroll", updateScrollPosition);
