@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useScrolledDown } from "../store/store";
 
-export default function useScrollPos() {
+export default function useScrollDirection() {
   const [scrollDirection, setScrollDirection] = useState("");
   const { scrolledDown, setScrolledDown } = useScrolledDown();
 
@@ -27,4 +27,6 @@ export default function useScrollPos() {
       window.removeEventListener("scroll", updateScrollPosition);
     };
   }, [scrollDirection]);
+
+  return scrollDirection;
 }
