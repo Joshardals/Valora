@@ -12,8 +12,8 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky ${
-        scrollDirection === "down" ? " max-md:-top-[100%] -top-24" : "top-0"
+      className={`sticky grid grid-flow-row ${
+        scrollDirection === "down" ? " -top-24" : "top-0"
       } transition-all duration-200 z-10`}
     >
       <HeaderInfo />
