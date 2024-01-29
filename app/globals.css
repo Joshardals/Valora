@@ -29,7 +29,7 @@
   }
 
   .headerChildScroll {
-    @apply bg-transparent text-secondary max-md:bg-secondary max-md:text-primary !important;
+    @apply top-0 bg-transparent text-secondary max-md:bg-secondary max-md:text-primary !important;
   }
 
   /* Header Hover Effect */
