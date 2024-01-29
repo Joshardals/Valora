@@ -40,7 +40,7 @@ export default function useScrollDirection() {
       lastScrollTop = scrollTop;
     };
 
-    const throttledUpdate = throttle(updateScrollPosition, (500));
+    const throttledUpdate = throttle(updateScrollPosition, (100));
 
     window.addEventListener("scroll", throttledUpdate);
 
