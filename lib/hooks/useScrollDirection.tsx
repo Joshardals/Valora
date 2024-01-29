@@ -36,15 +36,9 @@ export default function useScrollDirection() {
     };
 
     window.addEventListener("scroll", updateScrollPosition);
-    // window.addEventListener("touchstart", updateScrollPosition);
-    // window.addEventListener("touchmove", updateScrollPosition);
-    // window.addEventListener("touchend", updateScrollPosition);
 
     return () => {
       window.removeEventListener("scroll", updateScrollPosition);
-      // window.removeEventListener("touchstart", updateScrollPosition);
-      // window.removeEventListener("touchmove", updateScrollPosition);
-      // window.removeEventListener("touchend", updateScrollPosition);
     };
   });
 
