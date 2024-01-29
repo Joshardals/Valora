@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import throttle from "lodash.throttle";
 
 // An Hook that changes the header dynamically whenever the scroll changes.
 
@@ -29,7 +30,7 @@ export default function useScrollDirection() {
           headerChild.style.backgroundColor = "#F7F1EC";
           // headerChild.style.color = "#2C231D";
         }
-      } else if (scrollTop === 10) {
+      } else if (scrollTop === 0) {
         setNoScroll(true);
         if (headerChild) {
           headerChild.style.backgroundColor = "red";
@@ -39,10 +40,12 @@ export default function useScrollDirection() {
       lastScrollTop = scrollTop;
     };
 
-    window.addEventListener("scroll", updateScrollPosition);
+    const throttledUpdate = throttle(updateScrollPosition, (500));
+
+    window.addEventListener("scroll", throttledUpdate);
 
     return () => {
-      window.removeEventListener("scroll", updateScrollPosition);
+      window.removeEventListener("scroll", throttledUpdate);
     };
   });
 
