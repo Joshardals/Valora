@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // An Hook that changes the header dynamically whenever the scroll changes.
 
 export default function useScrollDirection() {
+  const [noScroll, setNoScroll] = useState(false);
   useEffect(() => {
     let lastScrollTop = 0;
 
@@ -13,6 +14,7 @@ export default function useScrollDirection() {
 
       if (scrollTop > lastScrollTop && scrollTop !== 0) {
         if (header && headerChild) {
+          setNoScroll(false);
           header.style.top = "-20%";
 
           headerChild.style.backgroundColor = "#F7F1EC";
@@ -20,17 +22,14 @@ export default function useScrollDirection() {
         }
       } else if (scrollTop < lastScrollTop && scrollTop !== 0) {
         if (header && headerChild) {
+          setNoScroll(false);
           header.style.top = "0";
 
           headerChild.style.backgroundColor = "#F7F1EC";
           headerChild.style.color = "#2C231D";
         }
       } else if (scrollTop === 0) {
-        if (header && headerChild) {
-          header.style.top = "0";
-          headerChild.style.backgroundColor = "transparent";
-          headerChild.style.color = "#F7F1EC";
-        }
+        setNoScroll(true);
       }
 
       lastScrollTop = scrollTop;
@@ -42,5 +41,5 @@ export default function useScrollDirection() {
     };
   });
 
-  return null;
+  return noScroll;
 }

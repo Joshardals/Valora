@@ -28,15 +28,8 @@
     @apply p-0 m-0 text-[14px] leading-6 w-full h-[200vh] bg-black font-nunito scroll-smooth;
   }
 
-  /* Hover Effects for the NavLinks and UserActions Components  */
-  .linkList li {
-    @apply md:transition-all md:duration-200 md:ease-in;
-  }
-  .linkList:hover li {
-    @apply md:opacity-40;
-  }
-  .linkList li:hover {
-    @apply md:opacity-100;
+  .headerChildScroll {
+    @apply bg-transparent text-secondary max-md:bg-secondary max-md:text-primary !important;
   }
 
   /* Header Hover Effect */
@@ -47,6 +40,19 @@
     @apply md:bg-secondary md:text-primary !important;
   }
   /* Header Hover Effect End */
+
+  /* Hover Effects for the NavLinks and UserActions Components  */
+  .linkList li {
+    @apply md:transition-all md:duration-200 md:ease-in;
+  }
+
+  .linkList:hover li {
+    @apply md:opacity-40;
+  }
+
+  .linkList li:hover {
+    @apply md:opacity-100;
+  }
 
   /* Mobile Nav toggle effects */
 

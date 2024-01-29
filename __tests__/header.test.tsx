@@ -21,13 +21,21 @@ it("should update header styles when scrolling down", () => {
   expect(headerChild).toHaveStyle({ color: "#2C231D" });
 });
 
-it("should reset header styles when scrolling up", () => {
+it("should update header styles when scrolling up", () => {
   render(<Header />);
   const header = screen.getByTestId("header");
   const headerChild = screen.getByTestId("headerChild");
-  fireEvent.scroll(window, { target: { scrollY: 0 } });
+  fireEvent.scroll(window, { target: { scrollY: -50 } });
 
   expect(header).toHaveStyle({ top: "0" });
-  expect(headerChild).toHaveStyle({ backgroundColor: "transparent" });
-  expect(headerChild).toHaveStyle({ color: "#F7F1EC" });
+  expect(headerChild).toHaveStyle({ backgroundColor: "#F7F1EC" });
+  expect(headerChild).toHaveStyle({ color: "#2C231D" });
+});
+
+it("should reset header styles when scrollY is 0", () => {
+  render(<Header />);
+  const headerChild = screen.getByTestId("headerChild");
+  fireEvent.scroll(window, { target: { scrollY: 0 } });
+
+  expect(headerChild.className).toContain("headerChildScroll");
 });
