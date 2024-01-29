@@ -15,7 +15,7 @@ export default function useScrollDirection() {
       if (scrollTop > lastScrollTop && scrollTop !== 0) {
         if (header && headerChild) {
           setNoScroll(false);
-          header.style.top = "-20%";
+          header.style.top = "-20vh";
 
           headerChild.style.backgroundColor = "transparent";
           headerChild.style.color = "#2C231D";
