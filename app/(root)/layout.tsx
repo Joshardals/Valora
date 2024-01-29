@@ -8,15 +8,13 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <html>
-      <body>
-        <Header />
-        <div className=" px-5 text-wrap">
-          {children}
-          <SpeedInsights />
-        </div>
-        {/* <Footer /> */}
-      </body>
-    </html>
+    <div>
+      <Header />
+      <div className=" bg-orange-950 pt-[4.7rem] px-5">
+        {children}
+        <SpeedInsights />
+      </div>
+      {/* <Footer /> */}
+    </div>
   );
 }
