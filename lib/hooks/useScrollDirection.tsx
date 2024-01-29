@@ -4,44 +4,34 @@ import { useScroll } from "../store/store";
 export default function useScrollDirection() {
   const { scroll, setScroll } = useScroll();
 
-  // useEffect(() => {
-  //   let lastScrollY = 0;
-
-  //   const updateScrollPosition = () => {
-  //     const scrollY = window.scrollY;
-  //     const direction = scrollY > lastScrollY ? "down" : "up";
-
-  //     if (
-  //       direction !== scrollDirection &&
-  //       (scrollY - lastScrollY > 10 || scrollY - lastScrollY < -10)
-  //     ) {
-  //       setScrollDirection(direction);
-  //     }
-
-  //     lastScrollY = scrollY > 0 ? scrollY : 0;
-  //     if (lastScrollY === 0) {
-  //       setNoScroll(true);
-  //     } else {
-  //       setNoScroll(false);
-  //     }
-  //   };
-
-  //   window.addEventListener("scroll", updateScrollPosition);
-  //   return () => {
-  //     window.removeEventListener("scroll", updateScrollPosition);
-  //   };
-  // }, [scrollDirection]);
-
   useEffect(() => {
     let lastScrollTop = 0;
 
     const updateScrollPosition = () => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const header = document.getElementById("header");
+      const headerChild = document.getElementById("headerChild");
 
-      if (scrollTop > lastScrollTop) {
-        setScroll(true);
-      } else {
-        setScroll(false);
+      if (scrollTop > lastScrollTop && scrollTop !== 0) {
+        if (header && headerChild) {
+          header.style.top = "-20%";
+
+          headerChild.style.backgroundColor = "#F7F1EC";
+          headerChild.style.color = "#2C231D";
+        }
+      } else if (scrollTop < lastScrollTop && scrollTop !== 0) {
+        if (header && headerChild) {
+          header.style.top = "0";
+
+          headerChild.style.backgroundColor = "#F7F1EC";
+          headerChild.style.color = "#2C231D";
+        }
+      } else if (scrollTop === 0) {
+        if (header && headerChild) {
+          header.style.top = "0";
+          headerChild.style.backgroundColor = "transparent";
+          headerChild.style.color = "white";
+        }
       }
 
       lastScrollTop = scrollTop;
@@ -51,7 +41,7 @@ export default function useScrollDirection() {
     return () => {
       window.removeEventListener("scroll", updateScrollPosition);
     };
-  }, []);
+  });
 
   return scroll;
 }
