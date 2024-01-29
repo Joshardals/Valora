@@ -3,7 +3,7 @@ export interface MobileNavToggleState {
   setIsOpen: (isOpen: MobileNavToggleState["isOpen"]) => void;
 }
 
-export interface NoScrollState {
-  noScroll: boolean;
-  setNoScroll: (isOpen: NoScrollState["noScroll"]) => void;
+export interface ScrollState {
+  scroll: boolean;
+  setScroll: (isOpen: ScrollState["scroll"]) => void;
 }

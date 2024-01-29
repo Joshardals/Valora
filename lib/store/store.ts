@@ -1,4 +1,4 @@
-import { MobileNavToggleState, NoScrollState } from "@/typings";
+import { MobileNavToggleState, ScrollState } from "@/typings";
 import { create } from "zustand";
 
 export const mobileNavToggle = create<MobileNavToggleState>((set) => ({
@@ -6,7 +6,7 @@ export const mobileNavToggle = create<MobileNavToggleState>((set) => ({
   setIsOpen: (isOpen) => set(() => ({ isOpen })),
 }));
 
-export const useNoScroll = create<NoScrollState>((set) => ({
-  noScroll: false,
-  setNoScroll: (noScroll) => set(() => ({ noScroll })),
+export const useScroll = create<ScrollState>((set) => ({
+  scroll: false,
+  setScroll: (scroll) => set(() => ({ scroll })),
 }));
