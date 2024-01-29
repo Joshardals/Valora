@@ -43,12 +43,12 @@ export default function useScrollDirection() {
       lastScrollTop = scrollTop;
     };
 
-    const throttledUpdate = throttle(updateScrollPosition, 100);
+    // const throttledUpdate = throttle(updateScrollPosition, 100);
 
-    window.addEventListener("scroll", throttledUpdate);
+    window.addEventListener("scroll", updateScrollPosition);
 
     return () => {
-      window.removeEventListener("scroll", throttledUpdate);
+      window.removeEventListener("scroll", updateScrollPosition);
     };
   });
 
