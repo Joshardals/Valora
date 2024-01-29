@@ -29,7 +29,7 @@ export default function useScrollDirection() {
         if (header && headerChild) {
           header.style.top = "0";
           headerChild.style.backgroundColor = "transparent";
-          headerChild.style.color = "white";
+          headerChild.style.color = "#F7F1EC";
         }
       }
 

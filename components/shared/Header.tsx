@@ -6,19 +6,21 @@ import HeaderInfo from "../ui/Header/HeaderInfo";
 import useScrollDirection from "@/lib/hooks/useScrollDirection";
 
 export default function Header() {
-  const scrollDirection = useScrollDirection();
+  useScrollDirection();
 
   return (
     <header
       className={`fixed top-0 w-full grid grid-flow-row
       duration-100`}
       id="header"
+      data-testid="header"
     >
       <HeaderInfo />
       <div
         className={`grid grid-cols-3 items-center text-secondary max-md:bg-secondary max-md:text-primary py-5 px-8 max-md:px-5 select-none
         justify-start headerHover`}
         id="headerChild"
+        data-testid="headerChild"
       >
         <Logo />
         <div className="justify-self-center max-md:hidden">
