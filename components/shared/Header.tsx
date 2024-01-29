@@ -4,7 +4,6 @@ import NavLinks from "../ui/Header/NavLinks";
 import UserActions from "../ui/Header/UserActions";
 import HeaderInfo from "../ui/Header/HeaderInfo";
 import useScrollDirection from "@/lib/hooks/useScrollDirection";
-import { useScroll } from "@/lib/store/store";
 
 export default function Header() {
   const scrollDirection = useScrollDirection();

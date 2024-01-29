@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
-import { useScroll } from "../store/store";
+import { useEffect } from "react";
+
+// An Hook that changes the header dynamically whenever the scroll changes.
 
 export default function useScrollDirection() {
-  const { scroll, setScroll } = useScroll();
-
   useEffect(() => {
     let lastScrollTop = 0;
 
@@ -43,5 +42,5 @@ export default function useScrollDirection() {
     };
   });
 
-  return scroll;
+  return null;
 }
