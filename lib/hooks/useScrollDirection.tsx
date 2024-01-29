@@ -15,18 +15,19 @@ export default function useScrollDirection() {
       if (scrollTop > lastScrollTop && scrollTop !== 0) {
         if (header && headerChild) {
           setNoScroll(false);
-          header.style.top = "-20vh";
+          // header.style.top = "-20vh";
 
           headerChild.style.backgroundColor = "transparent";
           headerChild.style.color = "#2C231D";
+
         }
       } else if (scrollTop < lastScrollTop && scrollTop !== 0) {
         if (header && headerChild) {
-          setNoScroll(false);
-          header.style.top = "0";
+          // setNoScroll(false);
+          // header.style.top = "0";
 
           headerChild.style.backgroundColor = "#F7F1EC";
-          headerChild.style.color = "#2C231D";
+          // headerChild.style.color = "#2C231D";
         }
       } else if (scrollTop === 0) {
         setNoScroll(true);

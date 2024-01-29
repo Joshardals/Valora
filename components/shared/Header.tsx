@@ -16,10 +16,11 @@ export default function Header() {
       data-testid="header"
     >
       <HeaderInfo />
+      {/* ${noScroll && "headerChildScroll"} */}
       <div
         className={`grid grid-cols-3 items-center text-secondary max-md:bg-secondary max-md:text-primary  
         py-5 px-8 max-md:px-5 select-none justify-start headerHover 
-        ${noScroll && "headerChildScroll"}`}
+       `}
         id="headerChild"
         data-testid="headerChild"
       >
