@@ -25,7 +25,7 @@
 
   html,
   body {
-    @apply p-0 m-0 text-[14px] leading-6 w-full h-[200vh] bg-black font-nunito scroll-smooth;
+    @apply p-0 m-0 text-[14px] leading-6 w-full bg-black font-nunito scroll-smooth;
   }
 
   .headerChildScroll {
