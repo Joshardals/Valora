@@ -11,7 +11,7 @@ export default function Layout({
     <html>
       <body>
         <Header />
-        <div className=" pt-28">
+        <div>
           {children}
           <SpeedInsights />
         </div>
