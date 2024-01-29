@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { kanit, nunito } from "./fonts";
 
@@ -14,11 +15,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${kanit.variable} ${nunito.variable}`}
-    >
-      <body>{children}</body>
+    <html lang="en" className={`${kanit.variable} ${nunito.variable}`}>
+      <body>
+        {children}
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
