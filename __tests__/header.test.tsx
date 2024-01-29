@@ -17,7 +17,7 @@ it("should update header styles when scrolling down", () => {
   fireEvent.scroll(window, { target: { scrollY: 50 } });
 
   expect(header).toHaveStyle({ top: "-20%" });
-  expect(headerChild).toHaveStyle({ backgroundColor: "#F7F1EC" });
+  expect(headerChild).toHaveStyle({ backgroundColor: "transparent" });
   expect(headerChild).toHaveStyle({ color: "#2C231D" });
 });
 

@@ -17,7 +17,7 @@ export default function useScrollDirection() {
           setNoScroll(false);
           header.style.top = "-20%";
 
-          headerChild.style.backgroundColor = "#F7F1EC";
+          headerChild.style.backgroundColor = "transparent";
           headerChild.style.color = "#2C231D";
         }
       } else if (scrollTop < lastScrollTop && scrollTop !== 0) {

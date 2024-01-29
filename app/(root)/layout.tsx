@@ -10,7 +10,7 @@ export default function Layout({
     <html>
       <body>
         <Header />
-        <div>{children}</div>
+        <div className=" pt-28">{children}</div>
         {/* <Footer /> */}
       </body>
     </html>
