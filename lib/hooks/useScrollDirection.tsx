@@ -38,12 +38,13 @@ export default function useScrollDirection() {
         if (headerChild) {
           headerChild.style.backgroundColor = "red";
         }
-      } else if (scrollTop === 0) {
-        setNoScroll(true);
-        if (headerChild) {
-          headerChild.style.backgroundColor = "red";
-        }
       }
+      // else if (scrollTop === 0) {
+      //   setNoScroll(true);
+      //   if (headerChild) {
+      //     headerChild.style.backgroundColor = "red";
+      //   }
+      // }
 
       lastScrollTop = scrollTop;
     };
