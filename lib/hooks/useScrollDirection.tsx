@@ -15,7 +15,8 @@ export default function useScrollDirection() {
       const header = document.getElementById("header");
       const headerChild = document.getElementById("headerChild");
 
-      setScrollNumber(scrollTop);
+      // setScrollNumber(scrollTop);
+      setScrollNumber(window.innerHeight);
 
       if (scrollTop > lastScrollTop && scrollTop !== 0) {
         if (header && headerChild) {
