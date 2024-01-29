@@ -33,7 +33,7 @@ export default function useScrollDirection() {
           headerChild.style.backgroundColor = "#F7F1EC";
           // headerChild.style.color = "#2C231D";
         }
-      } else if (scrollTop === 0) {
+      } else if (scrollTop === -1 || 0) {
         setNoScroll(true);
         if (headerChild) {
           headerChild.style.backgroundColor = "red";
