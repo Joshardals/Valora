@@ -5,6 +5,7 @@ import throttle from "lodash.throttle";
 
 export default function useScrollDirection() {
   const [noScroll, setNoScroll] = useState(false);
+  const [scrollNumber, setScrollNumber] = useState<number>(0);
   useEffect(() => {
     let lastScrollTop = window.scrollY;
 
@@ -12,6 +13,8 @@ export default function useScrollDirection() {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
       const header = document.getElementById("header");
       const headerChild = document.getElementById("headerChild");
+
+      setScrollNumber(scrollTop);
 
       if (scrollTop > lastScrollTop && scrollTop !== 0) {
         if (header && headerChild) {
@@ -40,7 +43,7 @@ export default function useScrollDirection() {
       lastScrollTop = scrollTop;
     };
 
-    const throttledUpdate = throttle(updateScrollPosition, (100));
+    const throttledUpdate = throttle(updateScrollPosition, 100);
 
     window.addEventListener("scroll", throttledUpdate);
 
@@ -49,5 +52,5 @@ export default function useScrollDirection() {
     };
   });
 
-  return noScroll;
+  return { noScroll, scrollNumber };
 }

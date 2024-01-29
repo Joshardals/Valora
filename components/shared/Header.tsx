@@ -6,7 +6,7 @@ import HeaderInfo from "../ui/Header/HeaderInfo";
 import useScrollDirection from "@/lib/hooks/useScrollDirection";
 
 export default function Header() {
-  const noScroll = useScrollDirection();
+  const { noScroll, scrollNumber } = useScrollDirection();
 
   return (
     <header
@@ -15,6 +15,7 @@ export default function Header() {
       id="header"
       data-testid="header"
     >
+      <p className="text-yellow-500 font-bold text-xl">{scrollNumber}</p>
       <HeaderInfo />
       {/* ${noScroll && "headerChildScroll"} */}
       <div
