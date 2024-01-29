@@ -11,7 +11,7 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 w-full grid grid-flow-row
-      duration-100`}
+      duration-300`}
       id="header"
       data-testid="header"
     >
