@@ -8,6 +8,7 @@ export default function useScrollDirection() {
   const [scrollNumber, setScrollNumber] = useState<number>(0);
   useEffect(() => {
     let lastScrollTop = window.scrollY;
+    let lastScrollHeight = window.innerHeight;
 
     const updateScrollPosition = () => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -51,17 +52,10 @@ export default function useScrollDirection() {
 
     // const throttledUpdate = throttle(updateScrollPosition, 100);
 
-    // window.addEventListener("scroll", updateScrollPosition);
-    window.addEventListener("touchstart", updateScrollPosition);
-    window.addEventListener("touchmove", updateScrollPosition);
-    window.addEventListener("touchend", updateScrollPosition);
+    window.addEventListener("scroll", updateScrollPosition);
 
     return () => {
-      // window.removeEventListener("scroll", updateScrollPosition);
-
-      window.removeEventListener("touchstart", updateScrollPosition);
-      window.removeEventListener("touchmove", updateScrollPosition);
-      window.removeEventListener("touchend", updateScrollPosition);
+      window.removeEventListener("scroll", updateScrollPosition);
     };
   });
 
