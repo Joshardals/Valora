@@ -51,10 +51,17 @@ export default function useScrollDirection() {
 
     // const throttledUpdate = throttle(updateScrollPosition, 100);
 
-    window.addEventListener("scroll", updateScrollPosition);
+    // window.addEventListener("scroll", updateScrollPosition);
+    window.addEventListener("touchstart", updateScrollPosition);
+    window.addEventListener("touchmove", updateScrollPosition);
+    window.addEventListener("touchend", updateScrollPosition);
 
     return () => {
-      window.removeEventListener("scroll", updateScrollPosition);
+      // window.removeEventListener("scroll", updateScrollPosition);
+
+      window.removeEventListener("touchstart", updateScrollPosition);
+      window.removeEventListener("touchmove", updateScrollPosition);
+      window.removeEventListener("touchend", updateScrollPosition);
     };
   });
 
