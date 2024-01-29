@@ -19,7 +19,6 @@ export default function useScrollDirection() {
 
           headerChild.style.backgroundColor = "transparent";
           headerChild.style.color = "#2C231D";
-
         }
       } else if (scrollTop < lastScrollTop && scrollTop !== 0) {
         if (header && headerChild) {
@@ -31,6 +30,9 @@ export default function useScrollDirection() {
         }
       } else if (scrollTop === 0) {
         setNoScroll(true);
+        if (headerChild) {
+          headerChild.style.backgroundColor = "red";
+        }
       }
 
       lastScrollTop = scrollTop;
