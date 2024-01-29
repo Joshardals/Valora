@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 export default function useScrollDirection() {
   const [noScroll, setNoScroll] = useState(false);
   useEffect(() => {
-    let lastScrollTop = 0;
+    let lastScrollTop = 20;
 
     const updateScrollPosition = () => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
