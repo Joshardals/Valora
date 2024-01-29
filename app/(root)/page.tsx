@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <main className="text-secondary">
+    <main className="text-secondary max-h-10">
       <h1>home Page</h1>
       <p className=" text-wrap">
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos ad
