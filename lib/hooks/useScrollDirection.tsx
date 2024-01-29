@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 export default function useScrollDirection() {
   const [noScroll, setNoScroll] = useState(false);
   useEffect(() => {
-    let lastScrollTop = 20;
+    let lastScrollTop = window.scrollY;
 
     const updateScrollPosition = () => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -29,7 +29,7 @@ export default function useScrollDirection() {
           headerChild.style.backgroundColor = "#F7F1EC";
           // headerChild.style.color = "#2C231D";
         }
-      } else if (scrollTop === 0) {
+      } else if (scrollTop === 10) {
         setNoScroll(true);
         if (headerChild) {
           headerChild.style.backgroundColor = "red";
