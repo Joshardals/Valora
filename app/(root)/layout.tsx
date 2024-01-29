@@ -11,7 +11,7 @@ export default function Layout({
     <html>
       <body>
         <Header />
-        <div className=" pt-32 px-5 text-wrap">
+        <div className=" px-5 text-wrap">
           {children}
           <SpeedInsights />
         </div>
