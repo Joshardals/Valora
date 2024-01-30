@@ -4,6 +4,6 @@ export interface MobileNavToggleState {
 }
 
 export interface UserActionSideBarState {
-  isOpen: boolean;
+  isOpen: null | boolean;
   setIsOpen: (isOpen: UserActionSideBarState["isOpen"]) => void;
 }

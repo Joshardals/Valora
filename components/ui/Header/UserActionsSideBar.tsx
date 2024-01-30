@@ -7,7 +7,7 @@ export default function UserActionsSideBar() {
   return (
     <aside
       className={`fixed text-secondary top-0 right-0 bg-primary/50 backdrop-blur-lg p-5
-      min-h-[100svh] w-[28rem] transition-transform duration-500 ease-in-out 
+      min-h-[100svh] w-[28rem] transition-transform duration-700
       ${isOpen ? "-translate-x-0" : "translate-x-full"}
       `}
     >

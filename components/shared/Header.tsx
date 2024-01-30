@@ -28,7 +28,11 @@ export default function Header() {
         </div>
         <div
           className={`justify-self-end max-md:col-span-2 
-          ${isOpen && "animate__animated animate__fadeOutLeft"}
+          ${
+            isOpen
+              ? "animate__animated animate__fadeOutLeft"
+              : isOpen !== null && "animate__animated animate__fadeInLeft"
+          }
           `}
         >
           <UserActions />

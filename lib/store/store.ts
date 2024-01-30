@@ -8,7 +8,7 @@ export const mobileNavToggle = create<MobileNavToggleState>((set) => ({
 
 export const userActionsSideBarToggle = create<UserActionSideBarState>(
   (set) => ({
-    isOpen: false,
+    isOpen: null,
     setIsOpen: (isOpen) => set(() => ({ isOpen })),
   })
 );
