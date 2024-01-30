@@ -18,7 +18,7 @@ export default function Header() {
       <div
         className={`grid grid-cols-3 items-center bg-secondary text-primary  
         py-5 px-8 max-md:px-5 select-none justify-start transition-[background] duration-200  
-   ${isOpen && "bg-transparent text-secondary"}`}
+        ${isOpen && "bg-transparent text-secondary"}`}
         id="headerChild"
         data-testid="headerChild"
       >

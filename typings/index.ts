@@ -7,3 +7,8 @@ export interface UserActionSideBarState {
   isOpen: null | boolean;
   setIsOpen: (isOpen: UserActionSideBarState["isOpen"]) => void;
 }
+
+export interface UserActionActiveIndexState {
+  activeIndex: null | number;
+  setActiveIndex: (index: UserActionActiveIndexState["activeIndex"]) => void;
+}
