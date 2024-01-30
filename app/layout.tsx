@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { kanit, nunito } from "./fonts";
+import "animate.css";
 import "./globals.css";
 
 export const metadata: Metadata = {

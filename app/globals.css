@@ -27,6 +27,12 @@
   body {
     @apply p-0 m-0 text-[14px] leading-6 w-full min-h-[100svh] bg-black text-secondary font-nunito scroll-smooth;
   }
+/* 
+  .fadeIn {
+    animation: fadeOutLeft;
+    animation-timing-function: cubic-bezier(0.5, -0.99, 0.1, 1.55);
+    animation-duration: 2s;
+  } */
 
   /* .headerChildScroll {
     @apply top-0 bg-transparent text-secondary max-md:bg-secondary max-md:text-primary !important;
