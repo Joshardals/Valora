@@ -1,5 +1,4 @@
-
-// storing data for the UserActions Component. 
+// storing data for the UserActions Component Start.
 
 import { CiUser, CiBookmark, CiShoppingCart } from "react-icons/ci";
 import { CiSearch } from "react-icons/ci";
@@ -33,3 +32,5 @@ export const items = [
     ),
   },
 ];
+
+// storing data for the UserActions Component End.
