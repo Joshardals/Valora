@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function HeaderInfo() {
   return (
     <div className="bg-primary text-secondary text-center p-2 max-md:order-last">

@@ -1,10 +1,10 @@
 // Fonts for the site.
 
 import {
-  Open_Sans,
-  Source_Serif_4,
   Kanit,
   Nunito_Sans,
+  Open_Sans,
+  Source_Serif_4,
 } from "next/font/google";
 
 export const kanit = Kanit({

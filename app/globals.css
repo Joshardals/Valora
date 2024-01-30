@@ -28,17 +28,17 @@
     @apply p-0 m-0 text-[14px] leading-6 w-full min-h-[100svh] bg-black text-secondary font-nunito scroll-smooth;
   }
 
-  .headerChildScroll {
+  /* .headerChildScroll {
     @apply top-0 bg-transparent text-secondary max-md:bg-secondary max-md:text-primary !important;
-  }
+  } */
 
   /* Header Hover Effect */
-  .headerHover {
+  /* .headerHover {
     transition: background-color 0.2s cubic-bezier(0.9, 0.98, 0.5, 0.9);
   }
   .headerHover:hover {
     @apply md:bg-secondary md:text-primary !important;
-  }
+  } */
   /* Header Hover Effect End */
 
   /* Hover Effects for the NavLinks and UserActions Components  */

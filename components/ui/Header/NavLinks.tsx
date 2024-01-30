@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { CiSearch } from "react-icons/ci";
+import Link from "next/link";
 
 const links = [
   { label: "Shop", href: "#" },

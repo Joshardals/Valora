@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import { kanit, nunito } from "./fonts";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "VALORA | Official Store - Shop Online Now",

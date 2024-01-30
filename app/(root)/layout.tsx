@@ -10,7 +10,7 @@ export default function Layout({
   return (
     <div>
       <Header />
-      <div className=" bg-orange-950 pt-[4.7rem] px-5">
+      <div className=" bg-orange-950 pt-[4.7rem] px-5 min-h-[100svh]">
         {children}
         <SpeedInsights />
       </div>
