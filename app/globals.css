@@ -25,14 +25,25 @@
 
   html,
   body {
-    @apply p-0 m-0 text-[14px] leading-6 w-full min-h-[100svh] bg-black text-secondary font-nunito scroll-smooth;
+    @apply p-0 m-0 text-[14px] leading-6 w-full min-h-[100svh] bg-secondary text-secondary font-nunito scroll-smooth;
   }
-  /* 
+
+  /* Heading Styles */
+  h2 {
+    @apply text-2xl w-[fit-content];
+  }
+
   .fadeIn {
-    animation: fadeOutLeft;
+    animation: fadeIn;
     animation-timing-function: cubic-bezier(0.5, -0.99, 0.1, 1.55);
-    animation-duration: 2s;
-  } */
+    animation-duration: 2.2s;
+  }
+
+  .fadeOut {
+    animation: fadeOut;
+    animation-timing-function: cubic-bezier(-0.9, -0.9, 0.1, 0.1);
+    animation-duration: 0.5s;
+  }
 
   /* .headerChildScroll {
     @apply top-0 bg-transparent text-secondary max-md:bg-secondary max-md:text-primary !important;
