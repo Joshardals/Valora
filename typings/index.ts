@@ -1,3 +1,8 @@
+export interface InputProps {
+  placeholder: string; 
+  type: string; 
+}
+
 export interface MobileNavToggleState {
   isOpen: boolean;
   setIsOpen: (isOpen: MobileNavToggleState["isOpen"]) => void;

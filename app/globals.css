@@ -71,6 +71,27 @@
   .activeList li:not(.active):hover {
     @apply md:opacity-100;
   }
+
+  /* Hover effects for inline links */
+  .linkHover {
+    @apply relative duration-1000;
+  }
+
+  .linkHover::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 1%;
+    width: 100%;
+    background: #f7f1ec;
+  }
+
+  .linkHover:hover::before {
+    background-color: red;
+    width: 0%;
+  }
+
   /* Hover Effects for the NavLinks and UserActions Components  */
 
   .linkList li {

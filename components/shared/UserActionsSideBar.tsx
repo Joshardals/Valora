@@ -12,6 +12,9 @@ export default function UserActionsSideBar() {
       min-h-[100svh] w-[28rem] transition-transform duration-700 space-y-8
       ${isOpen ? "-translate-x-0" : "translate-x-full"}
       `}
+      onClick={(e) => {
+        e.stopPropagation(); // Trying to prevent  the onClick from the parent element in the layout.tsx. 
+      }}
     >
       <section className="flex items-center justify-between p-8">
         <UserActions />
