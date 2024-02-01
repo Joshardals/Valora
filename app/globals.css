@@ -74,21 +74,15 @@
 
   /* Hover effects for inline links */
   .linkHover {
-    @apply relative duration-1000;
+    @apply relative;
   }
 
   .linkHover::before {
     content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    height: 1%;
-    width: 100%;
-    background: #f7f1ec;
+    @apply duration-200 ease-in bg-secondary w-full h-[1%] absolute right-0 bottom-0;
   }
 
   .linkHover:hover::before {
-    background-color: red;
     width: 0%;
   }
 
