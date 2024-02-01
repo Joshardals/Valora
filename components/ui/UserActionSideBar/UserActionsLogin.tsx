@@ -26,7 +26,7 @@ export default function UserActionsLogin() {
       <div className="space-y-4">
         <h2>Log In</h2>
         <p className=" font-thin text-pretty max-w-full">
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <span>
             <Link href="/register" className="linkHover">
               Create an account
