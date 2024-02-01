@@ -13,7 +13,7 @@ export default function UserActionsSideBar() {
       ${isOpen ? "-translate-x-0" : "translate-x-full"}
       `}
       onClick={(e) => {
-        e.stopPropagation(); // Trying to prevent  the onClick from the parent element in the layout.tsx. 
+        e.stopPropagation(); // Trying to prevent the onClick from the parent element in the layout.tsx. 
       }}
     >
       <section className="flex items-center justify-between p-8">
