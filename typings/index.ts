@@ -1,6 +1,6 @@
 export interface InputProps {
-  placeholder: string; 
-  type: string; 
+  placeholder: string;
+  type: string;
 }
 
 export interface MobileNavToggleState {
@@ -15,5 +15,12 @@ export interface UserActionSideBarState {
 
 export interface UserActionActiveIndexState {
   activeIndex: null | number;
-  setActiveIndex: (index: UserActionActiveIndexState["activeIndex"]) => void;
+  setActiveIndex: (
+    activeIndex: UserActionActiveIndexState["activeIndex"]
+  ) => void;
+}
+
+export interface UserActionRenderState {
+  initialRender: null | boolean;
+  setInitialRender: (wasClosed: UserActionRenderState["initialRender"]) => void;
 }

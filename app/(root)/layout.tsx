@@ -2,7 +2,10 @@
 import Footer from "@/components/shared/Footer";
 import Header from "@/components/shared/Header";
 import UserActionsSideBar from "@/components/shared/UserActionsSideBar";
-import { userActionsSideBarToggle } from "@/lib/store/store";
+import {
+  userActionInitialRender,
+  userActionsSideBarToggle,
+} from "@/lib/store/store";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function Layout({
@@ -11,11 +14,14 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   const { isOpen, setIsOpen } = userActionsSideBarToggle();
+  const { setInitialRender } = userActionInitialRender();
+
   return (
     <div
       onClick={() => {
         if (isOpen) {
           setIsOpen(false);
+          setInitialRender(true);
         }
       }}
     >

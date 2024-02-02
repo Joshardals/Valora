@@ -1,19 +1,27 @@
 import {
   userActionActiveIndex,
+  userActionInitialRender,
   userActionsSideBarToggle,
 } from "@/lib/store/store";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 
 export default function UserActionsWishList() {
-  const { isOpen } = userActionsSideBarToggle();
   const { activeIndex } = userActionActiveIndex();
+  const { initialRender, setInitialRender } = userActionInitialRender();
+  const { isOpen } = userActionsSideBarToggle();
   const wishlistRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    wishlistRef.current?.classList.remove("fadeIn");
-    console.log("wishlist Ref Now Active");
-  }, [activeIndex]);
+    if (isOpen) {
+      if (activeIndex === 2 && initialRender) {
+        wishlistRef.current?.classList.add("fadeIn");
+        setInitialRender(false);
+      } else {
+        wishlistRef.current?.classList.remove("fadeIn");
+      }
+    }
+  }, [isOpen, activeIndex]);
   return (
     <div
       className={`px-8 space-y-12 ${

@@ -2,6 +2,7 @@ import { create } from "zustand";
 import {
   MobileNavToggleState,
   UserActionActiveIndexState,
+  UserActionRenderState,
   UserActionSideBarState,
 } from "@/typings";
 
@@ -23,3 +24,8 @@ export const userActionActiveIndex = create<UserActionActiveIndexState>(
     setActiveIndex: (activeIndex) => set(() => ({ activeIndex })),
   })
 );
+
+export const userActionInitialRender = create<UserActionRenderState>((set) => ({
+  initialRender: true,
+  setInitialRender: (initialRender) => set(() => ({ initialRender })),
+}));

@@ -1,27 +1,34 @@
-import LoginForm from "@/components/form/LoginForm";
 import {
+  userActionInitialRender,
   userActionActiveIndex,
   userActionsSideBarToggle,
 } from "@/lib/store/store";
-import Link from "next/link";
 import { useEffect, useRef } from "react";
 
 export default function UserActionsLogin() {
-  const { isOpen } = userActionsSideBarToggle();
   const { activeIndex } = userActionActiveIndex();
-  const profileRef = useRef<HTMLDivElement | null>(null);
+  const currencyRef = useRef<HTMLDivElement | null>(null);
+  const { initialRender, setInitialRender } = userActionInitialRender();
+  const { isOpen } = userActionsSideBarToggle();
 
   useEffect(() => {
-    profileRef.current?.classList.remove("fadeIn");
-    console.log("Profile Ref Active.");
-  }, [activeIndex]);
+    if (isOpen) {
+      if (activeIndex === 0 && initialRender) {
+        currencyRef.current?.classList.add("fadeIn");
+        setInitialRender(false);
+      } else {
+        currencyRef.current?.classList.remove("fadeIn");
+      }
+    }
+  }, [isOpen, activeIndex]);
 
   return (
     <div
-      className={`px-8 space-y-12 ${
-        isOpen ? "fadeIn" : isOpen !== null && "fadeOut"
-      } ${activeIndex === 0 ? "block" : "hidden"}`}
-      ref={profileRef}
+      className={`px-8 space-y-12
+      } ${activeIndex === 0 ? "block" : "hidden"}
+      ${isOpen ? "" : isOpen !== null && "fadeOut"}
+      `}
+      ref={currencyRef}
     >
       <div className="space-y-4">
         <h2>Location</h2>

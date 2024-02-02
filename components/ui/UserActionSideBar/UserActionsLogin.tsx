@@ -1,25 +1,33 @@
 import LoginForm from "@/components/form/LoginForm";
 import {
   userActionActiveIndex,
+  userActionInitialRender,
   userActionsSideBarToggle,
 } from "@/lib/store/store";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 
 export default function UserActionsLogin() {
-  const { isOpen } = userActionsSideBarToggle();
   const { activeIndex } = userActionActiveIndex();
+  const { initialRender, setInitialRender } = userActionInitialRender();
+  const { isOpen } = userActionsSideBarToggle();
   const profileRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    profileRef.current?.classList.remove("fadeIn");
-    console.log("Profile Ref Active.")
-  }, [activeIndex]);
+    if (isOpen) {
+      if (activeIndex === 1 && initialRender) {
+        profileRef.current?.classList.add("fadeIn");
+        setInitialRender(false);
+      } else {
+        profileRef.current?.classList.remove("fadeIn");
+      }
+    }
+  }, [isOpen, activeIndex]);
 
   return (
     <div
       className={`px-8 space-y-12 ${
-        isOpen ? "fadeIn" : isOpen !== null && "fadeOut"
+        isOpen ? "" : isOpen !== null && "fadeOut"
       } ${activeIndex === 1 ? "block" : "hidden"}`}
       ref={profileRef}
     >

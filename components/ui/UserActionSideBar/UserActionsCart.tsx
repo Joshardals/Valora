@@ -1,24 +1,32 @@
 import {
   userActionActiveIndex,
+  userActionInitialRender,
   userActionsSideBarToggle,
 } from "@/lib/store/store";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 
 export default function UserActionsCart() {
-  const { isOpen } = userActionsSideBarToggle();
   const { activeIndex } = userActionActiveIndex();
   const cartRef = useRef<HTMLDivElement | null>(null);
+  const { initialRender, setInitialRender } = userActionInitialRender();
+  const { isOpen } = userActionsSideBarToggle();
 
   useEffect(() => {
-    cartRef.current?.classList.remove("fadeIn");
-    console.log("Cart Ref Now Active");
-  }, [activeIndex]);
+    if (isOpen) {
+      if (activeIndex === 4 && initialRender) {
+        cartRef.current?.classList.add("fadeIn");
+        setInitialRender(false);
+      } else {
+        cartRef.current?.classList.remove("fadeIn");
+      }
+    }
+  }, [isOpen, activeIndex]);
 
   return (
     <div
       className={`px-8 space-y-12 ${
-        isOpen ? "fadeIn" : isOpen !== null && "fadeOut"
+        isOpen ? "" : isOpen !== null && "fadeOut"
       } ${activeIndex === 4 ? "block" : "hidden"}`}
       ref={cartRef}
     >

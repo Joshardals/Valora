@@ -4,6 +4,7 @@ import {
   userActionsSideBarToggle,
 } from "@/lib/store/store";
 import { items } from "@/lib/data";
+import { useEffect } from "react";
 
 export default function UserActions() {
   const { isOpen, setIsOpen } = userActionsSideBarToggle();
@@ -13,6 +14,7 @@ export default function UserActions() {
     setIsOpen(true);
     setActiveIndex(index);
   };
+
   return (
     <ul
       className={`flex items-center max-xs:space-x-3 space-x-4 *:cursor-pointer 
