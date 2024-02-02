@@ -5,6 +5,7 @@ import UserActions from "../ui/Header/UserActions";
 import UserActionsLogin from "../ui/UserActionSideBar/UserActionsLogin";
 import UserActionsCart from "../ui/UserActionSideBar/UserActionsCart";
 import UserActionsWishList from "../ui/UserActionSideBar/UserActionsWishList";
+import UserActionsCurrency from "../ui/UserActionSideBar/UserActionsCurrency";
 
 export default function UserActionsSideBar() {
   const { isOpen, setIsOpen } = userActionsSideBarToggle();
@@ -31,6 +32,7 @@ export default function UserActionsSideBar() {
         <UserActionsLogin />
         <UserActionsCart />
         <UserActionsWishList />
+        <UserActionsCurrency />
       </section>
     </aside>
   );

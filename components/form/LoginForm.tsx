@@ -10,7 +10,7 @@ export default function LoginForm() {
   };
   return (
     <form onSubmit={handleSubmit} className="space-y-12" autoComplete="off">
-      <Input placeholder="EMAIL*" type="text" />
+      <Input placeholder="EMAIL*" type="email" />
       <Input placeholder="PASSWORD*" type="password" />
       <Button />
       <Link href="/register" className="flex justify-center w-full">
