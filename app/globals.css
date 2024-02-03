@@ -77,6 +77,18 @@
     @apply -top-4;
   }
 
+  input {
+    @apply appearance-none;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-text-fill-color: #f7f1ec;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
   /* Hover effects for inline links */
   .linkHover {
     @apply relative;
