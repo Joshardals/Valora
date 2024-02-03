@@ -14,6 +14,7 @@ export default function Input({ placeholder, type }: InputProps) {
         `}
         type={type}
         placeholder=""
+        required
       />
       <span className=" absolute top-2 left-0 duration-200 ease-in floating-label pointer-events-none">
         {placeholder}
