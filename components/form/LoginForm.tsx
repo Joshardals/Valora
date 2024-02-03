@@ -10,25 +10,9 @@ export default function LoginForm() {
   };
   return (
     <form onSubmit={handleSubmit} className="space-y-12" autoComplete="off">
-      {/* <Input placeholder="EMAIL*" type="email" />
-      <Input placeholder="PASSWORD*" type="password" /> */}
-      <input
-        type="email"
-        name=""
-        id=""
-        placeholder="EMAIL*"
-        autoComplete="email"
-        autoCorrect="off"
-      />
-      <input
-        type="password"
-        name=""
-        id=""
-        role="presentation"
-        placeholder="PASSWORD*"
-        // autoComplete="current-password"
-        required
-      />
+      <Input placeholder="EMAIL*" type="email" />
+      <Input placeholder="PASSWORD*" type="password" />
+
       <Button />
       <Link href="/register" className="flex justify-center w-full">
         <p className="uppercase linkHover font-thin">forgotten password</p>
