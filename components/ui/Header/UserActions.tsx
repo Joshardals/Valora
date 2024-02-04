@@ -3,12 +3,12 @@ import {
   userActionActiveIndex,
   userActionsSideBarToggle,
 } from "@/lib/store/store";
-import { items } from "@/lib/data";
-import { useEffect } from "react";
+import { checkWidth } from "@/lib/data";
 
 export default function UserActions() {
   const { isOpen, setIsOpen } = userActionsSideBarToggle();
   const { activeIndex, setActiveIndex } = userActionActiveIndex();
+  const items = checkWidth();
 
   const handleClick = (index: number) => {
     setIsOpen(true);

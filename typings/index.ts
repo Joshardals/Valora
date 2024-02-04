@@ -3,6 +3,11 @@ export interface InputProps {
   type: string;
 }
 
+export interface IsMobileState {
+  mobile: boolean | null; 
+  setMobile: (mobile: IsMobileState["mobile"]) => void; 
+}
+
 export interface MobileNavToggleState {
   isOpen: boolean;
   setIsOpen: (isOpen: MobileNavToggleState["isOpen"]) => void;

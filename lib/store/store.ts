@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import {
+  IsMobileState,
   MobileNavToggleState,
   UserActionActiveIndexState,
   UserActionRenderState,
@@ -17,6 +18,11 @@ export const userActionsSideBarToggle = create<UserActionSideBarState>(
     setIsOpen: (isOpen) => set(() => ({ isOpen })),
   })
 );
+
+export const useIsMobile = create<IsMobileState>((set) => ({
+  mobile: null,
+  setMobile: (mobile) => set(() => ({ mobile })),
+}));
 
 export const userActionActiveIndex = create<UserActionActiveIndexState>(
   (set) => ({
