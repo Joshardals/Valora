@@ -72,10 +72,10 @@
     @apply md:opacity-100;
   }
 
-  input:focus ~ .floating-label,
+  /* input:focus ~ .floating-label,
   input:not(:placeholder-shown) ~ .floating-label {
     @apply -top-4;
-  }
+  } */
 
   input:-webkit-autofill,
   input:-webkit-autofill:hover,

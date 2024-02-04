@@ -19,7 +19,7 @@ export const items = [
   },
   {
     label: "search",
-    icon: <CiSearch size={20} aria-label="Search" className="max-md:size-7" />,
+    icon: <CiSearch size={20} aria-label="Search" />,
   },
   {
     label: "cart",
@@ -27,7 +27,7 @@ export const items = [
       <CiShoppingCart
         size={20}
         aria-label="Shopping Cart"
-        className="max-md:size-7"
+        // className="max-md:size-7"
       />
     ),
   },
