@@ -1,7 +1,7 @@
 import {
   userActionInitialRender,
   userActionActiveIndex,
-  userActionsSideBarToggle,
+  userActionSideBarToggle,
 } from "@/lib/store/store";
 import { useEffect, useRef } from "react";
 
@@ -9,7 +9,7 @@ export default function UserActionsLogin() {
   const { activeIndex } = userActionActiveIndex();
   const currencyRef = useRef<HTMLDivElement | null>(null);
   const { initialRender, setInitialRender } = userActionInitialRender();
-  const { isOpen } = userActionsSideBarToggle();
+  const { isOpen } = userActionSideBarToggle();
 
   useEffect(() => {
     if (isOpen) {

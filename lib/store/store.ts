@@ -3,6 +3,7 @@ import {
   IsMobileState,
   MobileNavToggleState,
   UserActionActiveIndexState,
+  UserActionMobileSideBarState,
   UserActionRenderState,
   UserActionSideBarState,
 } from "@/typings";
@@ -11,13 +12,6 @@ export const mobileNavToggle = create<MobileNavToggleState>((set) => ({
   isOpen: false,
   setIsOpen: (isOpen) => set(() => ({ isOpen })),
 }));
-
-export const userActionsSideBarToggle = create<UserActionSideBarState>(
-  (set) => ({
-    isOpen: null,
-    setIsOpen: (isOpen) => set(() => ({ isOpen })),
-  })
-);
 
 export const useIsMobile = create<IsMobileState>((set) => ({
   mobile: null,
@@ -35,3 +29,16 @@ export const userActionInitialRender = create<UserActionRenderState>((set) => ({
   initialRender: true,
   setInitialRender: (initialRender) => set(() => ({ initialRender })),
 }));
+
+export const userActionMobileSideBarToggle =
+  create<UserActionMobileSideBarState>((set) => ({
+    isMobileOpen: null,
+    setIsMobileOpen: (isMobileOpen) => set(() => ({ isMobileOpen })),
+  }));
+
+export const userActionSideBarToggle = create<UserActionSideBarState>(
+  (set) => ({
+    isOpen: null,
+    setIsOpen: (isOpen) => set(() => ({ isOpen })),
+  })
+);

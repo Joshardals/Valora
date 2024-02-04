@@ -1,7 +1,7 @@
 import {
   userActionActiveIndex,
   userActionInitialRender,
-  userActionsSideBarToggle,
+  userActionSideBarToggle,
 } from "@/lib/store/store";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
@@ -10,7 +10,7 @@ export default function UserActionsCart() {
   const { activeIndex } = userActionActiveIndex();
   const cartRef = useRef<HTMLDivElement | null>(null);
   const { initialRender, setInitialRender } = userActionInitialRender();
-  const { isOpen } = userActionsSideBarToggle();
+  const { isOpen } = userActionSideBarToggle();
 
   useEffect(() => {
     if (isOpen) {

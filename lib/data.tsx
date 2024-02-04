@@ -5,7 +5,7 @@ import { PiCurrencyGbpLight } from "react-icons/pi";
 import { useIsMobile } from "./store/store";
 import useMobile from "./hooks/useMobile";
 
-export const checkWidth = () => {
+export const IconItems = () => {
   const { mobile } = useIsMobile();
   useMobile();
 

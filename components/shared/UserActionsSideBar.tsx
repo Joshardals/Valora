@@ -1,6 +1,8 @@
 "use client";
 import { TfiClose } from "react-icons/tfi";
-import { userActionInitialRender, userActionsSideBarToggle } from "@/lib/store/store";
+import {
+  userActionSideBarToggle,
+} from "@/lib/store/store";
 import UserActions from "../ui/Header/UserActions";
 import UserActionsLogin from "../ui/UserActionSideBar/UserActionsLogin";
 import UserActionsCart from "../ui/UserActionSideBar/UserActionsCart";
@@ -8,8 +10,7 @@ import UserActionsWishList from "../ui/UserActionSideBar/UserActionsWishList";
 import UserActionsCurrency from "../ui/UserActionSideBar/UserActionsCurrency";
 
 export default function UserActionsSideBar() {
-  const { isOpen, setIsOpen } = userActionsSideBarToggle();
-  const { setInitialRender } = userActionInitialRender();
+  const { isOpen, setIsOpen } = userActionSideBarToggle();
   return (
     <aside
       className={`fixed text-secondary top-0 right-0 bg-primary/50 backdrop-blur-lg
@@ -26,8 +27,7 @@ export default function UserActionsSideBar() {
           aria-label="Close Sidebar"
           className="cursor-pointer"
           onClick={() => {
-            setIsOpen(false)
-
+            setIsOpen(false);
           }}
         />
       </section>

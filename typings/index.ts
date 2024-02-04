@@ -4,18 +4,13 @@ export interface InputProps {
 }
 
 export interface IsMobileState {
-  mobile: boolean | null; 
-  setMobile: (mobile: IsMobileState["mobile"]) => void; 
+  mobile: boolean | null;
+  setMobile: (mobile: IsMobileState["mobile"]) => void;
 }
 
 export interface MobileNavToggleState {
   isOpen: boolean;
   setIsOpen: (isOpen: MobileNavToggleState["isOpen"]) => void;
-}
-
-export interface UserActionSideBarState {
-  isOpen: null | boolean;
-  setIsOpen: (isOpen: UserActionSideBarState["isOpen"]) => void;
 }
 
 export interface UserActionActiveIndexState {
@@ -25,7 +20,19 @@ export interface UserActionActiveIndexState {
   ) => void;
 }
 
+export interface UserActionMobileSideBarState {
+  isMobileOpen: null | boolean;
+  setIsMobileOpen: (
+    isOpen: UserActionMobileSideBarState["isMobileOpen"]
+  ) => void;
+}
+
 export interface UserActionRenderState {
   initialRender: null | boolean;
   setInitialRender: (wasClosed: UserActionRenderState["initialRender"]) => void;
+}
+
+export interface UserActionSideBarState {
+  isOpen: null | boolean;
+  setIsOpen: (isOpen: UserActionSideBarState["isOpen"]) => void;
 }

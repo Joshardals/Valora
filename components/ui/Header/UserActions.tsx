@@ -1,14 +1,16 @@
+import { IconItems } from "@/lib/data";
 import NavToggle from "./NavToggle";
 import {
   userActionActiveIndex,
-  userActionsSideBarToggle,
+  userActionMobileSideBarToggle,
+  userActionSideBarToggle,
 } from "@/lib/store/store";
-import { checkWidth } from "@/lib/data";
 
 export default function UserActions() {
-  const { isOpen, setIsOpen } = userActionsSideBarToggle();
   const { activeIndex, setActiveIndex } = userActionActiveIndex();
-  const items = checkWidth();
+  const { isMobileOpen } = userActionMobileSideBarToggle();
+  const { isOpen, setIsOpen } = userActionSideBarToggle();
+  const items = IconItems();
 
   const handleClick = (index: number) => {
     setIsOpen(true);
@@ -39,7 +41,7 @@ export default function UserActions() {
         );
       })}
       <li className="md:hidden max-h-5 pt-1">
-        <NavToggle />
+        <NavToggle background={isMobileOpen ? "bg-secondary" : "bg-primary"} />
       </li>
     </ul>
   );

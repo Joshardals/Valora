@@ -2,7 +2,7 @@ import LoginForm from "@/components/form/LoginForm";
 import {
   userActionActiveIndex,
   userActionInitialRender,
-  userActionsSideBarToggle,
+  userActionSideBarToggle,
 } from "@/lib/store/store";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
@@ -10,7 +10,7 @@ import { useEffect, useRef } from "react";
 export default function UserActionsLogin() {
   const { activeIndex } = userActionActiveIndex();
   const { initialRender, setInitialRender } = userActionInitialRender();
-  const { isOpen } = userActionsSideBarToggle();
+  const { isOpen } = userActionSideBarToggle();
   const profileRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
