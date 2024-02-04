@@ -19,17 +19,11 @@ export const items = [
   },
   {
     label: "search",
-    icon: <CiSearch size={20} aria-label="Search" />,
+    icon: <CiSearch size={25} aria-label="Search" />,
   },
   {
     label: "cart",
-    icon: (
-      <CiShoppingCart
-        size={20}
-        aria-label="Shopping Cart"
-        // className="max-md:size-7"
-      />
-    ),
+    icon: <CiShoppingCart size={25} aria-label="Shopping Cart" />,
   },
 ];
 
