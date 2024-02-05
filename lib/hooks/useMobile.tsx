@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useIsMobile } from "../store/store";
 
 export default function useMobile() {
-  const { mobile, setMobile } = useIsMobile();
+  const { setMobile } = useIsMobile();
 
   useEffect(() => {
     const checkWindowSize = () => {

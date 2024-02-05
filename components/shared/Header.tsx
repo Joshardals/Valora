@@ -15,7 +15,7 @@ export default function Header() {
     <header className="relative">
       <div
         className={`fixed top-0 w-full grid grid-flow-row
-      duration-300 z-20`}
+      duration-30 ${isMobileOpen && "z-10"}`}
         id="header"
         data-testid="header"
       >
