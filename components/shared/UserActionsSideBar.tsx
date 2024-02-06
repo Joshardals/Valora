@@ -1,6 +1,10 @@
 "use client";
 import { TfiClose } from "react-icons/tfi";
-import { useIsMobile, userActionSideBarToggle } from "@/lib/store/store";
+import {
+  useIsMobile,
+  userActionInitialRender,
+  userActionSideBarToggle,
+} from "@/lib/store/store";
 import UserActions from "../ui/Header/UserActions";
 import UserActionsLogin from "../ui/UserActionSideBar/UserActionsLogin";
 import UserActionsCart from "../ui/UserActionSideBar/UserActionsCart";
@@ -8,6 +12,7 @@ import UserActionsWishList from "../ui/UserActionSideBar/UserActionsWishList";
 import UserActionsCurrency from "../ui/UserActionSideBar/UserActionsCurrency";
 
 export default function UserActionsSideBar() {
+  const { setInitialRender } = userActionInitialRender();
   const { isOpen, setIsOpen } = userActionSideBarToggle();
   const { mobile } = useIsMobile();
   return (
@@ -27,6 +32,7 @@ export default function UserActionsSideBar() {
           aria-label="Close Sidebar"
           className="cursor-pointer"
           onClick={() => {
+            setInitialRender(true);
             setIsOpen(false);
           }}
         />

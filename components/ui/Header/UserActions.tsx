@@ -32,7 +32,7 @@ export default function UserActions() {
           ${label === "currency" && "max-md:hidden"}
           ${label === "profile" && "max-md:hidden"}
           ${label === "wishlist" && "max-md:hidden"}
-          ${label === "search" && "md:hidden"}
+          ${label === "search" && isOpen && "hidden"}
           ${index === activeIndex && "active"}
         `}
             onClick={() => handleClick(index)}
