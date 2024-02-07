@@ -1,24 +1,24 @@
-import { useEffect } from "react";
-import { useIsMobile } from "../store/store";
+// import { useEffect } from "react";
+// import { useIsMobile } from "../store/store";
 
-export default function useMobile() {
-  const { setMobile } = useIsMobile();
+// export default function useMobile() {
+//   const { setMobile } = useIsMobile();
 
-  useEffect(() => {
-    const checkWindowSize = () => {
-      if (window.innerWidth < 768) {
-        setMobile(true);
-      } else {
-        setMobile(false);
-      }
-    };
+//   useEffect(() => {
+//     const checkWindowSize = () => {
+//       if (window.innerWidth < 768) {
+//         setMobile(true);
+//       } else {
+//         setMobile(false);
+//       }
+//     };
 
-    checkWindowSize();
+//     checkWindowSize();
 
-    window.addEventListener("resize", checkWindowSize);
+//     window.addEventListener("resize", checkWindowSize);
 
-    return () => {
-      window.removeEventListener("resize", checkWindowSize);
-    };
-  }, []);
-}
+//     return () => {
+//       window.removeEventListener("resize", checkWindowSize);
+//     };
+//   }, []);
+// }
