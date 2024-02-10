@@ -1,12 +1,6 @@
-import { CiSearch } from "react-icons/ci";
+import { links } from "@/lib/data";
 import Link from "next/link";
 
-const links = [
-  { label: "New In", href: "#" },
-  { label: "Shop", href: "#" },
-  { label: "About Us", href: "#" },
-  { label: "Search", href: "#", icon: <CiSearch size={20} /> },
-];
 export default function NavLinks() {
   return (
     <nav>

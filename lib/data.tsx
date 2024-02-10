@@ -38,3 +38,11 @@ export const IconItems = () => {
 };
 
 // storing data for the UserActions Component End.
+
+// Navigation Links that will be used throughout the site.
+export const links = [
+  { label: "New In", href: "#" },
+  { label: "Shop", href: "#" },
+  { label: "About Us", href: "#" },
+  { label: "Search", href: "#", icon: <CiSearch size={20} /> },
+];
