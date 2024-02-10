@@ -30,7 +30,7 @@ export default function UserActions() {
             className={` 
           ${label === "cart" && isOpen && "max-md:hidden"}
           ${label === "currency" && "max-md:hidden"}
-          ${label === "profile" && "max-md:hidden"}
+          ${label === "account" && "max-md:hidden"}
           ${label === "wishlist" && "max-md:hidden"}
           ${label === "search" && "md:hidden"} 
           ${index === activeIndex && "active"}

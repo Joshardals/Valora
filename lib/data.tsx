@@ -15,7 +15,7 @@ export const IconItems = () => {
       icon: <PiCurrencyGbpLight size={20} aria-label="Currency" />,
     },
     {
-      label: "profile",
+      label: "account",
       icon: <CiUser size={20} aria-label="Profile Icon" />,
     },
     {
@@ -43,6 +43,6 @@ export const IconItems = () => {
 export const links = [
   { label: "New In", href: "#" },
   { label: "Shop", href: "#" },
-  { label: "About Us", href: "#" },
+  { label: "About us", href: "#" },
   { label: "Search", href: "#", icon: <CiSearch size={20} /> },
 ];
