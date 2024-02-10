@@ -25,10 +25,13 @@ export default function UserActionsSideBar() {
         e.stopPropagation(); // Trying to prevent the onClick from the parent element in the layout.tsx.
       }}
     >
-      <section className="flex items-center justify-between p-8">
-        <UserActions />
+      <section className="flex items-center justify-between max-md:justify-end p-8">
+        <div className="max-md:hidden">
+          <UserActions />
+        </div>
+
         <TfiClose
-          size={mobile ? 22 : 20}
+          size={mobile ? 21 : 20}
           aria-label="Close Sidebar"
           className="cursor-pointer"
           onClick={() => {

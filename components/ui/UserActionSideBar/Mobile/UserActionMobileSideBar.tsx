@@ -5,18 +5,11 @@ import UserActions from "../../Header/UserActions";
 export default function UserActionMobileSideBar() {
   const { isMobileOpen } = userActionMobileSideBarToggle();
   return (
-    <aside>
-      <div
-        className={`fixed text-secondary top-0 right-0 bg-primary
+    <section
+      className={`fixed text-secondary top-0 right-0 bg-primary
     min-h-[100svh] w-full transition-transform duration-700 space-y-8 max-md:p-5 md:hidden
     ${isMobileOpen ? "-translate-x-0" : "translate-x-full"}
     `}
-      >
-        {/* <div className="flex items-center justify-between">
-          <Logo />
-          <UserActions />
-        </div> */}
-      </div>
-    </aside>
+    ></section>
   );
 }

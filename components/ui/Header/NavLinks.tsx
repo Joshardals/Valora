@@ -2,6 +2,7 @@ import { CiSearch } from "react-icons/ci";
 import Link from "next/link";
 
 const links = [
+  { label: "New In", href: "#" },
   { label: "Shop", href: "#" },
   { label: "About Us", href: "#" },
   { label: "Search", href: "#", icon: <CiSearch size={20} /> },
