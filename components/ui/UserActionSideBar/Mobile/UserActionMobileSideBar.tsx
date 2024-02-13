@@ -6,16 +6,7 @@ import { useEffect, useRef } from "react";
 
 export default function UserActionMobileSideBar() {
   const { isMobileOpen } = userActionMobileSideBarToggle();
-  const sideBarRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    if (isMobileOpen) {
-      sideBarRef.current?.classList.add("fadeIn");
-    } else {
-      sideBarRef.current?.classList.remove("fadeIn");
-      console.log("Mobile sidebar is now closing!");
-    }
-  }, [isMobileOpen]);
   return (
     <div
       className={`fixed text-secondary top-0 right-0 bg-primary divide-y divide-secondary/20
@@ -23,7 +14,7 @@ export default function UserActionMobileSideBar() {
     ${isMobileOpen ? "-translate-x-0" : "translate-x-full"}
     `}
     >
-      <div ref={sideBarRef}>
+      <div className={`${isMobileOpen ? "fadeIn" : "opacity-0"}`}>
         <section className="pt-24 pb-2">
           <ul className="space-y-12">
             {links.map((link) => {
