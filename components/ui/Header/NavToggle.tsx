@@ -7,14 +7,14 @@ import {
 import { MouseEvent } from "react";
 
 export default function NavToggle({ background }: { background: string }) {
-  const { isOpen, setIsOpen } = mobileNavToggle();
+  const { isOpen, setIsMobileNavOpen } = mobileNavToggle();
   const { isMobileOpen, setIsMobileOpen } = userActionMobileSideBarToggle();
 
   const handleClick = (
     e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
   ) => {
     e.preventDefault();
-    setIsOpen(!isOpen);
+    setIsMobileNavOpen(!isOpen);
     setIsMobileOpen(!isMobileOpen);
   };
   return (

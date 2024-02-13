@@ -10,7 +10,7 @@ export interface IsMobileState {
 
 export interface MobileNavToggleState {
   isOpen: boolean;
-  setIsOpen: (isOpen: MobileNavToggleState["isOpen"]) => void;
+  setIsMobileNavOpen: (isOpen: MobileNavToggleState["isOpen"]) => void;
 }
 
 export interface UserActionActiveIndexState {

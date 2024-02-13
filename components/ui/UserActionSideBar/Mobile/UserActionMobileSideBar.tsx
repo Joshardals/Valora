@@ -2,7 +2,6 @@ import { links } from "@/lib/data";
 import Link from "next/link";
 import { userActionMobileSideBarToggle } from "@/lib/store/store";
 import SecondSection from "./SecondSection";
-import { useEffect, useRef } from "react";
 
 export default function UserActionMobileSideBar() {
   const { isMobileOpen } = userActionMobileSideBarToggle();

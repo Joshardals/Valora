@@ -10,7 +10,7 @@ import {
 
 export const mobileNavToggle = create<MobileNavToggleState>((set) => ({
   isOpen: false,
-  setIsOpen: (isOpen) => set(() => ({ isOpen })),
+  setIsMobileNavOpen: (isOpen) => set(() => ({ isOpen })),
 }));
 
 export const useIsMobile = create<IsMobileState>((set) => ({
