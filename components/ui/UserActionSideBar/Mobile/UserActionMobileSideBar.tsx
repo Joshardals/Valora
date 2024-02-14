@@ -9,11 +9,11 @@ export default function UserActionMobileSideBar() {
 
   useEffect(() => {
     if (isMobileOpen) {
-      document.body.classList.toggle("overflow-hidden", isMobileOpen);
+      document.body.classList.toggle("fixed", isMobileOpen);
     }
 
     return () => {
-      document.body.classList.remove("overflow-hidden");
+      document.body.classList.remove("fixed");
     };
   }, [isMobileOpen]);
 
