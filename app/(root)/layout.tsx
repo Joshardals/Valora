@@ -28,8 +28,8 @@ export default function Layout({
       }}
     >
       <Header />
-      {/* <UserActionsSideBar />
-      <UserActionMobileSideBar /> */}
+      <UserActionsSideBar />
+      <UserActionMobileSideBar />
 
       <main className=" bg-gray-950 pt-[4.7rem] px-5 min-h-[100svh]">
         {children}
