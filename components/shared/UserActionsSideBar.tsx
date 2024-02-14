@@ -19,10 +19,14 @@ export default function UserActionsSideBar() {
 
   useEffect(() => {
     if (isOpen) {
-      document.body.classList.add("overflow-hidden");
+      document.body.classList.toggle("overflow-hidden", isOpen);
     }
-    document.body.classList.remove("overflow-hidden");
+
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
   }, [isOpen]);
+
   return (
     <aside
       className={`fixed text-secondary top-0 right-0 bg-primary/50 backdrop-blur-lg

@@ -2,9 +2,20 @@ import { links } from "@/lib/data";
 import Link from "next/link";
 import { userActionMobileSideBarToggle } from "@/lib/store/store";
 import SecondSection from "./SecondSection";
+import { useEffect } from "react";
 
 export default function UserActionMobileSideBar() {
   const { isMobileOpen } = userActionMobileSideBarToggle();
+
+  useEffect(() => {
+    if (isMobileOpen) {
+      document.body.classList.toggle("overflow-hidden", isMobileOpen);
+    }
+
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [isMobileOpen]);
 
   return (
     <div
