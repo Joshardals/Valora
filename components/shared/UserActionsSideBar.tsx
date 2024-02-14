@@ -10,11 +10,19 @@ import UserActionsLogin from "../ui/UserActionSideBar/UserActionsLogin";
 import UserActionsCart from "../ui/UserActionSideBar/UserActionsCart";
 import UserActionsWishList from "../ui/UserActionSideBar/UserActionsWishList";
 import UserActionsCurrency from "../ui/UserActionSideBar/UserActionsCurrency";
+import { useEffect } from "react";
 
 export default function UserActionsSideBar() {
   const { setInitialRender } = userActionInitialRender();
   const { isOpen, setIsOpen } = userActionSideBarToggle();
   const { mobile } = useIsMobile();
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add("overflow-hidden");
+    }
+    document.body.classList.remove("overflow-hidden");
+  }, [isOpen]);
   return (
     <aside
       className={`fixed text-secondary top-0 right-0 bg-primary/50 backdrop-blur-lg
