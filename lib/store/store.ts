@@ -9,8 +9,8 @@ import {
 } from "@/typings";
 
 export const mobileNavToggle = create<MobileNavToggleState>((set) => ({
-  isOpen: false,
-  setIsMobileNavOpen: (isOpen) => set(() => ({ isOpen })),
+  isMobileNavOpen: false,
+  setIsMobileNavOpen: (isMobileNavOpen) => set(() => ({ isMobileNavOpen })),
 }));
 
 export const useIsMobile = create<IsMobileState>((set) => ({

@@ -1,6 +1,7 @@
 import { IconItems } from "@/lib/data";
 import NavToggle from "./NavToggle";
 import {
+  mobileNavToggle,
   userActionActiveIndex,
   userActionMobileSideBarToggle,
   userActionSideBarToggle,
@@ -8,13 +9,19 @@ import {
 
 export default function UserActions() {
   const { activeIndex, setActiveIndex } = userActionActiveIndex();
-  const { isMobileOpen } = userActionMobileSideBarToggle();
+  const { isMobileOpen, setIsMobileOpen } = userActionMobileSideBarToggle();
   const { isOpen, setIsOpen } = userActionSideBarToggle();
   const items = IconItems();
+  const { isMobileNavOpen, setIsMobileNavOpen } = mobileNavToggle();
 
   const handleClick = (index: number) => {
-    setIsOpen(true);
-    setActiveIndex(index);
+    if (index === 3) {
+      setIsMobileOpen(!isMobileOpen);
+      setIsMobileNavOpen(!isMobileNavOpen);
+    } else {
+      setIsOpen(true);
+      setActiveIndex(index);
+    }
   };
 
   return (

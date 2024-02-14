@@ -7,14 +7,14 @@ import {
 import { MouseEvent } from "react";
 
 export default function NavToggle({ background }: { background: string }) {
-  const { isOpen, setIsMobileNavOpen } = mobileNavToggle();
+  const { isMobileNavOpen, setIsMobileNavOpen } = mobileNavToggle();
   const { isMobileOpen, setIsMobileOpen } = userActionMobileSideBarToggle();
 
   const handleClick = (
     e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
   ) => {
     e.preventDefault();
-    setIsMobileNavOpen(!isOpen);
+    setIsMobileNavOpen(!isMobileNavOpen);
     setIsMobileOpen(!isMobileOpen);
   };
   return (
@@ -24,8 +24,8 @@ export default function NavToggle({ background }: { background: string }) {
       onClick={handleClick}
       aria-label="Toggle Navigation"
     >
-      <span className={` ${background} ${isOpen && "active"}`}></span>
-      <span className={` ${background} ${isOpen && "active"}`}></span>
+      <span className={` ${background} ${isMobileNavOpen && "active"}`}></span>
+      <span className={` ${background} ${isMobileNavOpen && "active"}`}></span>
     </button>
   );
 }
