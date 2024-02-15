@@ -19,11 +19,11 @@ export default function UserActionsSideBar() {
 
   useEffect(() => {
     if (isOpen) {
-      document.body.classList.toggle("fixed", isOpen);
+      document.body.classList.toggle("overflow-hidden", isOpen);
     }
 
     return () => {
-      document.body.classList.remove("fixed");
+      document.body.classList.remove("overflow-hidden");
     };
   }, [isOpen]);
 
