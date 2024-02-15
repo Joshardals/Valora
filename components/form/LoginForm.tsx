@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Button from "../ui/Elements/Button";
-// import Input from "../ui/Elements/Input";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
 import {
   Form,
   FormControl,
@@ -12,8 +12,6 @@ import { SignUpValidation } from "@/lib/validations/form";
 import { SignUpValidationType } from "@/typings/form";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "../ui/input";
-// import { FormEvent } from "react";
 
 export default function LoginForm() {
   const form = useForm<SignUpValidationType>({
@@ -88,7 +86,7 @@ export default function LoginForm() {
           )}
         />
 
-        <Button />
+        <Button>Login</Button>
 
         <Link href="/register" className="flex justify-center w-full">
           <p className="uppercase linkHover font-thin">forgotten password</p>
