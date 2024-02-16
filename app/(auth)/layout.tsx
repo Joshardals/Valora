@@ -30,7 +30,7 @@ export default function Layout({
       <UserActionsSideBar />
       <UserActionMobileSideBar />
 
-      <main className=" bg-secondary pt-[4.7rem] min-h-[100svh]">
+      <main className=" bg-gray-950 pt-[4.7rem] min-h-[100svh]">
         {children}
       </main>
     </div>

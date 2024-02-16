@@ -10,7 +10,7 @@ import { useEffect, useRef } from "react";
 export default function UserActionsLogin() {
   const { activeIndex } = userActionActiveIndex();
   const { initialRender, setInitialRender } = userActionInitialRender();
-  const { isOpen } = userActionSideBarToggle();
+  const { isOpen, setIsOpen } = userActionSideBarToggle();
   const profileRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -24,6 +24,10 @@ export default function UserActionsLogin() {
     }
   }, [isOpen, activeIndex]);
 
+  const handleRegisterClick = () => {
+    setIsOpen(false);
+  };
+
   return (
     <div
       className={`px-8 space-y-12 ${
@@ -36,7 +40,11 @@ export default function UserActionsLogin() {
         <p className=" font-thin text-pretty max-w-full">
           Don&apos;t have an account?{" "}
           <span>
-            <Link href="/account/register" className="linkHover">
+            <Link
+              href="/account/register"
+              className="linkHover"
+              onClick={handleRegisterClick}
+            >
               Create an account
             </Link>{" "}
             to unlock your order history, checkout faster, and protect your

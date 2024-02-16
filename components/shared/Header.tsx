@@ -8,16 +8,12 @@ import {
   userActionMobileSideBarToggle,
   userActionSideBarToggle,
 } from "@/lib/store/store";
-import { useEffect } from "react";
 
 export default function Header() {
   const { isOpen } = userActionSideBarToggle();
   const { isMobileOpen } = userActionMobileSideBarToggle();
   const pathname = usePathname();
 
-  useEffect(() => {
-    console.log(pathname);
-  }, [pathname]);
   return (
     <header className="relative">
       <div
