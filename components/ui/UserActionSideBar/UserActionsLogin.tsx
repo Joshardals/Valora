@@ -36,7 +36,7 @@ export default function UserActionsLogin() {
         <p className=" font-thin text-pretty max-w-full">
           Don&apos;t have an account?{" "}
           <span>
-            <Link href="/register" className="linkHover">
+            <Link href="/account/register" className="linkHover">
               Create an account
             </Link>{" "}
             to unlock your order history, checkout faster, and protect your

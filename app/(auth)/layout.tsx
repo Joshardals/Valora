@@ -7,7 +7,6 @@ import {
   userActionInitialRender,
   userActionSideBarToggle,
 } from "@/lib/store/store";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function Layout({
   children,
@@ -31,11 +30,9 @@ export default function Layout({
       <UserActionsSideBar />
       <UserActionMobileSideBar />
 
-      <main className=" bg-gray-950 pt-[4.7rem] px-5 min-h-[100svh]">
+      <main className=" bg-secondary pt-[4.7rem] min-h-[100svh]">
         {children}
-        <SpeedInsights />
       </main>
-      {/* <Footer /> */}
     </div>
   );
 }

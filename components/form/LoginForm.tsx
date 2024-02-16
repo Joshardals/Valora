@@ -12,6 +12,7 @@ import { SignUpValidation } from "@/lib/validations/form";
 import { SignUpValidationType } from "@/typings/form";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { ChangeEvent } from "react";
 
 export default function LoginForm() {
   const form = useForm<SignUpValidationType>({
@@ -24,13 +25,10 @@ export default function LoginForm() {
 
   const onSubmit = async (values: SignUpValidationType) => {};
 
+  const valueWithoutSpaces = (e: ChangeEvent<HTMLInputElement>): string => {
+    return e.target.value.replace(/\s/g, "");
+  };
   return (
-    // <form onSubmit={handleSubmit} className="space-y-12" autoComplete="off">
-    //   <Input placeholder="EMAIL*" type="email" />
-    //   <Input placeholder="PASSWORD*" type="password" />
-
-    // </form>
-
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
@@ -51,14 +49,9 @@ export default function LoginForm() {
                   placeholder="EMAIL*"
                   type="email"
                   {...field}
-                  // onChange={(e) => {
-                  //   // Remove spaces as the user types
-                  //   const valueWithoutSpaces = e.target.value.replace(
-                  //     /\s/g,
-                  //     ""
-                  //   );
-                  //   form.setValue("email", valueWithoutSpaces);
-                  // }}
+                  onChange={(e) => {
+                    form.setValue("email", valueWithoutSpaces(e));
+                  }}
                 />
               </FormControl>
             </FormItem>
@@ -80,6 +73,9 @@ export default function LoginForm() {
                   placeholder="PASSWORD*"
                   type="password"
                   {...field}
+                  onChange={(e) => {
+                    form.setValue("password", valueWithoutSpaces(e));
+                  }}
                 />
               </FormControl>
             </FormItem>
