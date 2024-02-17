@@ -1,8 +1,5 @@
 "use client";
-import Footer from "@/components/shared/Footer";
-import Header from "@/components/shared/Header";
-import UserActionsSideBar from "@/components/shared/UserActionsSideBar";
-import UserActionMobileSideBar from "@/components/ui/UserActionSideBar/Mobile/UserActionMobileSideBar";
+
 import {
   userActionInitialRender,
   userActionSideBarToggle,
@@ -26,13 +23,7 @@ export default function Layout({
         }
       }}
     >
-      <Header />
-      <UserActionsSideBar />
-      <UserActionMobileSideBar />
-
-      <main className=" bg-gray-950 pt-[4.7rem] min-h-[100svh]">
-        {children}
-      </main>
+      <main className=" bg-gray-950 min-h-[100svh]">{children}</main>
     </div>
   );
 }
