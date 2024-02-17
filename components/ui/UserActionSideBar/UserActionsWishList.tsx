@@ -31,7 +31,7 @@ export default function UserActionsWishList() {
     >
       <div className="space-y-4">
         <h2>Wishlist is empty</h2>
-        <p className=" font-thin text-pretty max-w-full">
+        <p className=" font-light text-pretty max-w-full">
           Save your wishlist by{" "}
           <span>
             <Link href="/" className="underline">
@@ -40,13 +40,13 @@ export default function UserActionsWishList() {
           </span>{" "}
           or creating{" "}
           <span>
-            <Link href="/" className="underline">
+            <Link href="/account/register" className="underline">
               your account
             </Link>
           </span>
         </p>
         <Link href="/register" className="flex w-full">
-          <p className="uppercase linkHover font-thin">continue shopping</p>
+          <p className="uppercase linkHover font-light">continue shopping</p>
         </Link>
       </div>
     </div>

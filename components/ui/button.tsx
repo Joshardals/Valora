@@ -10,21 +10,14 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          " uppercase bg-secondary text-primary py-3 px-4 w-full select-none hover:bg-secondary/50 duration-100",
-        destructive:
-          "bg-red-500 text-slate-50 hover:bg-red-500/90 dark:bg-red-900 dark:text-slate-50 dark:hover:bg-red-900/90",
-        outline:
-          "border border-slate-200 bg-white hover:bg-slate-100 hover:text-slate-900 dark:border-slate-800 dark:bg-slate-950 dark:hover:bg-slate-800 dark:hover:text-slate-50",
-        secondary:
-          "bg-slate-100 text-slate-900 hover:bg-slate-100/80 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-800/80",
-        ghost:
-          "hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-slate-50",
-        link: "text-slate-900 underline-offset-4 hover:underline dark:text-slate-50",
+          "uppercase bg-secondary text-primary py-3 px-4 w-full select-none hover:bg-secondary/50 duration-100",
+        register:
+          "uppercase bg-primary text-secondary py-3 px-4 w-full select-none hover:bg-primary/70 duration-100",
       },
       size: {
         default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
+        sm: "h-9 px-3",
+        lg: "h-14 px-8",
         icon: "h-10 w-10",
       },
     },

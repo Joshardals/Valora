@@ -37,7 +37,7 @@ export default function UserActionsLogin() {
     >
       <div className="space-y-4">
         <h2>Log In</h2>
-        <p className=" font-thin text-pretty max-w-full">
+        <p className=" font-light text-pretty max-w-full">
           Don&apos;t have an account?{" "}
           <span>
             <Link

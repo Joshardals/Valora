@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
@@ -8,24 +9,25 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { SignUpValidation } from "@/lib/validations/form";
-import { SignUpValidationType } from "@/typings/form";
+import { RegisterValidation } from "@/lib/validations/form";
+import { RegisterValidationType } from "@/typings/form";
 import { useForm } from "react-hook-form";
 import { valueWithoutSpaces } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-export default function LoginForm() {
-  const form = useForm<SignUpValidationType>({
-    resolver: zodResolver(SignUpValidation),
+export default function RegisterForm() {
+  const form = useForm<RegisterValidationType>({
+    resolver: zodResolver(RegisterValidation),
     defaultValues: {
+      firstName: "",
+      lastName: "",
       email: "",
       password: "",
     },
   });
 
-  const onSubmit = async (values: SignUpValidationType) => {};
+  const onSubmit = async (values: RegisterValidationType) => {};
 
- 
   return (
     <Form {...form}>
       <form
@@ -33,6 +35,52 @@ export default function LoginForm() {
         className="space-y-12"
         autoComplete="off"
       >
+        <FormField
+          control={form.control}
+          name="firstName"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input
+                  autoCapitalize="none"
+                  autoComplete="false"
+                  autoCorrect="off"
+                  id="firstName"
+                  placeholder="FIRST NAME*"
+                  type="text"
+                  {...field}
+                  onChange={(e) => {
+                    form.setValue("firstName", valueWithoutSpaces(e));
+                  }}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="lastName"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input
+                  autoCapitalize="none"
+                  autoComplete="false"
+                  autoCorrect="off"
+                  id="lastName"
+                  placeholder="LAST NAME*"
+                  type="text"
+                  {...field}
+                  onChange={(e) => {
+                    form.setValue("lastName", valueWithoutSpaces(e));
+                  }}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+
         <FormField
           control={form.control}
           name="email"
@@ -80,11 +128,9 @@ export default function LoginForm() {
           )}
         />
 
-        <Button>Login</Button>
-
-        <Link href="/register" className="flex justify-center w-full">
-          <p className="uppercase linkHover font-light">forgotten password</p>
-        </Link>
+        <Button variant={"register"} size={"lg"}>
+          Create
+        </Button>
       </form>
     </Form>
   );

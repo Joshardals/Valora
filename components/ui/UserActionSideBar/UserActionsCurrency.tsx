@@ -32,7 +32,7 @@ export default function UserActionsLogin() {
     >
       <div className="space-y-4">
         <h2>Location</h2>
-        <p className=" font-thin text-pretty max-w-full">
+        <p className=" font-light text-pretty max-w-full">
           Please select your location and currency
         </p>
       </div>
