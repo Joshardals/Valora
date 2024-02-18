@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 
 export default function UserActionsWishList() {
-  const { activeIndex } = userActionActiveIndex();
+  const { activeIndex, setActiveIndex } = userActionActiveIndex();
   const { initialRender, setInitialRender } = userActionInitialRender();
   const { isOpen } = userActionSideBarToggle();
   const wishlistRef = useRef<HTMLDivElement | null>(null);
@@ -22,6 +22,7 @@ export default function UserActionsWishList() {
       }
     }
   }, [isOpen, activeIndex]);
+
   return (
     <div
       className={`px-8 space-y-12 ${
@@ -33,10 +34,11 @@ export default function UserActionsWishList() {
         <h2>Wishlist is empty</h2>
         <p className=" font-light text-pretty max-w-full">
           Save your wishlist by{" "}
-          <span>
-            <Link href="/" className="underline">
-              login
-            </Link>
+          <span
+            className="underline cursor-pointer"
+            onClick={() => alert("hello world!")}
+          >
+            login
           </span>{" "}
           or creating{" "}
           <span>
