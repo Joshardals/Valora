@@ -5,6 +5,8 @@ import {
 } from "@/lib/store/store";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
+import gsap from "gsap";
+// import { useGSAP } from "@gsap/react";
 
 export default function UserActionsWishList() {
   const { activeIndex, setActiveIndex } = userActionActiveIndex();

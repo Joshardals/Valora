@@ -24,9 +24,9 @@ export default function UserActionsLogin() {
     }
   }, [isOpen, activeIndex]);
 
-  const handleRegisterClick = () => {
-    setIsOpen(false);
-  };
+  // const handleRegisterClick = () => {
+  //   setIsOpen(false);
+  // };
 
   return (
     <div
@@ -43,7 +43,7 @@ export default function UserActionsLogin() {
             <Link
               href="/account/register"
               className="linkHoverDark linkUnderline"
-              onClick={handleRegisterClick}
+              // onClick={handleRegisterClick}
             >
               Create an account
             </Link>{" "}
