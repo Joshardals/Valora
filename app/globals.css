@@ -92,7 +92,7 @@
 
   .linkHoverDark::before {
     content: "";
-    @apply duration-300 ease-linear bg-red-500 w-full h-[1%] absolute right-0 bottom-0;
+    @apply duration-300 ease-linear bg-secondary w-full h-[1%] absolute right-0 bottom-0;
   }
 
   .linkHoverDark:hover::before {
