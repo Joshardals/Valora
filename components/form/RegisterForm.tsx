@@ -26,7 +26,9 @@ export default function RegisterForm() {
     },
   });
 
-  const onSubmit = async (values: RegisterValidationType) => {};
+  const onSubmit = async (values: RegisterValidationType) => {
+    alert(values.password);
+  };
 
   return (
     <Form {...form}>

@@ -14,9 +14,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       <input
         type={type}
         className={cn(
-          "bg-transparent outline-none border-b border-secondary py-2 w-full text-secondary placeholder:text-secondary placeholder:select-none placeholder:text-[14px]",
+          "bg-transparent capitalize outline-none border-b border-secondary py-2 w-full text-secondary placeholder:text-secondary placeholder:select-none placeholder:text-[14px]",
           pathname === "/account/register" &&
             "border-primary text-primary placeholder:text-primary",
+          type === "email" && "lowercase placeholder:uppercase",
           className
         )}
         ref={ref}

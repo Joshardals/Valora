@@ -1,6 +1,6 @@
 // Fonts for the site.
 
-import { Kanit, Nunito_Sans, Montserrat } from "next/font/google";
+import { Kanit, Nunito_Sans, Playfair_Display } from "next/font/google";
 
 export const kanit = Kanit({
   subsets: ["latin"],
@@ -9,11 +9,11 @@ export const kanit = Kanit({
   variable: "--font-kanit",
 });
 
-export const montserrat = Montserrat({
+export const playfair = Playfair_Display({
   subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   display: "swap",
-  variable: "--font-montserrat",
+  variable: "--font-playfair",
 });
 
 export const nunito = Nunito_Sans({

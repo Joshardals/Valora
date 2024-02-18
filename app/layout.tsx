@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { kanit, montserrat, nunito } from "./fonts";
+import { kanit, playfair, nunito } from "./fonts";
 import "animate.css";
 import "./globals.css";
 
@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${kanit.variable} ${montserrat.variable} ${nunito.variable}`}
+      className={`${kanit.variable} ${playfair.variable} ${nunito.variable}`}
     >
       <body>{children}</body>
     </html>

@@ -28,8 +28,8 @@ const config = {
       },
       fontFamily: {
         kanit: ["var(--font-kanit)"],
-        montserrat: ["var(--font-montserrat)"],
         nunito: ["var(--font-nunito)"],
+        playfair: ["var(--font-playfair)"],
       },
       keyframes: {
         "accordion-down": {
