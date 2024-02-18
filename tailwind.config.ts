@@ -28,6 +28,7 @@ const config = {
       },
       fontFamily: {
         kanit: ["var(--font-kanit)"],
+        montserrat: ["var(--font-montserrat)"],
         nunito: ["var(--font-nunito)"],
       },
       keyframes: {

@@ -42,7 +42,7 @@ export default function UserActionsLogin() {
           <span>
             <Link
               href="/account/register"
-              className="linkHover"
+              className="linkHoverDark"
               onClick={handleRegisterClick}
             >
               Create an account

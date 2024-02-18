@@ -25,7 +25,6 @@ export default function LoginForm() {
 
   const onSubmit = async (values: SignUpValidationType) => {};
 
- 
   return (
     <Form {...form}>
       <form
@@ -83,7 +82,9 @@ export default function LoginForm() {
         <Button>Login</Button>
 
         <Link href="/register" className="flex justify-center w-full">
-          <p className="uppercase linkHover font-light">forgotten password</p>
+          <p className="uppercase linkHoverDark font-light">
+            forgotten password
+          </p>
         </Link>
       </form>
     </Form>

@@ -85,23 +85,35 @@
     transition: background-color 5000s ease-in-out 0s;
   }
 
-
-  /* Custom Input Styling Start */ 
+  /* Custom Input Styling Start */
   .formInput {
-    @apply 
+    @apply;
   }
 
-  /* Hover effects for inline links */
-  .linkHover {
+  /* Hover effects for inline links Light and Dark Modes */
+  .linkHoverDark {
     @apply relative;
   }
 
-  .linkHover::before {
+  .linkHoverDark::before {
     content: "";
     @apply duration-300 ease-linear bg-secondary w-full h-[1%] absolute right-0 bottom-0;
   }
 
-  .linkHover:hover::before {
+  .linkHoverDark:hover::before {
+    width: 0%;
+  }
+
+  .linkHoverLight {
+    @apply relative;
+  }
+
+  .linkHoverLight::before {
+    content: "";
+    @apply duration-300 ease-linear bg-primary w-full h-[1%] absolute right-0 bottom-0;
+  }
+
+  .linkHoverLight:hover::before {
     width: 0%;
   }
 

@@ -1,17 +1,19 @@
 // Fonts for the site.
 
-import {
-  Kanit,
-  Nunito_Sans,
-  Open_Sans,
-  Source_Serif_4,
-} from "next/font/google";
+import { Kanit, Nunito_Sans, Montserrat } from "next/font/google";
 
 export const kanit = Kanit({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   display: "swap",
   variable: "--font-kanit",
+});
+
+export const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
+  variable: "--font-montserrat",
 });
 
 export const nunito = Nunito_Sans({
