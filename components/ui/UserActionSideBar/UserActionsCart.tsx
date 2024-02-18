@@ -33,7 +33,9 @@ export default function UserActionsCart() {
       <div className="space-y-4">
         <h2>Shopping bag is empty</h2>
         <Link href="/register" className="flex w-full">
-          <p className="uppercase linkHoverDark font-light">continue shopping</p>
+          <p className="uppercase  linkUnderline font-light">
+            continue shopping
+          </p>
         </Link>
       </div>
     </div>

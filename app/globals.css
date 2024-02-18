@@ -87,7 +87,7 @@
 
   /* Hover effects for inline links Light and Dark Modes */
   .linkHoverDark {
-    @apply relative;
+    @apply md:relative;
   }
 
   .linkHoverDark::before {
@@ -124,6 +124,11 @@
 
   .linkList li:hover {
     @apply md:opacity-100;
+  }
+
+  /* Mobile Underline Offset since the damn linkHoverDark doesn't work on mobile. */
+  .linkUnderline {
+    @apply max-md:underline max-md:underline-offset-4;
   }
 
   /* Mobile Nav toggle effects start */

@@ -46,7 +46,7 @@ export default function UserActionsWishList() {
           </span>
         </p>
         <Link href="/register" className="flex w-full">
-          <p className="uppercase linkHoverDark font-light">
+          <p className="uppercase linkHoverDark linkUnderline font-light">
             continue shopping
           </p>
         </Link>
