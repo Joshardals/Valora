@@ -85,11 +85,6 @@
     transition: background-color 5000s ease-in-out 0s;
   }
 
-  /* Custom Input Styling Start */
-  .formInput {
-    @apply;
-  }
-
   /* Hover effects for inline links Light and Dark Modes */
   .linkHoverDark {
     @apply relative;
