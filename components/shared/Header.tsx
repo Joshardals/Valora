@@ -1,9 +1,9 @@
 "use client";
+import HeaderInfo from "../ui/Header/HeaderInfo";
 import Logo from "../ui/Header/Logo";
 import NavLinks from "../ui/Header/NavLinks";
 import { usePathname } from "next/navigation";
 import UserActions from "../ui/Header/UserActions";
-import HeaderInfo from "../ui/Header/HeaderInfo";
 import {
   userActionMobileSideBarToggle,
   userActionSideBarToggle,
@@ -17,7 +17,7 @@ export default function Header() {
   return (
     <header className="relative">
       <div
-        className={`fixed top-0 w-full grid grid-flow-row
+        className={`fixed header-top top-0 w-full grid grid-flow-row
       duration-30 ${isMobileOpen && "z-10"}`}
         id="header"
         data-testid="header"

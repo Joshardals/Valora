@@ -28,7 +28,7 @@ export default function Layout({
       //   }
       // }}
     >
-      <main className=" bg-gray-950 min-h-[100svh]">{children}</main>
+      <main className="bg-gray-950 min-h-[100svh]">{children}</main>
     </div>
   );
 }
