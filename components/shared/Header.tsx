@@ -1,23 +1,29 @@
 "use client";
+import gsap from "gsap";
 import HeaderInfo from "../ui/Header/HeaderInfo";
 import Logo from "../ui/Header/Logo";
 import NavLinks from "../ui/Header/NavLinks";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import { usePathname } from "next/navigation";
+import { useRef } from "react";
 import UserActions from "../ui/Header/UserActions";
 import {
   userActionMobileSideBarToggle,
   userActionSideBarToggle,
 } from "@/lib/store/store";
+import useFixedHeader from "@/lib/hooks/useFixedHeader";
 
 export default function Header() {
   const { isOpen } = userActionSideBarToggle();
   const { isMobileOpen } = userActionMobileSideBarToggle();
   const pathname = usePathname();
+  useFixedHeader();
 
   return (
     <header className="relative">
       <div
-        className={`fixed header-top top-0 w-full grid grid-flow-row
+        className={`fixed header top-0 w-full grid grid-flow-row
       duration-30 ${isMobileOpen && "z-10"}`}
         id="header"
         data-testid="header"
