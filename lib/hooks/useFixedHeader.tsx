@@ -18,7 +18,6 @@ export default function useFixedHeader() {
     ScrollTrigger.create({
       start: "top top",
       end: "max",
-      markers: true,
       onUpdate: (self) => {
         self.direction === -1 ? showAnim.play() : showAnim.reverse();
       },
