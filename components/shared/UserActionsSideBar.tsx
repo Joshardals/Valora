@@ -1,4 +1,5 @@
 "use client";
+import { useEffect } from "react";
 import { TfiClose } from "react-icons/tfi";
 import {
   useIsMobile,
@@ -10,7 +11,6 @@ import UserActionsLogin from "../ui/UserActionSideBar/UserActionsLogin";
 import UserActionsCart from "../ui/UserActionSideBar/UserActionsCart";
 import UserActionsWishList from "../ui/UserActionSideBar/UserActionsWishList";
 import UserActionsCurrency from "../ui/UserActionSideBar/UserActionsCurrency";
-import { useEffect } from "react";
 
 export default function UserActionsSideBar() {
   const { setInitialRender } = userActionInitialRender();

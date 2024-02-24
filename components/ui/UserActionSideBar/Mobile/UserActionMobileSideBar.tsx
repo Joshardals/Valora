@@ -7,15 +7,15 @@ import { useEffect } from "react";
 export default function UserActionMobileSideBar() {
   const { isMobileOpen } = userActionMobileSideBarToggle();
 
-  useEffect(() => {
-    if (isMobileOpen) {
-      document.body.classList.toggle("fixed", isMobileOpen);
-    }
+  // useEffect(() => {
+  //   if (isMobileOpen) {
+  //     document.body.classList.toggle("fixed", isMobileOpen);
+  //   }
 
-    return () => {
-      document.body.classList.remove("fixed");
-    };
-  }, [isMobileOpen]);
+  //   return () => {
+  //     document.body.classList.remove("fixed");
+  //   };
+  // }, [isMobileOpen]);
 
   return (
     <div
