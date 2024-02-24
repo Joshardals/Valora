@@ -17,15 +17,15 @@ export default function UserActionsSideBar() {
   const { isOpen, setIsOpen } = userActionSideBarToggle();
   const { mobile } = useIsMobile();
 
-  // useEffect(() => {
-  //   if (isOpen) {
-  //     document.body.classList.toggle("overflow-hidden", isOpen);
-  //   }
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    }
 
-  //   return () => {
-  //     document.body.classList.remove("overflow-hidden");
-  //   };
-  // }, [isOpen]);
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
 
   return (
     <aside
