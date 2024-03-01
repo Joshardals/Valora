@@ -134,7 +134,7 @@
 
   /* Mobile Underline Offset since the damn linkHoverDark doesn't work on mobile. */
   .linkUnderline {
-    @apply max-md:relative max-md:underline max-md:underline-offset-4;
+    @apply max-md:relative max-md:underline max-md:underline-offset-4 decoration-0;
   }
 
   /* Mobile Nav toggle effects start */

@@ -8,7 +8,7 @@ export default function page() {
         <div className="space-y-12 flex-1">
           <div className="space-y-8">
             <Link href="/" className="flex w-[fit-content]">
-              <p className="uppercase linkHoverLight font-light">
+              <p className="uppercase md:linkHoverLight linkUnderline decoration-primary font-light">
                 back to log in
               </p>
             </Link>

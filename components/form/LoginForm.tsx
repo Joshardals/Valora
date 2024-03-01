@@ -82,7 +82,7 @@ export default function LoginForm() {
         <Button>Login</Button>
 
         <Link href="/register" className="flex justify-center w-full">
-          <p className="uppercase linkHoverDark linkUnderline font-light">
+          <p className="uppercase md:linkHoverDark linkUnderline decoration-secondar font-light">
             forgotten password
           </p>
         </Link>
