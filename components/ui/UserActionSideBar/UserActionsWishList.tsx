@@ -40,15 +40,12 @@ export default function UserActionsWishList() {
         <h2>Wishlist is empty</h2>
         <p className=" font-light text-pretty max-w-full">
           Save your wishlist by{" "}
-          <span
-            className="underline cursor-pointer decoration-0"
-            onClick={openLogin}
-          >
+          <span className="wishListLinks" onClick={openLogin}>
             login
           </span>{" "}
           or creating{" "}
           <span>
-            <Link href="/account/register" className="underline decoration-0">
+            <Link href="/account/register" className="wishListLinks">
               your account
             </Link>
           </span>

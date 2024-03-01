@@ -158,5 +158,8 @@
     @apply -rotate-45;
   }
 
+  .wishListLinks {
+    @apply underline decoration-0 underline-offset-2 cursor-pointer;
+  }
   /* Mobile Nav toggle effects end */
 }
