@@ -1,12 +1,8 @@
 "use client";
-import gsap from "gsap";
 import HeaderInfo from "../ui/Header/HeaderInfo";
 import Logo from "../ui/Header/Logo";
 import NavLinks from "../ui/Header/NavLinks";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 import { usePathname } from "next/navigation";
-import { useRef } from "react";
 import UserActions from "../ui/Header/UserActions";
 import {
   userActionMobileSideBarToggle,
@@ -30,7 +26,7 @@ export default function Header() {
       >
         {/* <HeaderInfo /> I might later need to put it in the future.*/}
         <div
-          className={`grid grid-cols-3 items-center  
+          className={`
         py-5 px-8 max-md:px-5 select-none justify-start transition-[background] ease-in-out duration-300  
         z-20
         
@@ -45,20 +41,22 @@ export default function Header() {
           id="headerChild"
           data-testid="headerChild"
         >
-          <Logo />
-          <div className="justify-self-center max-md:hidden">
-            <NavLinks />
-          </div>
-          <div
-            className={`justify-self-end max-md:col-span-2 
+          <div className="grid grid-cols-3 items-center max-w-[1200px] mx-auto">
+            <Logo />
+            <div className="justify-self-center max-md:hidden">
+              <NavLinks />
+            </div>
+            <div
+              className={`justify-self-end max-md:col-span-2 
           ${
             isOpen
               ? "animate__animated animate__fadeOutLeft"
               : isOpen !== null && "animate__animated animate__fadeInLeft"
           }
           `}
-          >
-            <UserActions />
+            >
+              <UserActions />
+            </div>
           </div>
         </div>
       </div>
