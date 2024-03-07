@@ -65,7 +65,7 @@ app.post("/api/register", async (req, res) => {
     console.log('Raw request:' ,req.rawHeaders);
     console.log('Parsed request body:' ,req.body);
     console.log('Parsed Request Params:', req.params);
-     
+
   } catch (error) {
     console.log("Registration error: ", error); 
     res.status(500).send({ message: "Internal Server Error"});
