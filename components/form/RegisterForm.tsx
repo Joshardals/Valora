@@ -33,6 +33,7 @@ export default function RegisterForm() {
   return (
     <Form {...form}>
       <form
+      
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-12 max-w-[1200px] mx-auto"
         autoComplete="off"
