@@ -1,4 +1,3 @@
-const dotenv = require("dotenv");
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const { PrismaClient } = require("@prisma/client");
@@ -17,20 +16,24 @@ app.post("/api/register", express.json(), async (req: any, res: any) => {
   try {
     const { firstName, lastName, email, password } = req.body;
     const hashedPassword = await hashPassword(password);
-    
-    const user = await prisma.user.create({
-        data: {
-            
-        }
-    })
-    // await prisma.post.create({
-    //   data: {
-    //     title,
-    //     content,
-    //   },
-    // });
-  } catch (error: any) {}
+
+    await prisma.user.create({
+      data: {
+        firstName,
+        lastName,
+        email,
+        password: hashedPassword,
+      },
+    });
+
+    res.status(201).json({ message: "User created successfully" });
+  } catch (error: any) {
+    console.log(`Error creating user: ${error.message}`);
+    res.status(500).json({ message: "Error creating user" });
+  }
 });
+
+
 
 let PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
