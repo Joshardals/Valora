@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import axios from "axios";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import {
@@ -27,13 +27,32 @@ export default function RegisterForm() {
   });
 
   const onSubmit = async (values: RegisterValidationType) => {
-    alert(values.password);
+    try {
+      const res = await axios.post("/api/register", {
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        password: values.password,
+      });
+
+      console.log(res);
+
+      if (res.status === 201) {
+        form.setValue("firstName", "");
+        form.setValue("lastName", "");
+        form.setValue("email", "");
+        form.setValue("password", "");
+
+        alert("Registration successful!");
+      }
+    } catch (error: any) {
+      console.log(`Registration Failed: ${error.message}`);
+    }
   };
 
   return (
     <Form {...form}>
       <form
-      
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-12 max-w-[1200px] mx-auto"
         autoComplete="off"
