@@ -27,27 +27,43 @@ export default function RegisterForm() {
   });
 
   const onSubmit = async (values: RegisterValidationType) => {
-    try {
-      const res = await axios.post("/api/register", {
-        firstName: values.firstName,
-        lastName: values.lastName,
-        email: values.email,
-        password: values.password,
-      });
+    // try {
+    //   const res = await axios.post("/api/register", {
+    //     firstName: values.firstName,
+    //     lastName: values.lastName,
+    //     email: values.email,
+    //     password: values.password,
+    //   });
 
-      console.log(res);
+    //   console.log(res);
 
-      if (res.status === 201) {
-        form.setValue("firstName", "");
-        form.setValue("lastName", "");
-        form.setValue("email", "");
-        form.setValue("password", "");
+    //   if (res.status === 201) {
+    //     form.setValue("firstName", "");
+    //     form.setValue("lastName", "");
+    //     form.setValue("email", "");
+    //     form.setValue("password", "");
 
-        alert("Registration successful!");
+    //     alert("Registration successful!");
+    //   }
+    // } catch (error: any) {
+    //   console.log(`Registration Failed: ${error.message}`);
+    // }
+
+    await axios.post(
+      "http://localhost:5000/api/register",
+      {
+        firstName: "joshua",
+        lastName: "omobamidele",
+        email: "joshardalsgates@gmail.com",
+        password: "123456",
+      },
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
       }
-    } catch (error: any) {
-      console.log(`Registration Failed: ${error.message}`);
-    }
+    );
   };
 
   return (
