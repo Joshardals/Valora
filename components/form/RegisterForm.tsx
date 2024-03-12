@@ -9,13 +9,13 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
+import { registerUser } from "@/lib/actions/register/register.action";
 import { RegisterValidation } from "@/lib/validations/form";
 import { RegisterValidationType } from "@/typings/form";
 import { useForm } from "react-hook-form";
 import { valueWithoutSpaces } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect } from "react";
-import { getData } from "@/lib/actions/register/register.action";
+import { register } from "module";
 
 export default function RegisterForm() {
   const form = useForm<RegisterValidationType>({
@@ -29,27 +29,17 @@ export default function RegisterForm() {
   });
 
   const onSubmit = async (values: RegisterValidationType) => {
-    // try {
-    //   const res = await axios.post("/api/register", {
-    //     firstName: values.firstName,
-    //     lastName: values.lastName,
-    //     email: values.email,
-    //     password: values.password,
-    //   });
-    //   console.log(res);
-    //   if (res.status === 201) {
-    //     form.setValue("firstName", "");
-    //     form.setValue("lastName", "");
-    //     form.setValue("email", "");
-    //     form.setValue("password", "");
-    //     alert("Registration successful!");
-    //   }
-    // } catch (error: any) {
-    //   console.log(`Registration Failed: ${error.message}`);
-    // }
+    await registerUser({
+      firstName: values.firstName,
+      lastName: values.lastName,
+      email: values.email,
+      password: values.password,
+    });
 
-    const data = await getData();
-    console.log(data);
+    form.setValue("firstName", "");
+    form.setValue("lastName", "");
+    form.setValue("email", "");
+    form.setValue("password", "");
   };
 
   return (

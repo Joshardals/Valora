@@ -1,13 +1,25 @@
+import axios from "axios";
+import { RegisterProps } from "@/typings/action";
 import { unstable_noStore as noStore } from "next/cache";
 
-export async function getData() {
+export async function registerUser({
+  firstName,
+  lastName,
+  email,
+  password,
+}: RegisterProps) {
   try {
     noStore();
-    const res = await fetch("http://localhost:5000/api/v1/users");
-    const resData = await res.json();
 
-    return resData;
+    await axios.post("http://localhost:5000/api/v1/register", {
+      firstName,
+      lastName,
+      email,
+      password,
+    });
+
+    console.log("Registration Successful!");
   } catch (error: any) {
-    console.log(`Error fetching posts: ${error.message}`);
+    console.log(`Registration Failed: ${error.message}`);
   }
 }
