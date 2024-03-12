@@ -13,7 +13,7 @@ import { registerUser } from "@/lib/actions/register/register.action";
 import { RegisterValidation } from "@/lib/validations/form";
 import { RegisterValidationType } from "@/typings/form";
 import { useForm } from "react-hook-form";
-import { valueWithoutSpaces } from "@/lib/utils";
+import { firstCaseUpper, valueWithoutSpaces } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { register } from "module";
 
@@ -65,6 +65,7 @@ export default function RegisterForm() {
                   {...field}
                   onChange={(e) => {
                     form.setValue("firstName", valueWithoutSpaces(e));
+                    form.setValue("firstName", firstCaseUpper(e));
                   }}
                 />
               </FormControl>
