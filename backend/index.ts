@@ -14,19 +14,7 @@ async function hashPassword(password: string) {
   return await bcrypt.hash(password, salt);
 }
 
-interface userType {
-  id: number;
-  name: string;
-}
-
-app.get("/api/v1/users", async (req: any, res: any) => {
-  const users: userType[] = [
-    { id: 1, name: "Joshua" },
-    { id: 2, name: "Ruth" },
-  ];
-  res.status(200).json({ users });
-});
-
+// A post request for the register an account page.
 app.post("/api/v1/register", express.json(), async (req: any, res: any) => {
   try {
     const { firstName, lastName, email, password } = req.body;
