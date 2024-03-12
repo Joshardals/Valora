@@ -14,6 +14,7 @@ import { RegisterValidationType } from "@/typings/form";
 import { useForm } from "react-hook-form";
 import { valueWithoutSpaces } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 
 export default function RegisterForm() {
   const form = useForm<RegisterValidationType>({
@@ -27,29 +28,35 @@ export default function RegisterForm() {
   });
 
   const onSubmit = async (values: RegisterValidationType) => {
-    try {
-      const res = await axios.post("/api/register", {
-        firstName: values.firstName,
-        lastName: values.lastName,
-        email: values.email,
-        password: values.password,
-      });
-
-      console.log(res);
-
-      if (res.status === 201) {
-        form.setValue("firstName", "");
-        form.setValue("lastName", "");
-        form.setValue("email", "");
-        form.setValue("password", "");
-
-        alert("Registration successful!");
-      }
-    } catch (error: any) {
-      console.log(`Registration Failed: ${error.message}`);
-    }
+    // try {
+    //   const res = await axios.post("/api/register", {
+    //     firstName: values.firstName,
+    //     lastName: values.lastName,
+    //     email: values.email,
+    //     password: values.password,
+    //   });
+    //   console.log(res);
+    //   if (res.status === 201) {
+    //     form.setValue("firstName", "");
+    //     form.setValue("lastName", "");
+    //     form.setValue("email", "");
+    //     form.setValue("password", "");
+    //     alert("Registration successful!");
+    //   }
+    // } catch (error: any) {
+    //   console.log(`Registration Failed: ${error.message}`);
+    // }
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("/api/post");
+      const data = await response.json();
+      console.log(data);
+    };
+
+    fetchData();
+  }, []);
   return (
     <Form {...form}>
       <form

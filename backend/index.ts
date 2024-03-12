@@ -11,6 +11,10 @@ async function hashPassword(password: string) {
   return await bcrypt.hash(password, salt);
 }
 
+app.get("/api/post", async (req: any, res: any) => {
+  res.status(201).send({ message: "Welcome to my Api" });
+});
+
 app.post("/api/register", express.json(), async (req: any, res: any) => {
   try {
     const { firstName, lastName, email, password } = req.body;
