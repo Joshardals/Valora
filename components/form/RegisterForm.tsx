@@ -35,19 +35,23 @@ export default function RegisterForm() {
   };
 
   const onSubmit = async (values: RegisterValidationType) => {
-    await registerUser({
-      firstName: values.firstName,
-      lastName: values.lastName,
-      email: values.email,
-      password: values.password,
-    });
+    try {
+      await registerUser({
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        password: values.password,
+      });
 
-    form.setValue("firstName", "");
-    form.setValue("lastName", "");
-    form.setValue("email", "");
-    form.setValue("password", "");
+      form.setValue("firstName", "");
+      form.setValue("lastName", "");
+      form.setValue("email", "");
+      form.setValue("password", "");
 
-    router.push("/");
+      router.push("/");
+    } catch (error) {
+      console.log("Error");
+    }
   };
 
   const router = useRouter();
@@ -116,8 +120,7 @@ export default function RegisterForm() {
                   type="email"
                   {...field}
                   onChange={(e) => {
-                    const processedValue = valueWithoutSpaces(e.target.value);
-                    form.setValue("email", processedValue);
+                    form.setValue("email", e.target.value);
                   }}
                 />
               </FormControl>
