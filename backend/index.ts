@@ -1,9 +1,12 @@
 const express = require("express");
 const app = express();
 const bcrypt = require("bcryptjs");
+const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
+
+app.use(cors());
 
 // Creating a function to hash password using bcrypt
 async function hashPassword(password: string) {
@@ -11,11 +14,20 @@ async function hashPassword(password: string) {
   return await bcrypt.hash(password, salt);
 }
 
-app.get("/api/post", async (req: any, res: any) => {
-  res.status(201).send({ message: "Welcome to my Api" });
+interface userType {
+  id: number;
+  name: string;
+}
+
+app.get("/api/v1/users", async (req: any, res: any) => {
+  const users: userType[] = [
+    { id: 1, name: "Joshua" },
+    { id: 2, name: "Ruth" },
+  ];
+  res.status(200).json({ users });
 });
 
-app.post("/api/register", express.json(), async (req: any, res: any) => {
+app.post("/api/v1/register", express.json(), async (req: any, res: any) => {
   try {
     const { firstName, lastName, email, password } = req.body;
     const hashedPassword = await hashPassword(password);

@@ -15,6 +15,7 @@ import { useForm } from "react-hook-form";
 import { valueWithoutSpaces } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
+import { getData } from "@/lib/actions/register/register.action";
 
 export default function RegisterForm() {
   const form = useForm<RegisterValidationType>({
@@ -46,17 +47,11 @@ export default function RegisterForm() {
     // } catch (error: any) {
     //   console.log(`Registration Failed: ${error.message}`);
     // }
+
+    const data = await getData();
+    console.log(data);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch("/api/post");
-      const data = await response.json();
-      console.log(data);
-    };
-
-    fetchData();
-  }, []);
   return (
     <Form {...form}>
       <form
