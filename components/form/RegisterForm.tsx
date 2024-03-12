@@ -1,7 +1,7 @@
 "use client";
-import axios from "axios";
 import { Button } from "../ui/button";
-import { Input } from "../ui/input";
+import { ChangeEvent } from "react";
+import { firstCaseUpper, valueWithoutSpaces } from "@/lib/utils";
 import {
   Form,
   FormControl,
@@ -9,13 +9,13 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
+import { Input } from "../ui/input";
 import { registerUser } from "@/lib/actions/register/register.action";
 import { RegisterValidation } from "@/lib/validations/form";
 import { RegisterValidationType } from "@/typings/form";
 import { useForm } from "react-hook-form";
-import { firstCaseUpper, valueWithoutSpaces } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { register } from "module";
 
 export default function RegisterForm() {
   const form = useForm<RegisterValidationType>({
@@ -27,6 +27,12 @@ export default function RegisterForm() {
       password: "",
     },
   });
+
+  const handleFormChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name }: any = e.target;
+    const processedValue = valueWithoutSpaces(firstCaseUpper(e.target.value));
+    form.setValue(name, processedValue);
+  };
 
   const onSubmit = async (values: RegisterValidationType) => {
     await registerUser({
@@ -40,7 +46,11 @@ export default function RegisterForm() {
     form.setValue("lastName", "");
     form.setValue("email", "");
     form.setValue("password", "");
+
+    router.push("/");
   };
+
+  const router = useRouter();
 
   return (
     <Form {...form}>
@@ -63,10 +73,7 @@ export default function RegisterForm() {
                   placeholder="FIRST NAME*"
                   type="text"
                   {...field}
-                  onChange={(e) => {
-                    form.setValue("firstName", valueWithoutSpaces(e));
-                    form.setValue("firstName", firstCaseUpper(e));
-                  }}
+                  onChange={handleFormChange}
                 />
               </FormControl>
             </FormItem>
@@ -87,9 +94,7 @@ export default function RegisterForm() {
                   placeholder="LAST NAME*"
                   type="text"
                   {...field}
-                  onChange={(e) => {
-                    form.setValue("lastName", valueWithoutSpaces(e));
-                  }}
+                  onChange={handleFormChange}
                 />
               </FormControl>
             </FormItem>
@@ -111,7 +116,8 @@ export default function RegisterForm() {
                   type="email"
                   {...field}
                   onChange={(e) => {
-                    form.setValue("email", valueWithoutSpaces(e));
+                    const processedValue = valueWithoutSpaces(e.target.value);
+                    form.setValue("email", processedValue);
                   }}
                 />
               </FormControl>
@@ -135,7 +141,8 @@ export default function RegisterForm() {
                   type="password"
                   {...field}
                   onChange={(e) => {
-                    form.setValue("password", valueWithoutSpaces(e));
+                    const processedValue = valueWithoutSpaces(e.target.value);
+                    form.setValue("password", processedValue);
                   }}
                 />
               </FormControl>
