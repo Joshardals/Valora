@@ -18,6 +18,7 @@ import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function RegisterForm() {
+  const router = useRouter();
   const form = useForm<RegisterValidationType>({
     resolver: zodResolver(RegisterValidation),
     defaultValues: {
@@ -53,8 +54,6 @@ export default function RegisterForm() {
       console.log("Error");
     }
   };
-
-  const router = useRouter();
 
   return (
     <Form {...form}>
