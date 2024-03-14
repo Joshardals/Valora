@@ -75,7 +75,10 @@ export default function LoginForm() {
                   placeholder="PASSWORD*"
                   type="password"
                   {...field}
-                  onChange={handleFormChange}
+                  onChange={(e) => {
+                    const processedValue = valueWithoutSpaces(e.target.value);
+                    form.setValue("password", processedValue);
+                  }}
                 />
               </FormControl>
             </FormItem>
