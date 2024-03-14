@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { Button } from "../ui/button";
-import { Input } from "../ui/input";
+import { ChangeEvent } from "react";
+import { firstCaseUpper, valueWithoutSpaces } from "@/lib/utils";
 import {
   Form,
   FormControl,
@@ -8,10 +8,11 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
+import { Input } from "../ui/input";
+import Link from "next/link";
 import { SignUpValidation } from "@/lib/validations/form";
 import { SignUpValidationType } from "@/typings/form";
 import { useForm } from "react-hook-form";
-import { valueWithoutSpaces } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function LoginForm() {
@@ -22,6 +23,12 @@ export default function LoginForm() {
       password: "",
     },
   });
+
+  const handleFormChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name }: any = e.target;
+    const processedValue = valueWithoutSpaces(firstCaseUpper(e.target.value));
+    form.setValue(name, processedValue);
+  };
 
   const onSubmit = async (values: SignUpValidationType) => {};
 
@@ -46,9 +53,7 @@ export default function LoginForm() {
                   placeholder="EMAIL*"
                   type="email"
                   {...field}
-                  onChange={(e) => {
-                    form.setValue("email", valueWithoutSpaces(e));
-                  }}
+                  onChange={handleFormChange}
                 />
               </FormControl>
             </FormItem>
@@ -70,9 +75,7 @@ export default function LoginForm() {
                   placeholder="PASSWORD*"
                   type="password"
                   {...field}
-                  onChange={(e) => {
-                    form.setValue("password", valueWithoutSpaces(e));
-                  }}
+                  onChange={handleFormChange}
                 />
               </FormControl>
             </FormItem>
