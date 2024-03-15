@@ -76,8 +76,7 @@ export default function LoginForm() {
                   type="password"
                   {...field}
                   onChange={(e) => {
-                    const processedValue = valueWithoutSpaces(e.target.value);
-                    form.setValue("password", processedValue);
+                    form.setValue("email", e.target.value);
                   }}
                 />
               </FormControl>
