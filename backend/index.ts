@@ -29,7 +29,7 @@ const generateToken = (user: { id: number }) => {
   });
 };
 
-// A post request for the register an account page.
+// A POST request for the register an account page.
 app.post("/api/v1/register", express.json(), async (req: any, res: any) => {
   try {
     const { firstName, lastName, email, password } = req.body;
@@ -51,7 +51,7 @@ app.post("/api/v1/register", express.json(), async (req: any, res: any) => {
   }
 });
 
-// A post request for login
+// A POST request for login
 app.post("/api/v1/login", express.json(), async (req: any, res: any) => {
   const { email, password } = req.body;
   const user = await prisma.user.findUnique({ where: { email } });
@@ -70,6 +70,40 @@ app.post("/api/v1/login", express.json(), async (req: any, res: any) => {
   }
 });
 
+// A GET request to fetch user data
+app.get("/api/v1/users", express.json(), async (req: any, res: any) => {
+  try {
+    // Get the token from the request headers
+    const token = req.headers.authorization;
+
+    // Check if the token exists
+    if (!token) {
+      return res.status(401).json({ message: "Unauthorized: Missing token" });
+    }
+
+    // Verify the token
+    jwt.verify(
+      token,
+      process.env.JWT_SECRET,
+      async (err: any, decoded: any) => {
+        if (err) {
+          return res
+            .status(401)
+            .json({ message: "Unauthorized: Invalid token" });
+        }
+
+        // Token is valid, fetch user data
+        const users = await prisma.user.findMany();
+        res.status(200).json({ users });
+      }
+    );
+  } catch (error: any) {
+    console.error("Error fetching user data:", error.message);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+// Run Server
 let PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is up and running on localhost:${PORT} ...`);
