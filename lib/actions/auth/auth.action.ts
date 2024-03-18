@@ -46,3 +46,23 @@ export async function loginUser({ email, password }: LoginProps) {
     console.log(`Login Failed: ${error.message}`);
   }
 }
+
+// Function to fetch User data
+export async function fetchUserData(email: string, token: string) {
+  try {
+    // Get token from local storage
+    const token = localStorage.getItem("token");
+
+    // Make a GET request to fetch user data with the token and email in the headers
+    const response = await axios.get("https://localhost:5000/api/v1/user", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Email: email,
+      },
+    });
+
+    console.log("User Data: ", response.data);
+  } catch (error: any) {
+    console.log(`Error fetching User Data: ${error.message}`);
+  }
+}

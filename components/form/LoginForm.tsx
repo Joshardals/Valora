@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "../ui/input";
 import Link from "next/link";
-import { loginUser } from "@/lib/actions/auth/auth.action";
+import { fetchUserData, loginUser } from "@/lib/actions/auth/auth.action";
 import { SignUpValidation } from "@/lib/validations/form";
 import { SignUpValidationType } from "@/typings/form";
 import { useForm } from "react-hook-form";
@@ -31,6 +31,9 @@ export default function LoginForm() {
         email: values.email,
         password: values.password,
       });
+
+      const token = localStorage.getItem("token")!;
+      await fetchUserData(values.email, token);
     } catch (error: any) {
       console.log(`Invalid Email or Password: ${error}`);
     }

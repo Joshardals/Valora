@@ -71,7 +71,7 @@ app.post("/api/v1/login", express.json(), async (req: any, res: any) => {
 });
 
 // A GET request to fetch user data
-app.get("/api/v1/users", express.json(), async (req: any, res: any) => {
+app.get("/api/v1/user", express.json(), async (req: any, res: any) => {
   try {
     // Get the token from the request headers
     const token = req.headers.authorization;
