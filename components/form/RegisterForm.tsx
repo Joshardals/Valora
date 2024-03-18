@@ -10,7 +10,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "../ui/input";
-import { registerUser } from "@/lib/actions/register/register.action";
+import { registerUser } from "@/lib/actions/auth/auth.action";
 import { RegisterValidation } from "@/lib/validations/form";
 import { RegisterValidationType } from "@/typings/form";
 import { useForm } from "react-hook-form";

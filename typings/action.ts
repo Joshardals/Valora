@@ -1,3 +1,8 @@
+export interface LoginProps {
+  email: string;
+  password: string;
+}
+
 export interface RegisterProps {
   firstName: string;
   lastName: string;
