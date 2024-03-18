@@ -62,6 +62,13 @@ app.post("/api/v1/login", express.json(), async (req: any, res: any) => {
   }
 
   const isPasswordValid = await bcrypt.compare(password, user.password);
+
+  if (isPasswordValid) {
+    const token = generateToken(user);
+    res.status(200).json({ message: "Login successful", token });
+  } else {
+    res.status(401).json({ message: "Invalid email or password" });
+  }
 });
 
 let PORT = process.env.PORT || 5000;
