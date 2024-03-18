@@ -1,3 +1,5 @@
+import { UserDetails } from "./typings";
+
 const express = require("express");
 const app = express();
 const bcrypt = require("bcryptjs");
@@ -13,6 +15,19 @@ async function hashPassword(password: string) {
   const salt = await bcrypt.genSalt(10);
   return await bcrypt.hash(password, salt);
 }
+
+const generateToken = (user: UserDetails) => {
+  const payload = {
+    userId: user.id, // Include other relevant user data if needed
+  };
+
+  const options = {
+    expiresIn: "30m", // Set token expiry time (e.g., 30 minutes)
+    secret: process.env.JWT_SECRET,
+  };
+
+  return jwt.sign(payload, options);
+};
 
 // A post request for the register an account page.
 app.post("/api/v1/register", express.json(), async (req: any, res: any) => {
@@ -37,7 +52,17 @@ app.post("/api/v1/register", express.json(), async (req: any, res: any) => {
 });
 
 // A post request for login
-app.post("/api/v1/login", express.json(), async (req: any, res: any) => {});
+app.post("/api/v1/login", express.json(), async (req: any, res: any) => {
+  const { email, password } = req.body;
+  const user = await prisma.user.findUnique({ where: { email } });
+  console.log(user);
+
+  if (!user) {
+    return res.status(401).json({ message: "Invalid email or password" });
+  }
+
+  const isPasswordValid = await bcrypt.compare(password, user.password);
+});
 
 let PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
