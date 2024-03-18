@@ -50,8 +50,8 @@ export default function RegisterForm() {
       form.setValue("password", "");
 
       router.push("/");
-    } catch (error) {
-      console.log("Error");
+    } catch (error: any) {
+      console.log(`Error Registering User: ${error}`);
     }
   };
 

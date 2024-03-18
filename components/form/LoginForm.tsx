@@ -14,9 +14,11 @@ import { loginUser } from "@/lib/actions/auth/auth.action";
 import { SignUpValidation } from "@/lib/validations/form";
 import { SignUpValidationType } from "@/typings/form";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function LoginForm() {
+  const router = useRouter();
   const form = useForm<SignUpValidationType>({
     resolver: zodResolver(SignUpValidation),
     defaultValues: {
@@ -25,19 +27,20 @@ export default function LoginForm() {
     },
   });
 
-  const handleFormChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name }: any = e.target;
-    const processedValue = valueWithoutSpaces(firstCaseUpper(e.target.value));
-    form.setValue(name, processedValue);
-  };
-
   const onSubmit = async (values: SignUpValidationType) => {
     try {
       await loginUser({
         email: values.email,
         password: values.password,
       });
-    } catch (error) {}
+    } catch (error: any) {
+      console.log(`Invalid Email or Password: ${error}`);
+    }
+
+    form.setValue("email", "");
+    form.setValue("password", "");
+
+    router.push("/");
   };
 
   return (
