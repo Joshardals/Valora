@@ -1,5 +1,3 @@
-import { UserDetails } from "./typings";
-
 const express = require("express");
 const app = express();
 const bcrypt = require("bcryptjs");
@@ -16,7 +14,7 @@ async function hashPassword(password: string) {
   return await bcrypt.hash(password, salt);
 }
 
-const generateToken = (user: UserDetails) => {
+const generateToken = (user: { id: number }) => {
   const payload = {
     userId: user.id, // Include other relevant user data if needed
   };
@@ -55,7 +53,6 @@ app.post("/api/v1/register", express.json(), async (req: any, res: any) => {
 app.post("/api/v1/login", express.json(), async (req: any, res: any) => {
   const { email, password } = req.body;
   const user = await prisma.user.findUnique({ where: { email } });
-  console.log(user);
 
   if (!user) {
     return res.status(401).json({ message: "Invalid email or password" });
