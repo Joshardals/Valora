@@ -36,6 +36,9 @@ app.post("/api/v1/register", express.json(), async (req: any, res: any) => {
   }
 });
 
+// A post request for login
+app.post("/api/v1/login", express.json(), async (req: any, res: any) => {});
+
 let PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is up and running on localhost:${PORT} ...`);
