@@ -53,20 +53,12 @@ export async function fetchUserData() {
     // Get token from local storage
     const token = localStorage.getItem("token");
 
-    // // Make a GET request to fetch user data with the token and email in the headers
-    // const response = await axios.get("https://localhost:5000/api/v1/user", {
-    //   headers: {
-    //     Authorization: "Bearer " + token,
-    //   },
-    // });
-
     const response = await fetch("http://localhost:5000/api/v1/user", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
 
-    console.log("Token gotten from the fetchUserData server actions: ", token);
     return response.json();
   } catch (error: any) {
     console.log(`Error fetching User Data: ${error.message}`);
