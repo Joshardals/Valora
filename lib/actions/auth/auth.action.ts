@@ -48,7 +48,7 @@ export async function loginUser({ email, password }: LoginProps) {
 }
 
 // Function to fetch User data
-export async function fetchUserData(email: string) {
+export async function fetchUserData() {
   try {
     // Get token from local storage
     const token = localStorage.getItem("token");
@@ -60,13 +60,14 @@ export async function fetchUserData(email: string) {
     //   },
     // });
 
-    const response = await fetch("https://localhost:5000/api/v1/user");
+    const response = await fetch("http://localhost:5000/api/v1/user", {
+      headers: {
+        Authorization: token!,
+      },
+    });
 
     console.log("Token gotten from the fetchUserData server actions: ", token);
-    console.log("Email gotten from the fetchUserData server actions: ", email);
-    // console.log("Hello World!");
-    // console.log("Token from fetchUserData action: ", token);
-    // return response.data;
+    return response.json();
   } catch (error: any) {
     console.log(`Error fetching User Data: ${error.message}`);
   }

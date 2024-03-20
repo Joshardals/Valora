@@ -32,8 +32,9 @@ export default function LoginForm() {
         password: values.password,
       });
 
-      const token = localStorage.getItem("token")!;
-      await fetchUserData(values.email);
+      const users = await fetchUserData();
+
+      console.log(users);
     } catch (error: any) {
       console.log(`Invalid Email or Password: ${error}`);
     }
