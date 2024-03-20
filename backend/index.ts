@@ -75,15 +75,17 @@ app.get("/api/v1/user", express.json(), async (req: any, res: any) => {
   try {
     // Get the token from the request headers
     const token = req.headers.authorization;
-    const email = req.headers.email;
 
     // Check if the token exists
     if (!token) {
       return res.status(401).json({ message: "Unauthorized: Missing token" });
     }
 
+    const tokenParts = token.split(" ");
+    const tokenValue = tokenParts[1];
+
     // Verify the token
-    jwt.verify(token, process.env.JWT_SECRET, async (err: any) => {
+    jwt.verify(tokenParts, process.env.JWT_SECRET, async (err: any) => {
       if (err) {
         return res.status(401).json({ message: "Unauthorized: Invalid token" });
       }
