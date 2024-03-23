@@ -53,7 +53,7 @@ export async function fetchUserData() {
     // Get token from local storage
     const token = localStorage.getItem("token");
 
-    const response = await fetch("http://localhost:5000/api/v1/user", {
+    const response = await fetch("http://localhost:5000/api/v1/users", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
