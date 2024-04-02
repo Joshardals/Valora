@@ -63,4 +63,4 @@ export async function fetchUserData() {
   } catch (error: any) {
     console.log(`Error fetching User Data: ${error.message}`);
   }
-}j
+}
