@@ -45,7 +45,7 @@ export async function loginUser({ email, password }: LoginProps) {
   } catch (error: any) {
     console.log(`Login Failed: ${error.message}`);
   }
-}
+}j
 
 // Function to fetch User data
 export async function fetchUserData() {
