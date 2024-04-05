@@ -48,7 +48,7 @@ export async function loginUser({ email, password }: LoginProps) {
 }
 
 // Function to fetch User data
-export async function fetchUserData() {
+export async function fetchUserData() {j
   try {
     // Get token from local storage
     const token = localStorage.getItem("token");
