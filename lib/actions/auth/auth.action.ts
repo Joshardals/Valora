@@ -42,7 +42,7 @@ export async function loginUser({ email, password }: LoginProps) {
     localStorage.setItem("token", token);
 
     console.log("Login Successful!", token);
-  } catch (error: any) {j
+  } catch (error: any) {
     console.log(`Login Failed: ${error.message}`);
   }
 }
