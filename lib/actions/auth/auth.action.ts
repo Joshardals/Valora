@@ -51,7 +51,7 @@ export async function loginUser({ email, password }: LoginProps) {
 export async function fetchUserData() {
   try {
     // Get token from local storage
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");j
 
     const response = await fetch("http://localhost:5000/api/v1/user", {
       headers: {
