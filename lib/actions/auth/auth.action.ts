@@ -15,7 +15,7 @@ export async function registerUser({
     // Make a POST request to register the user
     await axios.post("http://localhost:5000/api/v1/register", {
       firstName,
-      lastName,
+      lastName,j
       email,
       password,
     });
