@@ -29,7 +29,7 @@ export async function registerUser({
 // Function to log in a user
 export async function loginUser({ email, password }: LoginProps) {
   try {
-    // Make a POST request to login the user
+    // Make a POST request to login the userj
     const response = await axios.post("http://localhost:5000/api/v1/login", {
       email,
       password,
