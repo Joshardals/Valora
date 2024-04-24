@@ -35,7 +35,7 @@ export async function loginUser({ email, password }: LoginProps) {
       password,
     });
 
-    // Extract the token from the response  =
+    // Extract the token from the response
     const token = response.data.token;
 
     // Store the token securely (e.g., in local storage)
