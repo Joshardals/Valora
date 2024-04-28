@@ -8,7 +8,7 @@ const prisma = new PrismaClient();
 
 app.use(cors());
 
-// Creating a function to hash password using bcrypt
+// Creating a function to hash password using bcryptt
 async function hashPassword(password: string) {
   const salt = await bcrypt.genSalt(10);
   return await bcrypt.hash(password, salt);
