@@ -41,11 +41,11 @@ export async function loginUser({ email, password }: LoginProps) {
     // Store the token securely (e.g., in local storage)
     localStorage.setItem("token", token);
 
-    console.log("Login Successful!", token); 
+    console.log("Login Successful!", token);   
   } catch (error: any) {
     console.log(`Login Failed: ${error.message}`);
   }
-}
+}  
 
 // Function to fetch User data
 export async function fetchUserData() {
