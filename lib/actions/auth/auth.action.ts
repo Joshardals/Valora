@@ -32,7 +32,7 @@ export async function loginUser({ email, password }: LoginProps) {
     // Make a POST request to login the userjj
     const response = await axios.post("http://localhost:5000/api/v1/login", {
       email,
-      password,
+      password,  
     });
 
     // Extract the token from the response
