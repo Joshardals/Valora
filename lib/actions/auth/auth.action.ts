@@ -43,7 +43,7 @@ export async function loginUser({ email, password }: LoginProps) {
 
     console.log("Login Successful!", token);   
   } catch (error: any) {
-    console.log(`Login Failed: ${error.message}`);  
+    console.log(`Login Failed: ${error.message}`);     
   }
 }  
 
