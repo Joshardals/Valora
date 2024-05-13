@@ -20,7 +20,7 @@ export async function registerUser({
       password,
     });
 
-    console.log("Registration Successful!");
+    console.log("Registration Successful!");  
   } catch (error: any) {
     console.log(`Registration Failed: ${error.message}`);
   }
