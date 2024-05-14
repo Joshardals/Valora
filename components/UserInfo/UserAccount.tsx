@@ -1,4 +1,4 @@
 export default function UserAccount() {
-  const token = localStorage.getItem("token");
-  return <div>{token}</div>;
+  //   const token = localStorage.getItem("token");
+  return <div>Welcome</div>;
 }

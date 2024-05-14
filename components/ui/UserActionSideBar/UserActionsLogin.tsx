@@ -35,25 +35,27 @@ export default function UserActionsLogin() {
     >
       <UserAccount />
       {!token && (
-        <div className="space-y-4">
-          <h2>Log In</h2>
-          <p className=" font-light text-pretty max-w-full">
-            Don&apos;t have an account?{" "}
-            <span>
-              <Link
-                href="/account/register"
-                className="md:linkHoverDark decoration-secondary linkUnderline"
-              >
-                Create an account
-              </Link>{" "}
-              to unlock your order history, checkout faster, and protect your
-              Wishlist.
-            </span>
-          </p>
+        <div>
+          <div className="space-y-4">
+            <h2>Log In</h2>
+            <p className=" font-light text-pretty max-w-full">
+              Don&apos;t have an account?{" "}
+              <span>
+                <Link
+                  href="/account/register"
+                  className="md:linkHoverDark decoration-secondary linkUnderline"
+                >
+                  Create an account
+                </Link>{" "}
+                to unlock your order history, checkout faster, and protect your
+                Wishlist.
+              </span>
+            </p>
+          </div>
+
+          <LoginForm />
         </div>
       )}
-
-      <LoginForm />
     </div>
   );
 }
