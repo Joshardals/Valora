@@ -55,15 +55,6 @@ export default function RegisterForm() {
     }
   };
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const user = await fetchUserData();
-      console.log(user);
-    };
-
-    fetchUser();
-  }, []);
-
   return (
     <Form {...form}>
       <form
