@@ -1,3 +1,4 @@
+import UserAccount from "@/components/UserInfo/UserAccount";
 import LoginForm from "@/components/form/LoginForm";
 import {
   userActionActiveIndex,
@@ -12,6 +13,7 @@ export default function UserActionsLogin() {
   const { initialRender, setInitialRender } = userActionInitialRender();
   const { isOpen, setIsOpen } = userActionSideBarToggle();
   const profileRef = useRef<HTMLDivElement | null>(null);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     if (isOpen) {
@@ -31,22 +33,25 @@ export default function UserActionsLogin() {
       } ${activeIndex === 1 ? "block" : "hidden"}`}
       ref={profileRef}
     >
-      <div className="space-y-4">
-        <h2>Log In</h2>
-        <p className=" font-light text-pretty max-w-full">
-          Don&apos;t have an account?{" "}
-          <span>
-            <Link
-              href="/account/register"
-              className="md:linkHoverDark decoration-secondary linkUnderline"
-            >
-              Create an account
-            </Link>{" "}
-            to unlock your order history, checkout faster, and protect your
-            Wishlist.
-          </span>
-        </p>
-      </div>
+      <UserAccount />
+      {!token && (
+        <div className="space-y-4">
+          <h2>Log In</h2>
+          <p className=" font-light text-pretty max-w-full">
+            Don&apos;t have an account?{" "}
+            <span>
+              <Link
+                href="/account/register"
+                className="md:linkHoverDark decoration-secondary linkUnderline"
+              >
+                Create an account
+              </Link>{" "}
+              to unlock your order history, checkout faster, and protect your
+              Wishlist.
+            </span>
+          </p>
+        </div>
+      )}
 
       <LoginForm />
     </div>
