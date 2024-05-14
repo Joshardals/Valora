@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "../ui/button";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useEffect } from "react";
 import { firstCaseUpper, valueWithoutSpaces } from "@/lib/utils";
 import {
   Form,
@@ -10,7 +10,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "../ui/input";
-import { registerUser } from "@/lib/actions/auth/auth.action";
+import { fetchUserData, registerUser } from "@/lib/actions/auth/auth.action";
 import { RegisterValidation } from "@/lib/validations/form";
 import { RegisterValidationType } from "@/typings/form";
 import { useForm } from "react-hook-form";
@@ -54,6 +54,11 @@ export default function RegisterForm() {
       console.log(`Error Registering User: ${error}`);
     }
   };
+
+  useEffect(() => {
+    const users = await fetchUserData();
+    console.log(users);
+  }, []);
 
   return (
     <Form {...form}>

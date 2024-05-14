@@ -14,9 +14,11 @@ import { fetchUserData, loginUser } from "@/lib/actions/auth/auth.action";
 import { SignUpValidation } from "@/lib/validations/form";
 import { SignUpValidationType } from "@/typings/form";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function LoginForm() {
+  const router = useRouter();
   const form = useForm<SignUpValidationType>({
     resolver: zodResolver(SignUpValidation),
     defaultValues: {
@@ -32,9 +34,11 @@ export default function LoginForm() {
         password: values.password,
       });
 
-      const users = await fetchUserData();
+      // const users = await fetchUserData();
 
-      console.log(users);
+      // console.log(users);
+
+      router.push("/account/register");
     } catch (error: any) {
       console.log(`Invalid Email or Password: ${error}`);
     }

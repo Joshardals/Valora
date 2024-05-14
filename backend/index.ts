@@ -85,7 +85,7 @@ app.get("/api/v1/user", express.json(), async (req: any, res: any) => {
     const tokenValue = tokenParts[1];
 
     // Verify the token
-    jwt.verify(tokenParts, process.env.JWT_SECRET, async (err: any) => {
+    jwt.verify(tokenValue, process.env.JWT_SECRET, async (err: any) => {
       if (err) {
         return res.status(401).json({ message: "Unauthorized: Invalid token" });
       }

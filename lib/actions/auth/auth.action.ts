@@ -15,7 +15,7 @@ export async function registerUser({
     // Make a POST request to register the user
     await axios.post("http://localhost:5000/api/v1/register", {
       firstName,
-      lastName,  
+      lastName,
       email,
       password,
     });
@@ -32,20 +32,20 @@ export async function loginUser({ email, password }: LoginProps) {
     // Make a POST request to login the userjj
     const response = await axios.post("http://localhost:5000/api/v1/login", {
       email,
-      password,  
+      password,
     });
 
     // Extract the token from the response
     const token = response.data.token;
-   
-    // Store the token securely (e.g., in local storage)    
+
+    // Store the token securely (e.g., in local storage)
     localStorage.setItem("token", token);
 
-    console.log("Login Successful!", token);   
+    console.log("Login Successful!", token);
   } catch (error: any) {
-    console.log(`Login Failed: ${error.message}`);     
+    console.log(`Login Failed: ${error.message}`);
   }
-}  
+}
 
 // Function to fetch User data
 export async function fetchUserData() {
@@ -53,11 +53,13 @@ export async function fetchUserData() {
     // Get token from local storage
     const token = localStorage.getItem("token");
 
-    const response = await fetch("http://localhost:5000/api/v1/user", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    // const response = await fetch("http://localhost:5000/api/v1/user", {
+    //   headers: {
+    //     Authorization: `Bearer ${token}`,
+    //   },
+    // });
+
+    const response = await fetch("http://localhost:5000/api/v1/user");
 
     return response.json();
   } catch (error: any) {
