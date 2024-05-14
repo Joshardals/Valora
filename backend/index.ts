@@ -90,10 +90,14 @@ app.get("/api/v1/user", express.json(), async (req: any, res: any) => {
         return res.status(401).json({ message: "Unauthorized: Invalid token" });
       }
 
-      // Token is valid, fetch user data
-      // const users = await prisma.user.findUnique({ where: { email } });
-      const users = await prisma.user.findMany();
-      res.status(200).json({ users });
+      // Token is valid, fetch user data based on email
+      const email = req.query.email;
+      const user = await prisma.user.findUnique({ where: { email } });
+
+      if (!user) {
+        res.status(500).json({ message: "User not found" });
+      }
+      res.status(200).json({ user });
     });
   } catch (error: any) {
     console.error("Error fetching user data:", error.message);

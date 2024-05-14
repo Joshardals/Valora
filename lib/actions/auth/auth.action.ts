@@ -48,16 +48,19 @@ export async function loginUser({ email, password }: LoginProps) {
 }
 
 // Function to fetch User data
-export async function fetchUserData() {
+export async function fetchUserData(email: string) {
   try {
     // Get token from local storage
     const token = localStorage.getItem("token");
 
-    const response = await fetch("http://localhost:5000/api/v1/user", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(
+      `http://localhost:5000/api/v1/user?email=${email}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     return response.json();
   } catch (error: any) {

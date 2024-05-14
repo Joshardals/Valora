@@ -34,7 +34,7 @@ export default function LoginForm() {
         password: values.password,
       });
 
-      const users = await fetchUserData();
+      const users = await fetchUserData(values.email);
       console.log(users);
 
       // router.push("/account/register");
