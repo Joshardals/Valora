@@ -28,14 +28,13 @@ export default function UserActionsLogin() {
 
   return (
     <div
-      className={`px-8 space-y-12 ${
-        isOpen ? "" : isOpen !== null && "fadeOut"
-      } ${activeIndex === 1 ? "block" : "hidden"}`}
+      className={`px-8 ${isOpen ? "" : isOpen !== null && "fadeOut"} ${
+        activeIndex === 1 ? "block" : "hidden"
+      }`}
       ref={profileRef}
     >
-      <UserAccount />
-      {!token && (
-        <div>
+      {!token ? (
+        <div className="space-y-12">
           <div className="space-y-4">
             <h2>Log In</h2>
             <p className=" font-light text-pretty max-w-full">
@@ -55,6 +54,8 @@ export default function UserActionsLogin() {
 
           <LoginForm />
         </div>
+      ) : (
+        <UserAccount />
       )}
     </div>
   );

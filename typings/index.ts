@@ -10,7 +10,9 @@ export interface IsMobileState {
 
 export interface MobileNavToggleState {
   isMobileNavOpen: boolean;
-  setIsMobileNavOpen: (isMobileNavOpen: MobileNavToggleState["isMobileNavOpen"]) => void;
+  setIsMobileNavOpen: (
+    isMobileNavOpen: MobileNavToggleState["isMobileNavOpen"]
+  ) => void;
 }
 
 export interface UserActionActiveIndexState {
@@ -35,4 +37,9 @@ export interface UserActionRenderState {
 export interface UserActionSideBarState {
   isOpen: null | boolean;
   setIsOpen: (isOpen: UserActionSideBarState["isOpen"]) => void;
+}
+
+export interface UserIdState {
+  userId: string;
+  setUserId: (userId: UserIdState["userId"]) => void;
 }
