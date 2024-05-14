@@ -1,5 +1,4 @@
 import { Button } from "../ui/button";
-import { ChangeEvent } from "react";
 import { firstCaseUpper, valueWithoutSpaces } from "@/lib/utils";
 import {
   Form,
@@ -14,11 +13,11 @@ import { fetchUserData, loginUser } from "@/lib/actions/auth/auth.action";
 import { SignUpValidation } from "@/lib/validations/form";
 import { SignUpValidationType } from "@/typings/form";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useUserId } from "@/lib/store/store";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
-  const router = useRouter();
   const form = useForm<SignUpValidationType>({
     resolver: zodResolver(SignUpValidation),
     defaultValues: {
@@ -26,6 +25,8 @@ export default function LoginForm() {
       password: "",
     },
   });
+  const router = useRouter();
+  const { setUserId } = useUserId();
 
   const onSubmit = async (values: SignUpValidationType) => {
     try {
@@ -34,10 +35,9 @@ export default function LoginForm() {
         password: values.password,
       });
 
-      const users = await fetchUserData(values.email);
-      console.log(users);
+      setUserId(values.email);
 
-      // router.push("/account/register");
+      router.refresh();
     } catch (error: any) {
       console.log(`Invalid Email or Password: ${error}`);
     }

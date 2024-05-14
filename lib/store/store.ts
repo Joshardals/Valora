@@ -44,7 +44,7 @@ export const userActionSideBarToggle = create<UserActionSideBarState>(
   })
 );
 
-export const userId = create<UserIdState>((set) => ({
+export const useUserId = create<UserIdState>((set) => ({
   userId: "",
   setUserId: (userId) => set(() => ({ userId })),
 }));
