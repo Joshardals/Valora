@@ -13,7 +13,7 @@ export default function UserAccount() {
       } catch (error) {
         console.log("Error fetching user data: ", error);  
       }
-    };  
+    };
 
     getUserData();
   }, [userId]);
