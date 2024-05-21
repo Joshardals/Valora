@@ -16,8 +16,8 @@ export default function UserAccount() {
     };    
 
     getUserData();  
-  }, [userId]); 
-  return (  
+  }, [userId]);
+  return (
     <div>j
       <div className="space-y-4">
         <h2 className=" font-playfair">Hello {userId}</h2>  
