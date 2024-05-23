@@ -15,7 +15,7 @@ export default function UserAccount() {
       }
     };    
 
-    getUserData();
+    getUserData();  
   }, [userId]);
   return (  
     <div>  
