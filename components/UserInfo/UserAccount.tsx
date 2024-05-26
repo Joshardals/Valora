@@ -9,7 +9,7 @@ export default function UserAccount() {
       try {
         const response = await fetchUserData(userId);
         const userData = await response.json();
-        console.log(userData);  
+        console.log(userData);
       } catch (error) {  
         console.log("Error fetching user data: ", error);  
       }
