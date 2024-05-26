@@ -10,7 +10,7 @@ export default function UserAccount() {
         const response = await fetchUserData(userId);
         const userData = await response.json();
         console.log(userData);
-      } catch (error) {
+      } catch (error) {  
         console.log("Error fetching user data: ", error);  
       }
     };    
@@ -19,7 +19,7 @@ export default function UserAccount() {
   }, [userId]);
   return (  
     <div>  
-      <div className="space-y-4">  
+      <div className="space-y-4">
         <h2 className=" font-playfair">Hello {userId}</h2>  
         <p className="uppercase">Welcome to your account</p>
       </div>
