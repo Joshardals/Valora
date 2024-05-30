@@ -8,7 +8,7 @@ export default function UserAccount() {
     const getUserData = async () => {
       try {
         const response = await fetchUserData(userId);
-        const userData = await response.json();
+        const userData = await response.json();  
         console.log(userData);
       } catch (error) {  
         console.log("Error fetching user data: ", error);  
