@@ -4,7 +4,7 @@ import {
   userActionActiveIndex,
   userActionInitialRender,
   userActionSideBarToggle,
-  useUserId,
+  useUserStore,
 } from "@/lib/store/store";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
@@ -15,7 +15,7 @@ export default function UserActionsLogin() {
   const { isOpen, setIsOpen } = userActionSideBarToggle();
   const profileRef = useRef<HTMLDivElement | null>(null);
   // const token = localStorage.getItem("token");
-  const { userId } = useUserId();
+  const { userId } = useUserStore();
 
   useEffect(() => {
     if (isOpen) {

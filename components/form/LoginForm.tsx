@@ -14,7 +14,7 @@ import { SignUpValidation } from "@/lib/validations/form";
 import { SignUpValidationType } from "@/typings/form";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useUserId } from "@/lib/store/store";
+import { useUserStore } from "@/lib/store/store";
 import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
@@ -26,7 +26,7 @@ export default function LoginForm() {
     },
   });
   const router = useRouter();
-  const { setUserId } = useUserId();
+  const { setUserId } = useUserStore();
 
   const onSubmit = async (values: SignUpValidationType) => {
     try {

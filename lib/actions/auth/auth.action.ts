@@ -40,6 +40,7 @@ export async function loginUser({ email, password }: LoginProps) {
 
     // Store the token securely (e.g., in local storage)
     localStorage.setItem("token", token);
+    localStorage.setItem("userEmail", email);
 
     console.log("Login Successful!", token);
   } catch (error: any) {
@@ -50,6 +51,7 @@ export async function loginUser({ email, password }: LoginProps) {
 // Function to log out the user
 export async function logoutUser() {
   try {
+    // Remove token from local storage
     localStorage.removeItem("token");
 
     console.log("Logout Successful");

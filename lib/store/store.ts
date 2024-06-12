@@ -6,7 +6,7 @@ import {
   UserActionMobileSideBarState,
   UserActionRenderState,
   UserActionSideBarState,
-  UserIdState,
+  UserStoreState,
 } from "@/typings";
 
 export const mobileNavToggle = create<MobileNavToggleState>((set) => ({
@@ -44,7 +44,17 @@ export const userActionSideBarToggle = create<UserActionSideBarState>(
   })
 );
 
-export const useUserId = create<UserIdState>((set) => ({
+export const useUserStore = create<UserStoreState>((set) => ({
   userId: "",
   setUserId: (userId) => set(() => ({ userId })),
+  logout: () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userEmail");
+  },
+  rehydrateUser: () => {
+    const userEmail = localStorage.getItem("userEmail");
+    if (userEmail) {
+      set({ userId: userEmail });
+    }
+  },
 }));
