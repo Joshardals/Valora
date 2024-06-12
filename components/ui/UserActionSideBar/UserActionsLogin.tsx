@@ -4,6 +4,7 @@ import {
   userActionActiveIndex,
   userActionInitialRender,
   userActionSideBarToggle,
+  useUserId,
 } from "@/lib/store/store";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
@@ -13,7 +14,8 @@ export default function UserActionsLogin() {
   const { initialRender, setInitialRender } = userActionInitialRender();
   const { isOpen, setIsOpen } = userActionSideBarToggle();
   const profileRef = useRef<HTMLDivElement | null>(null);
-  const token = localStorage.getItem("token");
+  // const token = localStorage.getItem("token");
+  const { userId } = useUserId();
 
   useEffect(() => {
     if (isOpen) {
@@ -33,7 +35,7 @@ export default function UserActionsLogin() {
       }`}
       ref={profileRef}
     >
-      {!token ? (
+      {!userId ? (
         <div className="space-y-12">
           <div className="space-y-4">
             <h2>Log In</h2>

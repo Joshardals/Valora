@@ -47,6 +47,17 @@ export async function loginUser({ email, password }: LoginProps) {
   }
 }
 
+// Function to log out the user
+export async function logoutUser() {
+  try {
+    localStorage.removeItem("token");
+
+    console.log("Logout Successful");
+  } catch (error: any) {
+    console.log(`Logout Failed ${error.message}`);
+  }
+}
+
 // Function to fetch User data
 export async function fetchUserData(email: string) {
   try {
