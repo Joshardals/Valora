@@ -14,8 +14,6 @@ export default function UserActionsLogin() {
   const { initialRender, setInitialRender } = userActionInitialRender();
   const { isOpen, setIsOpen } = userActionSideBarToggle();
   const profileRef = useRef<HTMLDivElement | null>(null);
-  // const token = localStorage.getItem("token");
-  const { userId } = useUserStore();
 
   useEffect(() => {
     if (isOpen) {
@@ -35,7 +33,27 @@ export default function UserActionsLogin() {
       }`}
       ref={profileRef}
     >
-      {!userId ? (
+      <div className="space-y-12">
+        <div className="space-y-4">
+          <h2>Log In</h2>
+          <p className=" font-light text-pretty max-w-full">
+            Don&apos;t have an account?{" "}
+            <span>
+              <Link
+                href="/account/register"
+                className="md:linkHoverDark decoration-secondary linkUnderline"
+              >
+                Create an account
+              </Link>{" "}
+              to unlock your order history, checkout faster, and protect your
+              Wishlist.
+            </span>
+          </p>
+        </div>
+
+        <LoginForm />
+      </div>
+      {/* {!userEmail ? (
         <div className="space-y-12">
           <div className="space-y-4">
             <h2>Log In</h2>
@@ -58,7 +76,7 @@ export default function UserActionsLogin() {
         </div>
       ) : (
         <UserAccount />
-      )}
+      )} */}
     </div>
   );
 }

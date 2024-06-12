@@ -4,12 +4,14 @@ import { useEffect } from "react";
 import { Button } from "../ui/button";
 
 export default function UserAccount() {
-  const { userId, setUserId } = useUserStore();
+  const { userId, setUserId, logout } = useUserStore();
 
   const handleLogout = async () => {
     await logoutUser();
-    setUserId("");
+    logout();
+    localStorage.removeItem("userEmail");
   };
+
   useEffect(() => {
     const getUserData = async () => {
       try {

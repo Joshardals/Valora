@@ -27,6 +27,7 @@ export default function LoginForm() {
   });
   const router = useRouter();
   const { setUserId } = useUserStore();
+  const userEmail = localStorage.getItem("userEmail");
 
   const onSubmit = async (values: SignUpValidationType) => {
     try {
@@ -36,7 +37,7 @@ export default function LoginForm() {
       });
 
       setUserId(values.email);
-
+      console.log("Local Storage  Email: ", userEmail);
       router.refresh();
     } catch (error: any) {
       console.log(`Invalid Email or Password: ${error}`);
