@@ -49,13 +49,6 @@ export const useUserStore = create<UserStoreState>((set) => ({
   setUserId: (userId) => set(() => ({ userId })),
   logout: () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("userEmail");
     console.log("Successfully Logged Out.");
-  },
-  rehydrateUser: () => {
-    const userEmail = localStorage.getItem("userEmail");
-    if (userEmail) {
-      set({ userId: userEmail });
-    }
   },
 }));

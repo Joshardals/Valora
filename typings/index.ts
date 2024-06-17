@@ -43,5 +43,4 @@ export interface UserStoreState {
   userId: string;
   setUserId: (userId: UserStoreState["userId"]) => void;
   logout: () => void;
-  rehydrateUser: () => void;
 }

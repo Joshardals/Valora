@@ -1,5 +1,12 @@
 import Link from "next/link";
+import { Metadata } from "next";
 import RegisterForm from "@/components/form/RegisterForm";
+
+export const metadata: Metadata = {
+  title: "Create Account - VALORA",
+  description:
+    "Valora, a personal e-commerce project focusing on clothing, accessories, and gadgets.",
+};
 
 export default function page() {
   return (

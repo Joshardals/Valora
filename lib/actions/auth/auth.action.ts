@@ -40,7 +40,6 @@ export async function loginUser({ email, password }: LoginProps) {
 
     // Store the token securely (e.g., in local storage)
     localStorage.setItem("token", token);
-    localStorage.setItem("userEmail", email);
 
     console.log("Login Successful!", token);
   } catch (error: any) {
