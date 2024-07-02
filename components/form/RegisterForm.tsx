@@ -10,7 +10,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "../ui/input";
-import { fetchUserData, registerUser } from "@/lib/actions/auth/auth.action";
+import { registerUser } from "@/lib/actions/auth/auth.action";
 import { RegisterValidation } from "@/lib/validations/form";
 import { RegisterValidationType } from "@/typings/form";
 import { useForm } from "react-hook-form";
@@ -43,12 +43,10 @@ export default function RegisterForm() {
         email: values.email,
         password: values.password,
       });
-
       form.setValue("firstName", "");
       form.setValue("lastName", "");
       form.setValue("email", "");
       form.setValue("password", "");
-
       router.push("/");
     } catch (error: any) {
       console.log(`Error Registering User: ${error}`);

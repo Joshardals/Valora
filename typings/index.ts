@@ -38,9 +38,3 @@ export interface UserActionSideBarState {
   isOpen: null | boolean;
   setIsOpen: (isOpen: UserActionSideBarState["isOpen"]) => void;
 }
-
-export interface UserStoreState {
-  userId: string;
-  setUserId: (userId: UserStoreState["userId"]) => void;
-  logout: () => void;
-}

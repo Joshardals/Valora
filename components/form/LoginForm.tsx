@@ -9,13 +9,12 @@ import {
 } from "@/components/ui/form";
 import { Input } from "../ui/input";
 import Link from "next/link";
-import { fetchUserData, loginUser } from "@/lib/actions/auth/auth.action";
+import { loginUser } from "@/lib/actions/auth/auth.action";
 import { SignUpValidation } from "@/lib/validations/form";
 import { SignUpValidationType } from "@/typings/form";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useUserStore } from "@/lib/store/store";
 import { useRouter } from "next/navigation";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function LoginForm() {
   const form = useForm<SignUpValidationType>({
@@ -26,7 +25,6 @@ export default function LoginForm() {
     },
   });
   const router = useRouter();
-  const { setUserId } = useUserStore();
 
   const onSubmit = async (values: SignUpValidationType) => {
     try {
@@ -35,8 +33,6 @@ export default function LoginForm() {
         password: values.password,
       });
 
-      setUserId(values.email);
-      // console.log("Local Storage  Email: ", userEmail);
       router.push("/account");
     } catch (error: any) {
       console.log(`Invalid Email or Password: ${error}`);

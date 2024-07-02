@@ -1,4 +1,4 @@
-export default function Home() {
+export default async function Home() {
   return (
     <main className="space-y-[50vh]">
       <div>1</div>

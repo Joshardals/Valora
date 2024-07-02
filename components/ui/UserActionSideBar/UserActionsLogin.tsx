@@ -3,7 +3,6 @@ import {
   userActionActiveIndex,
   userActionInitialRender,
   userActionSideBarToggle,
-  useUserStore,
 } from "@/lib/store/store";
 import Link from "next/link";
 import { useEffect, useRef } from "react";

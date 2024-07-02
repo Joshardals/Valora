@@ -6,7 +6,6 @@ import {
   UserActionMobileSideBarState,
   UserActionRenderState,
   UserActionSideBarState,
-  UserStoreState,
 } from "@/typings";
 
 export const mobileNavToggle = create<MobileNavToggleState>((set) => ({
@@ -43,12 +42,3 @@ export const userActionSideBarToggle = create<UserActionSideBarState>(
     setIsOpen: (isOpen) => set(() => ({ isOpen })),
   })
 );
-
-export const useUserStore = create<UserStoreState>((set) => ({
-  userId: "",
-  setUserId: (userId) => set(() => ({ userId })),
-  logout: () => {
-    localStorage.removeItem("token");
-    console.log("Successfully Logged Out.");
-  },
-}));
