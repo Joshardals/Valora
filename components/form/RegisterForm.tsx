@@ -77,6 +77,7 @@ export default function RegisterForm() {
                   onChange={handleFormChange}
                 />
               </FormControl>
+              <FormMessage className="text-red-500 text-xs" />
             </FormItem>
           )}
         />
@@ -98,6 +99,7 @@ export default function RegisterForm() {
                   onChange={handleFormChange}
                 />
               </FormControl>
+              <FormMessage className="text-red-500 text-xs" />
             </FormItem>
           )}
         />
@@ -121,6 +123,7 @@ export default function RegisterForm() {
                   }}
                 />
               </FormControl>
+              <FormMessage className="text-red-500 text-xs" />
             </FormItem>
           )}
         />
@@ -146,6 +149,7 @@ export default function RegisterForm() {
                   }}
                 />
               </FormControl>
+              <FormMessage className="text-red-500 text-xs" />
             </FormItem>
           )}
         />

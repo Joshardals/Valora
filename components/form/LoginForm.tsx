@@ -10,15 +10,15 @@ import {
 import { Input } from "../ui/input";
 import Link from "next/link";
 import { loginUser } from "@/lib/actions/auth/auth.action";
-import { SignUpValidation } from "@/lib/validations/form";
-import { SignUpValidationType } from "@/typings/form";
+import { SignInValidation } from "@/lib/validations/form";
+import { SignInValidationType } from "@/typings/form";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function LoginForm() {
-  const form = useForm<SignUpValidationType>({
-    resolver: zodResolver(SignUpValidation),
+  const form = useForm<SignInValidationType>({
+    resolver: zodResolver(SignInValidation),
     defaultValues: {
       email: "",
       password: "",
@@ -26,7 +26,7 @@ export default function LoginForm() {
   });
   const router = useRouter();
 
-  const onSubmit = async (values: SignUpValidationType) => {
+  const onSubmit = async (values: SignInValidationType) => {
     try {
       await loginUser({
         email: values.email,
@@ -68,6 +68,7 @@ export default function LoginForm() {
                   }}
                 />
               </FormControl>
+              <FormMessage className="text-red-500 text-xs" />
             </FormItem>
           )}
         />
@@ -93,6 +94,7 @@ export default function LoginForm() {
                   }}
                 />
               </FormControl>
+              <FormMessage className="text-red-500 text-xs" />
             </FormItem>
           )}
         />
