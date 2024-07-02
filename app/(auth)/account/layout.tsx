@@ -1,27 +1,10 @@
-"use client";
-import {
-  userActionInitialRender,
-  userActionSideBarToggle,
-} from "@/lib/store/store";
-
-export default function Layout({
+export default function AccountLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { isOpen, setIsOpen } = userActionSideBarToggle();
-  const { setInitialRender } = userActionInitialRender();
-
   return (
-    <div
-      className=""
-      onClick={() => {
-        if (isOpen) {
-          setIsOpen(false);
-          setInitialRender(true);
-        }
-      }}
-    >
+    <div className="">
       <main className="bg-gray-950 min-h-[100svh]">{children}</main>
     </div>
   );

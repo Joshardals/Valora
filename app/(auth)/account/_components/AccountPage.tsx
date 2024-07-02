@@ -1,12 +1,30 @@
 "use client";
 import Header from "@/components/shared/Header";
+import Link from "next/link";
+import {
+  userActionInitialRender,
+  userActionSideBarToggle,
+} from "@/lib/store/store";
 import UserActionsSideBar from "@/components/shared/UserActionsSideBar";
 import UserActionMobileSideBar from "@/components/ui/UserActionSideBar/Mobile/UserActionMobileSideBar";
-import Link from "next/link";
+import { logoutUser } from "@/lib/actions/auth/auth.action";
 
 export function AccountPage() {
+  const { isOpen, setIsOpen } = userActionSideBarToggle();
+  const { setInitialRender } = userActionInitialRender();
+
+  const handleLogout = async () => {
+    await logoutUser();
+  };
   return (
-    <div>
+    <div
+      onClick={() => {
+        if (isOpen) {
+          setIsOpen(false);
+          setInitialRender(true);
+        }
+      }}
+    >
       <Header />
       <UserActionsSideBar />
       <UserActionMobileSideBar />
@@ -17,9 +35,9 @@ export function AccountPage() {
             <h2 className=" font-playfair">Hello Anon</h2>
             <div className="flex md:space-x-[10rem] max-md:justify-between">
               <p className="uppercase">Welcome to your account</p>
-              <Link href="/account/logout" className=" underline">
+              <p className="underline cursor-pointer" onClick={handleLogout}>
                 Logout
-              </Link>
+              </p>
             </div>
           </div>
         </div>

@@ -5,10 +5,12 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 import { LoginProps, RegisterProps } from "@/typings/action";
+import { redirect } from "next/navigation";
 
-//Function to register a user
+//Function to register user
 
 export async function registerUser({
   firstName,
@@ -29,9 +31,11 @@ export async function registerUser({
     const user = userCredential.user;
     console.log("User Registration Successful");
   } catch (error: any) {
-    console.log(`Error creating User ${error.message}`);
+    console.log(`Error Creating User: ${error.message}`);
   }
 }
+
+// function to login User
 
 export async function loginUser({ email, password }: LoginProps) {
   try {
@@ -46,10 +50,25 @@ export async function loginUser({ email, password }: LoginProps) {
 
     const user = userCredential.user;
 
-    console.log("Signed In Successfully", user);
+    console.log("Logged In Successfully", user);
   } catch (error: any) {
-    console.log(`Error Logging In ${error.message}`);
+    console.log(`Error Logging In: ${error.message}`);
   }
+}
+
+// function to logout user
+
+export async function logoutUser() {
+  try {
+    const app: any = await getApp();
+    const auth = await getAuth(app);
+
+    await signOut(auth);
+  } catch (error: any) {
+    console.log(`Error Logging Out; ${error.message}`);
+  }
+
+  redirect("/");
 }
 
 // // Function to register a user
