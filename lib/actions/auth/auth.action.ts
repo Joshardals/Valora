@@ -1,5 +1,6 @@
 "use server";
 
+import { collection, addDoc, getFirestore } from "firebase/firestore";
 import { getApp } from "@/lib/firebase/firebase";
 import {
   getAuth,
@@ -21,6 +22,7 @@ export async function registerUser({
   try {
     const app: any = await getApp();
     const auth = await getAuth(app);
+    const firestore = await getFirestore(app);
 
     const userCredential = await createUserWithEmailAndPassword(
       auth,
@@ -30,6 +32,16 @@ export async function registerUser({
 
     const user = userCredential.user;
     console.log("User Registration Successful");
+
+    // Create a new user document in Firestore
+    const userRef = collection(firestore, "users");
+    await addDoc(userRef, {
+      uid: user.uid, // For unique identifcation.
+      firstName,
+      lastName,
+      email,
+      // Other relevant fields will be added later on.
+    });
   } catch (error: any) {
     console.log(`Error Creating User: ${error.message}`);
   }

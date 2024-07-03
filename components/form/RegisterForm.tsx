@@ -43,16 +43,16 @@ export default function RegisterForm() {
         email: values.email,
         password: values.password,
       });
-
-      form.setValue("firstName", "");
-      form.setValue("lastName", "");
-      form.setValue("email", "");
-      form.setValue("password", "");
-
-      setLoading(false);
     } catch (error: any) {
       console.log(`Error Registering User: ${error}`);
     }
+
+    form.setValue("firstName", "");
+    form.setValue("lastName", "");
+    form.setValue("email", "");
+    form.setValue("password", "");
+
+    setLoading(false);
   };
 
   return (

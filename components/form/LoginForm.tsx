@@ -17,7 +17,7 @@ import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function LoginForm() {
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
   const form = useForm<SignInValidationType>({
     resolver: zodResolver(SignInValidation),
     defaultValues: {
