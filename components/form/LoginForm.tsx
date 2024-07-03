@@ -13,10 +13,11 @@ import { loginUser } from "@/lib/actions/auth/auth.action";
 import { SignInValidation } from "@/lib/validations/form";
 import { SignInValidationType } from "@/typings/form";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function LoginForm() {
+  const [loading, setLoading] = useState<boolean>(true);
   const form = useForm<SignInValidationType>({
     resolver: zodResolver(SignInValidation),
     defaultValues: {
@@ -24,22 +25,22 @@ export default function LoginForm() {
       password: "",
     },
   });
-  const router = useRouter();
 
   const onSubmit = async (values: SignInValidationType) => {
     try {
+      setLoading(true);
       await loginUser({
         email: values.email,
         password: values.password,
       });
-
-      router.push("/account");
     } catch (error: any) {
       console.log(`Invalid Email or Password: ${error}`);
     }
 
     form.setValue("email", "");
     form.setValue("password", "");
+
+    setLoading(false);
   };
 
   return (
@@ -66,6 +67,7 @@ export default function LoginForm() {
                   onChange={(e) => {
                     form.setValue("email", e.target.value);
                   }}
+                  disabled={loading}
                 />
               </FormControl>
               <FormMessage className="text-red-500 text-xs" />
@@ -92,6 +94,7 @@ export default function LoginForm() {
                     const processedValue = valueWithoutSpaces(e.target.value);
                     form.setValue("password", processedValue);
                   }}
+                  disabled={loading}
                 />
               </FormControl>
               <FormMessage className="text-red-500 text-xs" />
@@ -99,7 +102,9 @@ export default function LoginForm() {
           )}
         />
 
-        <Button>Login</Button>
+        <Button disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
+        </Button>
 
         <Link href="/register" className="flex justify-center w-full">
           <p className="uppercase md:linkHoverDark linkUnderline decoration-secondar font-light">

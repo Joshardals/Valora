@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "../ui/button";
-import { ChangeEvent, useEffect } from "react";
+import { ChangeEvent, useState } from "react";
 import { firstCaseUpper, valueWithoutSpaces } from "@/lib/utils";
 import {
   Form,
@@ -14,11 +14,10 @@ import { registerUser } from "@/lib/actions/auth/auth.action";
 import { RegisterValidation } from "@/lib/validations/form";
 import { RegisterValidationType } from "@/typings/form";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function RegisterForm() {
-  const router = useRouter();
+  const [loading, setLoading] = useState<boolean>(false);
   const form = useForm<RegisterValidationType>({
     resolver: zodResolver(RegisterValidation),
     defaultValues: {
@@ -37,17 +36,20 @@ export default function RegisterForm() {
 
   const onSubmit = async (values: RegisterValidationType) => {
     try {
+      setLoading(true);
       await registerUser({
         firstName: values.firstName,
         lastName: values.lastName,
         email: values.email,
         password: values.password,
       });
+
       form.setValue("firstName", "");
       form.setValue("lastName", "");
       form.setValue("email", "");
       form.setValue("password", "");
-      router.push("/");
+
+      setLoading(false);
     } catch (error: any) {
       console.log(`Error Registering User: ${error}`);
     }
@@ -75,6 +77,7 @@ export default function RegisterForm() {
                   type="text"
                   {...field}
                   onChange={handleFormChange}
+                  disabled={loading}
                 />
               </FormControl>
               <FormMessage className="text-red-500 text-xs" />
@@ -97,6 +100,7 @@ export default function RegisterForm() {
                   type="text"
                   {...field}
                   onChange={handleFormChange}
+                  disabled={loading}
                 />
               </FormControl>
               <FormMessage className="text-red-500 text-xs" />
@@ -121,6 +125,7 @@ export default function RegisterForm() {
                   onChange={(e) => {
                     form.setValue("email", e.target.value);
                   }}
+                  disabled={loading}
                 />
               </FormControl>
               <FormMessage className="text-red-500 text-xs" />
@@ -147,6 +152,7 @@ export default function RegisterForm() {
                     const processedValue = valueWithoutSpaces(e.target.value);
                     form.setValue("password", processedValue);
                   }}
+                  disabled={loading}
                 />
               </FormControl>
               <FormMessage className="text-red-500 text-xs" />
@@ -154,8 +160,8 @@ export default function RegisterForm() {
           )}
         />
 
-        <Button variant={"register"} size={"lg"}>
-          Create
+        <Button variant={"register"} size={"lg"} disabled={loading}>
+          {loading ? "Creating..." : "Create"}
         </Button>
       </form>
     </Form>

@@ -33,6 +33,8 @@ export async function registerUser({
   } catch (error: any) {
     console.log(`Error Creating User: ${error.message}`);
   }
+
+  redirect("/");
 }
 
 // function to login User
@@ -54,6 +56,8 @@ export async function loginUser({ email, password }: LoginProps) {
   } catch (error: any) {
     console.log(`Error Logging In: ${error.message}`);
   }
+
+  redirect("/account");
 }
 
 // function to logout user
