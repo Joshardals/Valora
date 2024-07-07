@@ -1,16 +1,16 @@
+import Link from "next/link";
 import LoginForm from "@/components/form/LoginForm";
 import {
   userActionActiveIndex,
   userActionInitialRender,
   userActionSideBarToggle,
 } from "@/lib/store/store";
-import Link from "next/link";
 import { useEffect, useRef } from "react";
 
 export default function UserActionsLogin() {
   const { activeIndex } = userActionActiveIndex();
   const { initialRender, setInitialRender } = userActionInitialRender();
-  const { isOpen, setIsOpen } = userActionSideBarToggle();
+  const { isOpen } = userActionSideBarToggle();
   const profileRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -51,30 +51,6 @@ export default function UserActionsLogin() {
 
         <LoginForm />
       </div>
-      {/* {!userEmail ? (
-        <div className="space-y-12">
-          <div className="space-y-4">
-            <h2>Log In</h2>
-            <p className=" font-light text-pretty max-w-full">
-              Don&apos;t have an account?{" "}
-              <span>
-                <Link
-                  href="/account/register"
-                  className="md:linkHoverDark decoration-secondary linkUnderline"
-                >
-                  Create an account
-                </Link>{" "}
-                to unlock your order history, checkout faster, and protect your
-                Wishlist.
-              </span>
-            </p>
-          </div>
-
-          <LoginForm />
-        </div>
-      ) : (
-        <UserAccount />
-      )} */}
     </div>
   );
 }

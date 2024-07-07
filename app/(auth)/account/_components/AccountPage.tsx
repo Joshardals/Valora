@@ -12,7 +12,6 @@ import { useEffect, useState } from "react";
 import UserActionsSideBar from "@/components/shared/UserActionsSideBar";
 import UserActionMobileSideBar from "@/components/ui/UserActionSideBar/Mobile/UserActionMobileSideBar";
 import { useRouter } from "next/navigation";
-// import { logoutUser } from "@/lib/actions/auth/auth.action";
 
 export function AccountPage() {
   const [firstName, setFirstName] = useState<String>();

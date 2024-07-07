@@ -1,3 +1,4 @@
+import { auth } from "@/lib/firebase/clientFirebase";
 import { IconItems } from "@/lib/data";
 import NavToggle from "./NavToggle";
 import {
@@ -13,11 +14,14 @@ export default function UserActions() {
   const { isOpen, setIsOpen } = userActionSideBarToggle();
   const items = IconItems();
   const { isMobileNavOpen, setIsMobileNavOpen } = mobileNavToggle();
+  const userId = auth.currentUser?.uid || "";
 
   const handleClick = (index: number) => {
     if (index === 3) {
       setIsMobileOpen(!isMobileOpen);
       setIsMobileNavOpen(!isMobileNavOpen);
+    } else if (index === 1 && userId) {
+      window.alert("Toggled the Account");
     } else {
       setIsOpen(true);
       setActiveIndex(index);

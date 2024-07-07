@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "../ui/input";
 import Link from "next/link";
-// import { loginUser } from "@/lib/actions/auth/auth.action";
 import { SignInValidation } from "@/lib/validations/form";
 import { SignInValidationType } from "@/typings/form";
 import {
@@ -19,6 +18,11 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { useForm } from "react-hook-form";
+import {
+  userActionActiveIndex,
+  userActionMobileSideBarToggle,
+  userActionSideBarToggle,
+} from "@/lib/store/store";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -26,6 +30,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 export default function LoginForm() {
   const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
+  const { setActiveIndex } = userActionActiveIndex();
+  const { setIsMobileOpen } = userActionMobileSideBarToggle();
+  const { setIsOpen } = userActionSideBarToggle();
+
   const form = useForm<SignInValidationType>({
     resolver: zodResolver(SignInValidation),
     defaultValues: {
@@ -39,6 +47,10 @@ export default function LoginForm() {
     try {
       await setPersistence(auth, browserLocalPersistence);
       await signInWithEmailAndPassword(auth, values.email, values.password);
+
+      setActiveIndex(null);
+      setIsMobileOpen(null);
+      setIsOpen(null);
 
       console.log("User Logged In Successfully");
 
