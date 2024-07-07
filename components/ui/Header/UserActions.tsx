@@ -21,7 +21,7 @@ export default function UserActions() {
       setIsMobileOpen(!isMobileOpen);
       setIsMobileNavOpen(!isMobileNavOpen);
     } else if (index === 1 && userId) {
-      window.alert("Toggled the Account");
+      null;
     } else {
       setIsOpen(true);
       setActiveIndex(index);

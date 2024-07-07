@@ -1,3 +1,4 @@
+import { auth } from "@/lib/firebase/clientFirebase";
 import { IconItems } from "@/lib/data";
 import {
   mobileNavToggle,
@@ -12,6 +13,7 @@ export default function SecondSection() {
   const { setIsMobileNavOpen } = mobileNavToggle();
   const { setIsMobileOpen } = userActionMobileSideBarToggle();
   const { setIsOpen } = userActionSideBarToggle();
+  const userId = auth.currentUser?.uid || "";
 
   const handleClick = (index: number) => {
     setIsMobileOpen(false);
