@@ -1,21 +1,45 @@
 "use client";
+import { auth, db } from "@/lib/firebase/clientFirebase";
+import { doc, getDoc, onSnapshot } from "firebase/firestore";
 import Header from "@/components/shared/Header";
 import Link from "next/link";
 import {
   userActionInitialRender,
   userActionSideBarToggle,
 } from "@/lib/store/store";
+import { useEffect } from "react";
 import UserActionsSideBar from "@/components/shared/UserActionsSideBar";
 import UserActionMobileSideBar from "@/components/ui/UserActionSideBar/Mobile/UserActionMobileSideBar";
-import { logoutUser } from "@/lib/actions/auth/auth.action";
+// import { logoutUser } from "@/lib/actions/auth/auth.action";
 
 export function AccountPage() {
   const { isOpen, setIsOpen } = userActionSideBarToggle();
   const { setInitialRender } = userActionInitialRender();
+  const userId = auth.currentUser?.uid || "";
+
+  console.log(userId);
 
   const handleLogout = async () => {
-    await logoutUser();
+    // await logoutUser();
   };
+
+  useEffect(() => {
+    const getUser = async () => {
+      const userDocRef = doc(db, "users", userId);
+
+      onSnapshot(userDocRef, (doc) => {
+        if (doc.exists()) {
+          const userData = doc.data();
+
+          console.log(userData);
+        } else {
+          console.log("no-data");
+        }
+      });
+    };
+
+    getUser();
+  }, [userId]);
   return (
     <div
       onClick={() => {

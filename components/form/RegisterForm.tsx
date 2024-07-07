@@ -1,6 +1,9 @@
 "use client";
+import { auth, db } from "@/lib/firebase/clientFirebase";
 import { Button } from "../ui/button";
 import { ChangeEvent, useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 import { firstCaseUpper, valueWithoutSpaces } from "@/lib/utils";
 import {
   Form,
@@ -10,14 +13,16 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "../ui/input";
-import { registerUser } from "@/lib/actions/auth/auth.action";
+// import { registerUser } from "@/lib/actions/auth/auth.action";
 import { RegisterValidation } from "@/lib/validations/form";
 import { RegisterValidationType } from "@/typings/form";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function RegisterForm() {
   const [loading, setLoading] = useState<boolean>(false);
+  const router = useRouter();
   const form = useForm<RegisterValidationType>({
     resolver: zodResolver(RegisterValidation),
     defaultValues: {
@@ -37,14 +42,34 @@ export default function RegisterForm() {
   const onSubmit = async (values: RegisterValidationType) => {
     try {
       setLoading(true);
-      await registerUser({
-        firstName: values.firstName,
-        lastName: values.lastName,
-        email: values.email,
-        password: values.password,
-      });
+
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        values.email,
+        values.password
+      );
+
+      const user = userCredential.user;
+
+      console.log("User created: ", user);
+      const uid = user.uid;
+
+      const userDocRef = doc(db, "users", uid);
+
+      await setDoc(
+        userDocRef,
+        {
+          userId: uid, // For Unique Identification
+          firstName: values.firstName,
+          lastName: values.lastName,
+          email: values.email,
+        },
+        { merge: true }
+      );
+
+      router.push("/");
     } catch (error: any) {
-      console.log(`Error Registering User: ${error}`);
+      console.error(`Error Creating User: ${error.message}`);
     }
 
     form.setValue("firstName", "");
