@@ -33,14 +33,14 @@ export default function page() {
           </h2>
         </div>
       </div>
-      <div className="bgShade">
-        <Image
+      <div className="bgShade bg-[url('/assets/RegisterBgImg.jpg')] bg-cover w-full h-[80vh] md:h-screen">
+        {/* <Image
           src="/assets/RegisterBgImg.jpg"
           height={500}
           width={500}
           alt="Photo by Bankole  Ade-Oni: https://www.pexels.com/photo/stylish-black-woman-in-trendy-outfit-and-sunglasses-7206287/"
           className="min-w-full"
-        />
+        /> */}
       </div>
     </section>
   );
