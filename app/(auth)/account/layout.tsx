@@ -1,38 +1,19 @@
-"use client";
+import { Metadata } from "next";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "@/lib/firebase/clientFirebase";
-import { Loading } from "./_components/Loading";
+export const metadata: Metadata = {
+  title: "Account - VALORA",
+  description:
+    "Manage your VALORA account effortlessly with our comprehensive account overview, featuring secure login, registration, and personalized user information.",
+};
 
-export default function AccountLayout({
+export default async function AccountLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [authUser, setAuthUser] = useState<boolean>(false);
-  const router = useRouter();
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setAuthUser(true);
-      } else {
-        setAuthUser(false);
-        router.push("/");
-      }
-    });
-
-    // Cleanup the subscription to avoid memory leaks
-    return () => unsubscribe();
-  }, [router]);
   return (
-    <div className="">
-      {authUser ? null : <Loading />}
-      {authUser ? (
-        <main className="bg-gray-950 min-h-[100svh]">{children}</main>
-      ) : null}
-    </div>
+    <>
+      <main className="bg-gray-950 min-h-[100svh]">{children}</main>
+    </>
   );
 }

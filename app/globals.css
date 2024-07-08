@@ -62,6 +62,21 @@
     @apply md:opacity-100;
   }
 
+  /* Active effects End for the useractions */
+
+  /* Anything Background Shade Start*/
+
+  .bgShade {
+    @apply relative;
+  }
+
+  .bgShade::before {
+    content: "";
+    @apply absolute top-0 left-0 h-full w-full bg-primary/40;
+  }
+
+  /* Anything Background Shade End */
+
   /* Fade Effects Start */
 
   .fadeIn {

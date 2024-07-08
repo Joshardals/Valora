@@ -20,9 +20,13 @@ export default function SecondSection() {
     setIsMobileNavOpen(false);
 
     setTimeout(() => {
-      setIsOpen(true);
-      setIsOpen(true);
-      setActiveIndex(index);
+      if (index === 1 && userId) {
+        null;
+      } else {
+        setIsOpen(true);
+        setIsOpen(true);
+        setActiveIndex(index);
+      }
     }, 700);
   };
   return (

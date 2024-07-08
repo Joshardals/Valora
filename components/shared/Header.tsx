@@ -28,15 +28,11 @@ export default function Header() {
         <div
           className={`
         py-5 px-8 max-md:px-5 select-none justify-start transition-[background] ease-in-out duration-300  
-        z-20
+        z-20 bg-secondary text-primary
         
         ${isOpen && "bg-transparent text-secondary"} 
         ${isMobileOpen && "bg-transparent text-secondary"}
-        ${
-          pathname === "/account/register"
-            ? "bg-red-500"
-            : "bg-secondary text-primary"
-        }
+       
         `}
           id="headerChild"
           data-testid="headerChild"

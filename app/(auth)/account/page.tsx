@@ -1,19 +1,34 @@
-import type { Metadata } from "next";
+"use client";
+
 import { AccountPage } from "./_components/AccountPage";
-// import { getUser } from "@/lib/actions/auth/auth.action";
+import { auth } from "@/lib/firebase/clientFirebase";
+import { Loading } from "./_components/Loading";
+import { onAuthStateChanged } from "firebase/auth";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "Account - VALORA",
-  description:
-    "Manage your VALORA account effortlessly with our comprehensive account overview, featuring secure login, registration, and personalized user information.",
-};
+export default function UserAccountPage() {
+  const [authUser, setAuthUser] = useState<boolean>(false);
+  const router = useRouter();
 
-export default async function UserAccountPage() {
-  // const user = await getUser();
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setAuthUser(true);
+      } else {
+        setAuthUser(false);
+        router.push("/");
+      }
+    });
+
+    // Cleanup the subscription to avoid memory leaks
+    return () => unsubscribe();
+  }, [router]);
+
   return (
-    // <>{user ? <AccountPage /> : <div>No user information available</div>}</>
     <>
-      <AccountPage />
+      {authUser ? null : <Loading />}
+      {authUser ? <AccountPage /> : null}
     </>
   );
 }
