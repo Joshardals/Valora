@@ -9,3 +9,7 @@ export interface SignInValidationType {
   email: string;
   password: string;
 }
+
+export interface WaitListValidationType {
+  email: string;
+}

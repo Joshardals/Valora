@@ -13,7 +13,7 @@ import useFixedHeader from "@/lib/hooks/useFixedHeader";
 export default function Header() {
   const { isOpen } = userActionSideBarToggle();
   const { isMobileOpen } = userActionMobileSideBarToggle();
-  const pathname = usePathname();
+  // const pathname = usePathname();
   useFixedHeader();
 
   return (

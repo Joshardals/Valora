@@ -1,4 +1,8 @@
-import { RegisterValidationType, SignInValidationType } from "@/typings/form";
+import {
+  RegisterValidationType,
+  SignInValidationType,
+  WaitListValidationType,
+} from "@/typings/form";
 import * as z from "zod";
 
 export const RegisterValidation: z.ZodType<RegisterValidationType> = z.object({
@@ -25,4 +29,12 @@ export const RegisterValidation: z.ZodType<RegisterValidationType> = z.object({
 export const SignInValidation: z.ZodType<SignInValidationType> = z.object({
   email: z.string().min(1, "Email is required"),
   password: z.string().min(1, "Password is required").max(20),
+});
+
+export const WaitListValidation: z.ZodType<WaitListValidationType> = z.object({
+  email: z
+    .string()
+    .email("Invalid email format")
+    .min(10, "Email must be at least 10 characters long")
+    .max(100, "Email cannot exceed 100 characters"),
 });
