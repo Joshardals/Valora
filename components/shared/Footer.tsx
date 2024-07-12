@@ -1,3 +1,3 @@
 export default function Footer() {
-  return <footer>Footer</footer>;
+  return <div className="bg-secondary h-[85vh]">Footer</div>;
 }
