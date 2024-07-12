@@ -34,7 +34,7 @@ export const SignInValidation: z.ZodType<SignInValidationType> = z.object({
 export const WaitListValidation: z.ZodType<WaitListValidationType> = z.object({
   email: z
     .string()
-    .email("Invalid email format")
+    .email("This field is required")
     .min(10, "Email must be at least 10 characters long")
     .max(100, "Email cannot exceed 100 characters"),
 });

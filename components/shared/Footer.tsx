@@ -8,9 +8,9 @@ export default function Footer() {
           A brand of the <br /> Transformative Kind.
         </h1>
       </div>
-      <div className="flex-1 bg-red-500">
-        <div className="flex flex-col h-full">
-          <h1 className="flex-1">Still Waiting</h1>
+      <div className="flex-1">
+        <div className="flex flex-col h-full pr-40">
+          <h1 className="flex-1">NavLinks - Coming Soon!</h1>
           <div className="space-y-12">
             <h2 className="font-light">Stay in touch</h2>
             <WaitListForm />
