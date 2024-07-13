@@ -17,7 +17,7 @@ export default function Header() {
   useFixedHeader();
 
   return (
-    <header className="relative">
+    <header className="relative z-20">
       <div
         className={`fixed header top-0 w-full grid grid-flow-row
       duration-30 ${isMobileOpen && "z-10"}`}

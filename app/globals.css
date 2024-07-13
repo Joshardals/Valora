@@ -75,6 +75,15 @@
     @apply absolute top-0 left-0 h-full w-full bg-primary/40;
   }
 
+  .bgShadeLight {
+    @apply relative;
+  }
+
+  .bgShadeLight::before {
+    content: "";
+    @apply absolute top-0 left-0 h-full w-full bg-primary/30;
+  }
+
   /* Anything Background Shade End */
 
   /* Fade Effects Start */

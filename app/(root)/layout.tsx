@@ -19,7 +19,6 @@ export default function RootLayout({
 
   return (
     <div
-      className="flex flex-col h-full"
       onClick={() => {
         if (isOpen) {
           setIsOpen(false);
@@ -31,7 +30,7 @@ export default function RootLayout({
       <UserActionsSideBar />
       <UserActionMobileSideBar />
 
-      <main className=" bg-gray-950 pt-[4.7rem] px-5 flex-1">
+      <main className=" bg-gray-950">
         {children}
         <SpeedInsights />
       </main>

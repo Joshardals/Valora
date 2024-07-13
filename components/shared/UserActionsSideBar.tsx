@@ -28,9 +28,10 @@ export default function UserActionsSideBar() {
   }, [isOpen]);
 
   return (
+    // Added a z-index of 20 to the aside because of the hero section image.
     <aside
       className={`fixed text-secondary top-0 right-0 bg-primary/50 backdrop-blur-lg
-      min-h-[100svh] w-full md:w-[28rem] transition-transform duration-700 space-y-8
+      min-h-[100svh] w-full md:w-[28rem] transition-transform duration-700 space-y-8 z-20
       ${isOpen ? "-translate-x-0" : "translate-x-full"}
       `}
       onClick={(e) => {
