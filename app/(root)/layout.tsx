@@ -30,7 +30,7 @@ export default function RootLayout({
       <UserActionsSideBar />
       <UserActionMobileSideBar />
 
-      <main className=" bg-gray-950">
+      <main>
         {children}
         <SpeedInsights />
       </main>
