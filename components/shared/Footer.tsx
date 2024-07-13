@@ -9,8 +9,10 @@ export default function Footer() {
             A brand of the <br /> Transformative Kind.
           </h1>
         </div>
+
+        {/* Section 2 */}
         <div className="flex-1">
-          <div className="flex flex-col h-full pr-40">
+          <div className="flex flex-col h-full pr-40 space-y-[20rem]">
             <h1 className="flex-1">NavLinks - Coming Soon!</h1>
             <div className="space-y-12">
               <h2 className="font-light">Stay in touch</h2>
