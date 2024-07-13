@@ -14,7 +14,7 @@ export default function Footer() {
             <h1 className="flex-1">NavLinks - Coming Soon!</h1>
             <div className="space-y-12">
               <h2 className="font-light">Stay in touch</h2>
-              <WaitListForm />ss
+              <WaitListForm />
             </div>
           </div>
         </div>
