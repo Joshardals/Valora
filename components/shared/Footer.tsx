@@ -1,3 +1,4 @@
+"use client";
 import WaitListForm from "../form/WaitListForm";
 
 export default function Footer() {
