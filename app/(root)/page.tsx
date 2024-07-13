@@ -1,6 +1,6 @@
 export default async function Home() {
   return (
-    <main className="space-y-[50vh]">
+    <main className="">
       <div>1</div>
       <div>2</div>
       <div>3</div>

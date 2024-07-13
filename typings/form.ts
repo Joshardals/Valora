@@ -11,5 +11,5 @@ export interface SignInValidationType {
 }
 
 export interface WaitListValidationType {
-  email: string;
+  email: string; 
 }
