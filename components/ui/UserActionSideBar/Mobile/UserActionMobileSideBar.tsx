@@ -20,7 +20,7 @@ export default function UserActionMobileSideBar() {
   return (
     <div
       className={`fixed text-secondary top-0 right-0 bg-primary divide-y divide-secondary/20
-    min-h-[100svh] w-full transition-transform duration-700 space-y-8 max-md:p-5 md:hidden z-10
+    min-h-[100svh] w-full transition-transform duration-700 space-y-8 max-md:p-5 md:hidden z-[15]
     ${isMobileOpen ? "-translate-x-0" : "translate-x-full"}
     `}
     >
