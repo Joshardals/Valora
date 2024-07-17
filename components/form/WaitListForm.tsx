@@ -1,3 +1,4 @@
+import { FaArrowRight } from "react-icons/fa6";
 import {
   Form,
   FormControl,
@@ -35,7 +36,7 @@ export default function WaitListForm() {
           control={form.control}
           name="email"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="relative">
               <FormControl>
                 <Input
                   autoCapitalize="none"
@@ -52,6 +53,13 @@ export default function WaitListForm() {
                   disabled={loading}
                 />
               </FormControl>
+              <button
+                title="Submit the form"
+                type="submit"
+                className="absolute top-0 right-0 bg-secondary py-2 cursor-pointer"
+              >
+                <FaArrowRight />
+              </button>
               <FormMessage className="text-red-500 text-xs" />
             </FormItem>
           )}

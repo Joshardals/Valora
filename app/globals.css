@@ -81,7 +81,7 @@
 
   .bgShadeLight::before {
     content: "";
-    @apply absolute top-0 left-0 h-full w-full bg-primary/30;
+    @apply absolute top-0 left-0 h-full w-full bg-primary/10;
   }
 
   /* Anything Background Shade End */

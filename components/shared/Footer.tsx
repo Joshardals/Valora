@@ -12,7 +12,7 @@ export default function Footer() {
           A brand of the <br /> Transformative Kind.
         </h1>
 
-        <div className="space-y-12">
+        <div className="space-y-12 max-w-lg">
           {/* Demo Navlinks */}
           <div className="grid max-lg:grid-cols-1 grid-cols-2 max-lg:space-y-12">
             <div>
