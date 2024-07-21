@@ -27,7 +27,7 @@
 
   html,
   body {
-    @apply p-0 m-0 text-[14px] leading-6 w-full min-h-[100svh] bg-secondary text-secondary font-nunito scroll-smooth;
+    @apply p-0 m-0 text-[14px] leading-6 w-full min-h-[100svh] bg-white text-secondary font-nunito scroll-smooth;
   }
 
   /* Heading Styles */
