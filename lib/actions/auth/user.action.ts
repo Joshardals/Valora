@@ -1,43 +1,48 @@
-// "use server";
+"use server";
 
-// import {
-//   collection,
-//   addDoc,
-//   doc,
-//   getFirestore,
-//   getDoc,
-// } from "firebase/firestore";
-// import { getApp } from "@/lib/firebase/firebase";
-// import { getAuth } from "firebase/auth";
-// import { redirect } from "next/navigation";
+import { databases } from "@/lib/appwrite/appwrite.config";
+import { ID, Query } from "node-appwrite";
 
-// // Get User Information by Currently Logged-In User
+interface UserInfoParams {
+  email: string;
+  name: string;
+  userId: string;
+}
 
-// export async function getCurrentUserInformation() {
-//   try {
-//     const app: any = await getApp();
-//     const auth = await getAuth(app);
-//     const firestore = await getFirestore(app);
+export const createUserInfo = async ({
+  email,
+  name,
+  userId,
+}: UserInfoParams) => {
+  try {
+    await databases.createDocument(
+      process.env.DATABASE_ID as string,
+      process.env.USERS_ID as string,
+      ID.unique(),
+      {
+        email,
+        name,
+        userId,
+      }
+    );
 
-//     /* Todo: To make this work, I think I will have to create an hook that checks for 
-//     current logged in user. onAuthStateChange type of thing. I'll create it in my hooks folder.  
-//     */
+    console.log(`User document successfully created in the db`);
+  } catch (error: any) {
+    console.log(`Failed to create user document in the db: ${error.message}`);
+  }
+};
 
-//     const user = auth.currentUser; // Get the current logged-in user
-//     console.log(user);
-//     // if (user) {
-//     //   const userDocRef = doc(firestore, "users", user.uid);
-//     //   const userDocSnap = await getDoc(userDocRef);
+export const fetchUserInfo = async (userId: string) => {
+  try {
+    const response = await databases.listDocuments(
+      process.env.DATABASE_ID as string,
+      process.env.USERS_ID as string,
+      [Query.equal("userId", userId)]
+    );
 
-//     //   if (userDocSnap.exists()) {
-//     //     const userData = userDocSnap.data();
-//     //     console.log(`Current User Data: ${userData.metadata}`);
-
-//     //     return userData.metadata;
-//     //   }
-//     // }
-//     return user;
-//   } catch (error: any) {
-//     console.error(`Error fetching User Information... ${error.message}`);
-//   }
-// }
+    console.log("User information", response.documents[0]);
+    return response.documents[0];
+  } catch (error: any) {
+    console.log(`Failed to fetch user info. ${error.message}`);
+  }
+};

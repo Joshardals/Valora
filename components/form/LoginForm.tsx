@@ -1,6 +1,4 @@
-import { auth } from "@/lib/firebase/clientFirebase";
 import { Button } from "../ui/button";
-import { firstCaseUpper, valueWithoutSpaces } from "@/lib/utils";
 import {
   Form,
   FormControl,
@@ -10,13 +8,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "../ui/input";
 import Link from "next/link";
+import { loginUser } from "@/lib/actions/auth/auth.action";
 import { SignInValidation } from "@/lib/validations/form";
 import { SignInValidationType } from "@/typings/form";
-import {
-  browserLocalPersistence,
-  setPersistence,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
 import { useForm } from "react-hook-form";
 import {
   userActionActiveIndex,
@@ -25,6 +19,7 @@ import {
 } from "@/lib/store/store";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { valueWithoutSpaces } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function LoginForm() {
@@ -45,14 +40,11 @@ export default function LoginForm() {
   const onSubmit = async (values: SignInValidationType) => {
     setLoading(true);
     try {
-      await setPersistence(auth, browserLocalPersistence);
-      await signInWithEmailAndPassword(auth, values.email, values.password);
+      await loginUser({ email: values.email, password: values.password });
 
       setActiveIndex(null);
       setIsMobileOpen(null);
       setIsOpen(null);
-
-      console.log("User Logged In Successfully");
 
       router.push("/account");
     } catch (error: any) {

@@ -28,10 +28,10 @@ export default function Header() {
         <div
           className={`
         py-5 px-8 max-md:px-5 select-none justify-start transition-[background] ease-in-out duration-300  
-        z-20 bg-white text-primary
+        z-20 text-primary
         
-        ${isOpen && "bg-transparent text-secondary"} 
-        ${isMobileOpen && "bg-transparent text-secondary"}
+        ${isOpen ? "bg-transparent text-secondary" : "bg-white"} 
+        ${isMobileOpen ? "bg-transparent text-secondary" : "bg-white"}
        
         `}
           id="headerChild"

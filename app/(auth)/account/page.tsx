@@ -1,34 +1,38 @@
 "use client";
-
 import { AccountPage } from "./_components/AccountPage";
-import { auth } from "@/lib/firebase/clientFirebase";
+import { currentUser } from "@/lib/actions/auth/auth.action";
 import { Loading } from "./_components/Loading";
-import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function UserAccountPage() {
   const [authUser, setAuthUser] = useState<boolean>(false);
+  const [userId, setUserId] = useState<string>();
   const router = useRouter();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setAuthUser(true);
-      } else {
-        setAuthUser(false);
-        router.push("/");
+    const getUser = async () => {
+      try {
+        const user = await currentUser();
+        if (!user) {
+          router.push("/");
+          setAuthUser(false);
+        } else {
+          setAuthUser(true);
+          setUserId(user);
+        }
+      } catch (error: any) {
+        console.log(`Error fetching User... ${error.message}`);
       }
-    });
+    };
 
-    // Cleanup the subscription to avoid memory leaks
-    return () => unsubscribe();
+    getUser();
   }, [router]);
 
   return (
     <>
       {authUser ? null : <Loading />}
-      {authUser ? <AccountPage /> : null}
+      {authUser ? <AccountPage userId={userId!} /> : null}
     </>
   );
 }

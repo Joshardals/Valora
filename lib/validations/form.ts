@@ -22,7 +22,7 @@ export const RegisterValidation: z.ZodType<RegisterValidationType> = z.object({
     .max(100, "Email cannot exceed 100 characters"),
   password: z
     .string()
-    .min(6, "Password must be at least 6 characters long")
+    .min(8, "Password must be at least 8 characters long")
     .max(20, "Password cannot exceed 20 characters"),
 });
 

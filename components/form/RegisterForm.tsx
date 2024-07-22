@@ -1,9 +1,7 @@
 "use client";
-import { auth, db } from "@/lib/firebase/clientFirebase";
 import { Button } from "../ui/button";
 import { ChangeEvent, useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { createUser, loginUser } from "@/lib/actions/auth/auth.action";
 import { firstCaseUpper, valueWithoutSpaces } from "@/lib/utils";
 import {
   Form,
@@ -13,7 +11,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "../ui/input";
-// import { registerUser } from "@/lib/actions/auth/auth.action";
 import { RegisterValidation } from "@/lib/validations/form";
 import { RegisterValidationType } from "@/typings/form";
 import { useForm } from "react-hook-form";
@@ -43,31 +40,22 @@ export default function RegisterForm() {
     try {
       setLoading(true);
 
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        values.email,
-        values.password
-      );
+      // User Registration
+      await createUser({
+        email: values.email,
+        password: values.password,
+        name: `${values.firstName} ${values.lastName}`,
+      });
 
-      const user = userCredential.user;
+      // Create a User Document in the DB
 
-      console.log("User created: ", user);
-      const uid = user.uid;
+      // Login the User
+      await loginUser({
+        email: values.email,
+        password: values.password,
+      });
 
-      const userDocRef = doc(db, "users", uid);
-
-      await setDoc(
-        userDocRef,
-        {
-          userId: uid, // For Unique Identification
-          firstName: values.firstName,
-          lastName: values.lastName,
-          email: values.email,
-        },
-        { merge: true }
-      );
-
-      router.push("/");
+      router.push("/account");
     } catch (error: any) {
       console.error(`Error Creating User: ${error.message}`);
     }

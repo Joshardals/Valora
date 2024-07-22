@@ -1,31 +1,26 @@
 "use client";
-import { auth, db } from "@/lib/firebase/clientFirebase";
-import { doc, getDoc, onSnapshot } from "firebase/firestore";
 import Header from "@/components/shared/Header";
-import Link from "next/link";
-import { signOut } from "firebase/auth";
+import { logout } from "@/lib/actions/auth/auth.action";
+import { useEffect, useState } from "react";
 import {
   userActionInitialRender,
   userActionSideBarToggle,
 } from "@/lib/store/store";
-import { useEffect, useState } from "react";
 import UserActionsSideBar from "@/components/shared/UserActionsSideBar";
 import UserActionMobileSideBar from "@/components/ui/UserActionSideBar/Mobile/UserActionMobileSideBar";
 import { useRouter } from "next/navigation";
+import { fetchUserInfo } from "@/lib/actions/auth/user.action";
 
-export function AccountPage() {
+export function AccountPage({ userId }: { userId: string }) {
   const [firstName, setFirstName] = useState<String>();
   const { isOpen, setIsOpen } = userActionSideBarToggle();
+  const [loading, setLoading] = useState<boolean>(true);
   const router = useRouter();
   const { setInitialRender } = userActionInitialRender();
-  const userId = auth.currentUser?.uid || "";
-
-  console.log(userId);
 
   const handleLogout = async () => {
     try {
-      await signOut(auth);
-      console.log("User Sign-Out Successful");
+      await logout();
       router.push("/");
     } catch (error: any) {
       console.error(`Error Logging Out: ${error.message}`);
@@ -33,24 +28,18 @@ export function AccountPage() {
   };
 
   useEffect(() => {
-    const getUser = async () => {
+    const getUserInfo = async () => {
       try {
-        const userDocRef = doc(db, "users", userId);
-        const userDocSnap = await getDoc(userDocRef);
-
-        if (userDocSnap.exists()) {
-          const userData = userDocSnap.data();
-          setFirstName(userData.firstName);
-        } else {
-          console.log("no-data");
-        }
-      } catch (error) {
-        console.error("Error fetching user data:", error);
+        const user = await fetchUserInfo(userId);
+        setFirstName(user?.name.split(" ")[0]);
+      } catch (error: any) {
+        console.log(`Failed to fetch User Data: ${error.message}`);
       }
     };
 
-    getUser();
-  }, []);
+    getUserInfo();
+  }, [userId]);
+
   return (
     <div
       onClick={() => {
