@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
-import NavLinks from "@/components/ui/Header/NavLinks";
+import { NavLinks } from "@/components/ui/Header/NavLinks";
 
 describe("NavLinks", () => {
   it("renders link correctly", () => {

@@ -34,6 +34,8 @@ export function AccountPage({ userId }: { userId: string }) {
         setFirstName(user?.name.split(" ")[0]);
       } catch (error: any) {
         console.log(`Failed to fetch User Data: ${error.message}`);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -54,18 +56,21 @@ export function AccountPage({ userId }: { userId: string }) {
       <UserActionMobileSideBar />
 
       <div className="bg-primary w-screen h-screen flex items-center pt-[4.7rem] px-12 max-md:px-5">
-        <div className="w-full">
-          <div className="space-y-4">
-            <h2 className=" font-playfair">Hello {firstName}</h2>
-            <div className="flex md:space-x-[10rem] max-md:justify-between">
-              <p className="uppercase">Welcome to your account</p>
-              <p className="underline cursor-pointer" onClick={handleLogout}>
-                Logout
-              </p>
+        {loading ? (
+          "Loading..."
+        ) : (
+          <div className="w-full">
+            <div className="space-y-4">
+              <h2 className=" font-playfair">Hello {firstName}</h2>
+              <div className="flex md:space-x-[10rem] max-md:justify-between">
+                <p className="uppercase">Welcome to your account</p>
+                <p className="underline cursor-pointer" onClick={handleLogout}>
+                  Logout
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-
+        )}
         {/* <div className="flex-1">2</div> */}
       </div>
     </div>

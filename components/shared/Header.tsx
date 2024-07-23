@@ -1,7 +1,7 @@
 "use client";
 import HeaderInfo from "../ui/Header/HeaderInfo";
 import Logo from "../ui/Header/Logo";
-import NavLinks from "../ui/Header/NavLinks";
+import { NavLinks } from "../ui/Header/NavLinks";
 import { usePathname } from "next/navigation";
 import UserActions from "../ui/Header/UserActions";
 import {
@@ -14,7 +14,7 @@ export default function Header() {
   const { isOpen } = userActionSideBarToggle();
   const { isMobileOpen } = userActionMobileSideBarToggle();
   // const pathname = usePathname();
-  useFixedHeader();
+  // useFixedHeader(); Removed GSAP fucking up my app.
 
   return (
     <header className="relative z-20">
@@ -30,8 +30,13 @@ export default function Header() {
         py-5 px-8 max-md:px-5 select-none justify-start transition-[background] ease-in-out duration-300  
         z-20 text-primary
         
-        ${isOpen ? "bg-transparent text-secondary" : "bg-white"} 
-        ${isMobileOpen ? "bg-transparent text-secondary" : "bg-white"}
+        ${
+          isOpen
+            ? "bg-white text-primary"
+            : isMobileOpen
+            ? "text-secondary"
+            : "bg-white"
+        } 
        
         `}
           id="headerChild"

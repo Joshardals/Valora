@@ -30,7 +30,7 @@ export default function RootLayout({
       <UserActionsSideBar />
       <UserActionMobileSideBar />
 
-      <main>
+      <main className="relative">
         {children}
         <SpeedInsights />
       </main>
