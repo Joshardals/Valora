@@ -1,4 +1,4 @@
-import { auth } from "@/lib/firebase/clientFirebase";
+import { currentUser } from "@/lib/actions/auth/auth.action";
 import { IconItems } from "@/lib/data";
 import NavToggle from "./NavToggle";
 import {
@@ -7,6 +7,8 @@ import {
   userActionMobileSideBarToggle,
   userActionSideBarToggle,
 } from "@/lib/store/store";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function UserActions() {
   const { activeIndex, setActiveIndex } = userActionActiveIndex();
@@ -14,14 +16,25 @@ export default function UserActions() {
   const { isOpen, setIsOpen } = userActionSideBarToggle();
   const items = IconItems();
   const { isMobileNavOpen, setIsMobileNavOpen } = mobileNavToggle();
-  const userId = auth.currentUser?.uid || "";
+  const router = useRouter();
+  const [userId, setUserId] = useState<string>();
+
+  // Trying to get the current Logged In user
+  useEffect(() => {
+    const getUser = async () => {
+      const user = await currentUser();
+      setUserId(user);
+    };
+
+    getUser();
+  }, [router]);
 
   const handleClick = (index: number) => {
     if (index === 3) {
       setIsMobileOpen(!isMobileOpen);
       setIsMobileNavOpen(!isMobileNavOpen);
     } else if (index === 1 && userId) {
-      null;
+      return null;
     } else {
       setIsOpen(true);
       setActiveIndex(index);
