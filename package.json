@@ -21,7 +21,6 @@
     "axios": "^1.6.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "firebase": "^10.12.2",
     "framer-motion": "^11.0.3",
     "gsap": "^3.12.5",
     "lodash.throttle": "^4.1.1",
