@@ -13,6 +13,6 @@ export const useFetchUser = () => {
   return useQuery({
     queryKey: ["user"],
     queryFn: fetchUserData,
-    staleTime: 1000 * 60 * 5,
+    staleTime: 1000 * 60 * 60 * 24, // Data is fresh for 24 hours
   });
 };
