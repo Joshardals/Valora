@@ -1,48 +1,34 @@
 "use client";
-import { currentUser } from "@/lib/actions/auth/auth.action";
-import { fetchUserRole } from "@/lib/actions/users/user.action";
-import { useEffect, useState } from "react";
 import { SideBar } from "./_components/SideBar";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useFetchRole } from "@/lib/hooks/userQueries";
 
 export default function AdminLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
+  const { isLoading, error } = useFetchRole();
   const router = useRouter();
 
   useEffect(() => {
-    const checkPermissions = async () => {
-      try {
-        const userId = await currentUser();
+    if (!isLoading && error) {
+      router.push("/"); // Redirect to homepage if not an admin.
+    }
+  }, [isLoading, error, router]);
 
-        const role = await fetchUserRole(userId!);
-        if (role !== "admin") {
-          setIsAdmin(false);
-          router.push("/");
-        } else {
-          setIsAdmin(true);
-        }
-      } catch (error: any) {
-        console.log(`Error fetching User... ${error.message}`);
-      }
-    };
-
-    checkPermissions();
-  }, [router]);
   return (
     <>
       <main className="bg-secondary text-primary min-h-[100svh]">
-        {isAdmin === null ? (
+        {isLoading ? (
           <p>Loading...</p>
-        ) : !isAdmin ? (
+        ) : error ? (
           <p>Access denied. You do not have permission to view this page.</p>
         ) : (
           <div className="flex space-x-[20rem]">
             <SideBar />
-            <div className="p-5">{children}</div>
+            <div className="p-5 flex-1">{children}</div>
           </div>
         )}
       </main>

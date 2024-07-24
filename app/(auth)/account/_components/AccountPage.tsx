@@ -1,7 +1,7 @@
 "use client";
 import Header from "@/components/shared/Header";
 import { logout } from "@/lib/actions/auth/auth.action";
-import { useFetchUser } from "@/lib/hooks/useEetchUser";
+import { useFetchUser } from "@/lib/hooks/userQueries";
 import {
   userActionInitialRender,
   userActionSideBarToggle,
@@ -11,12 +11,11 @@ import UserActionMobileSideBar from "@/components/ui/UserActionSideBar/Mobile/Us
 import { useRouter } from "next/navigation";
 
 export function AccountPage({ userId }: { userId: string }) {
-  const { data: user, isLoading, isFetched, error } = useFetchUser();
+  const { data: user, isLoading, error } = useFetchUser();
   const firstName = user?.name.split(" ")[0];
   const { isOpen, setIsOpen } = userActionSideBarToggle();
   const router = useRouter();
   const { setInitialRender } = userActionInitialRender();
-  console.log(user);
 
   const handleLogout = async () => {
     try {
