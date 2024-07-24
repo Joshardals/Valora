@@ -2,8 +2,8 @@
 import { currentUser } from "@/lib/actions/auth/auth.action";
 import { fetchUserRole } from "@/lib/actions/users/user.action";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { SideBar } from "./_components/SideBar";
+import { useRouter } from "next/navigation";
 
 export default function AdminLayout({
   children,
@@ -11,15 +11,12 @@ export default function AdminLayout({
   children: React.ReactNode;
 }>) {
   const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [user, setUser] = useState<string>();
   const router = useRouter();
 
   useEffect(() => {
     const checkPermissions = async () => {
       try {
         const userId = await currentUser();
-        setUser(userId);
 
         const role = await fetchUserRole(userId!);
         if (role !== "admin") {
@@ -30,8 +27,6 @@ export default function AdminLayout({
         }
       } catch (error: any) {
         console.log(`Error fetching User... ${error.message}`);
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -45,9 +40,9 @@ export default function AdminLayout({
         ) : !isAdmin ? (
           <p>Access denied. You do not have permission to view this page.</p>
         ) : (
-          <div>
+          <div className="flex space-x-[20rem]">
             <SideBar />
-            {children}
+            <div className="p-5">{children}</div>
           </div>
         )}
       </main>
