@@ -1,8 +1,7 @@
 "use client";
-import { fetchUserInfo, promoteToAdmin } from "@/lib/actions/users/user.action";
 import Header from "@/components/shared/Header";
 import { logout } from "@/lib/actions/auth/auth.action";
-import { useEffect, useState } from "react";
+import { useFetchUser } from "@/lib/hooks/useEetchUser";
 import {
   userActionInitialRender,
   userActionSideBarToggle,
@@ -12,11 +11,12 @@ import UserActionMobileSideBar from "@/components/ui/UserActionSideBar/Mobile/Us
 import { useRouter } from "next/navigation";
 
 export function AccountPage({ userId }: { userId: string }) {
-  const [firstName, setFirstName] = useState<String>();
+  const { data: user, isLoading, isFetched, error } = useFetchUser();
+  const firstName = user?.name.split(" ")[0];
   const { isOpen, setIsOpen } = userActionSideBarToggle();
-  const [loading, setLoading] = useState<boolean>(true);
   const router = useRouter();
   const { setInitialRender } = userActionInitialRender();
+  console.log(user);
 
   const handleLogout = async () => {
     try {
@@ -26,21 +26,6 @@ export function AccountPage({ userId }: { userId: string }) {
       console.error(`Error Logging Out: ${error.message}`);
     }
   };
-
-  useEffect(() => {
-    const getUserInfo = async () => {
-      try {
-        const user = await fetchUserInfo(userId);
-        setFirstName(user?.name.split(" ")[0]);
-      } catch (error: any) {
-        console.log(`Failed to fetch User Data: ${error.message}`);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getUserInfo();
-  }, [userId]);
 
   return (
     <div
@@ -56,8 +41,8 @@ export function AccountPage({ userId }: { userId: string }) {
       <UserActionMobileSideBar />
 
       <div className="bg-primary w-screen h-screen flex items-center pt-[4.7rem] px-12 max-md:px-5">
-        {loading ? (
-          "Loading..."
+        {isLoading ? (
+          <p>Loading...</p>
         ) : (
           <div className="w-full">
             <div className="space-y-4">
