@@ -64,6 +64,6 @@ export const footerLinks2 = [
 // Navigation Links for Admin Dashboard
 export const adminlinks = [
   { label: "Dashboard", href: "/admin" },
-  { label: "Products", href: "/admin/products" },
-  { label: "Orders", href: "/admin/orders" },
+  { label: "manage products", href: "/admin/products" },
+  { label: "manage orders", href: "/admin/orders" },
 ];

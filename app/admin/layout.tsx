@@ -1,10 +1,9 @@
 "use client";
 import { currentUser } from "@/lib/actions/auth/auth.action";
-import { Dashboard } from "./_components/Dashboard";
 import { fetchUserRole } from "@/lib/actions/users/user.action";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Header } from "./_components/Header";
+import { SideBar } from "./_components/SideBar";
 
 export default function AdminLayout({
   children,
@@ -47,7 +46,7 @@ export default function AdminLayout({
           <p>Access denied. You do not have permission to view this page.</p>
         ) : (
           <div>
-            <Header />
+            <SideBar />
             {children}
           </div>
         )}
