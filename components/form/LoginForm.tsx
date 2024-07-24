@@ -49,12 +49,12 @@ export default function LoginForm() {
       router.push("/account");
     } catch (error: any) {
       console.error(`Error Logging In: ${error.message}`);
+    } finally {
+      form.setValue("email", "");
+      form.setValue("password", "");
+
+      setLoading(false);
     }
-
-    form.setValue("email", "");
-    form.setValue("password", "");
-
-    setLoading(false);
   };
 
   return (

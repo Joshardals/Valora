@@ -1,6 +1,6 @@
 import { account } from "@/lib/appwrite/appwrite";
 import { ID } from "appwrite";
-import { createUserInfo } from "./user.action";
+import { createUserInfo } from "../users/user.action";
 
 export const createUser = async ({
   email,

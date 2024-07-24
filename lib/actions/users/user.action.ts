@@ -23,6 +23,7 @@ export const createUserInfo = async ({
         email,
         name,
         userId,
+        role: "user",
       }
     );
 
@@ -44,5 +45,35 @@ export const fetchUserInfo = async (userId: string) => {
     return response.documents[0];
   } catch (error: any) {
     console.log(`Failed to fetch user info. ${error.message}`);
+  }
+};
+
+export const fetchUserRole = async (userId: string) => {
+  try {
+    const user = await fetchUserInfo(userId);
+    const userRole = user?.role;
+
+    return userRole;
+  } catch (error: any) {
+    console.log(`Failed to fetch user role: ${error.message}`);
+  }
+};
+
+// Promote any User To Admin using their Id
+export const promoteToAdmin = async (userId: string) => {
+  try {
+    const user = await fetchUserInfo(userId);
+    const userProfileId = user?.$id;
+
+    await databases.updateDocument(
+      process.env.DATABASE_ID as string,
+      process.env.USERS_ID as string,
+      userProfileId!,
+      { role: "admin" }
+    );
+
+    console.log("User promoted to admin successfully");
+  } catch (error: any) {
+    console.log(`Failed to promote user: ${error.message}`);
   }
 };

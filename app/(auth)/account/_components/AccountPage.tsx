@@ -1,4 +1,5 @@
 "use client";
+import { fetchUserInfo } from "@/lib/actions/users/user.action";
 import Header from "@/components/shared/Header";
 import { logout } from "@/lib/actions/auth/auth.action";
 import { useEffect, useState } from "react";
@@ -9,7 +10,6 @@ import {
 import UserActionsSideBar from "@/components/shared/UserActionsSideBar";
 import UserActionMobileSideBar from "@/components/ui/UserActionSideBar/Mobile/UserActionMobileSideBar";
 import { useRouter } from "next/navigation";
-import { fetchUserInfo } from "@/lib/actions/auth/user.action";
 
 export function AccountPage({ userId }: { userId: string }) {
   const [firstName, setFirstName] = useState<String>();

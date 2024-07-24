@@ -58,14 +58,14 @@ export default function RegisterForm() {
       router.push("/account");
     } catch (error: any) {
       console.error(`Error Creating User: ${error.message}`);
+    } finally {
+      form.setValue("firstName", "");
+      form.setValue("lastName", "");
+      form.setValue("email", "");
+      form.setValue("password", "");
+
+      setLoading(false);
     }
-
-    form.setValue("firstName", "");
-    form.setValue("lastName", "");
-    form.setValue("email", "");
-    form.setValue("password", "");
-
-    setLoading(false);
   };
 
   return (
