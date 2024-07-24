@@ -23,8 +23,8 @@ export const createUser = async ({
 
 export const currentUser = async () => {
   try {
-    const user = (await account.get()).$id;
-    return user;
+    const userId = (await account.get()).$id;
+    return userId;
   } catch (error: any) {
     console.log(`Failed to fetch user account: ${error.message}`);
   }

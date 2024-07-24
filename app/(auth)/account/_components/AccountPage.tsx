@@ -1,5 +1,5 @@
 "use client";
-import { fetchUserInfo } from "@/lib/actions/users/user.action";
+import { fetchUserInfo, promoteToAdmin } from "@/lib/actions/users/user.action";
 import Header from "@/components/shared/Header";
 import { logout } from "@/lib/actions/auth/auth.action";
 import { useEffect, useState } from "react";

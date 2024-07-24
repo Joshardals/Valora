@@ -11,7 +11,7 @@ export default function UserAccountPage() {
   const router = useRouter();
 
   useEffect(() => {
-    const getUser = async () => {
+    const fetchCurrentUser = async () => {
       try {
         const user = await currentUser();
         if (!user) {
@@ -26,7 +26,7 @@ export default function UserAccountPage() {
       }
     };
 
-    getUser();
+    fetchCurrentUser();
   }, [router]);
 
   return (
