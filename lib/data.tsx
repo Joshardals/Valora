@@ -60,3 +60,10 @@ export const footerLinks2 = [
   { label: "facebook", href: "#" },
   { label: "instagram", href: "#" },
 ];
+
+// Navigation Links for Admin Dashboard
+export const adminlinks = [
+  { label: "Dashboard", href: "/admin" },
+  { label: "Products", href: "/admin/products" },
+  { label: "Orders", href: "/admin/orders" },
+];
