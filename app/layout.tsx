@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${kanit.variable} ${playfair.variable} ${nunito.variable} select-none`}
+      className={`${kanit.variable} ${playfair.variable} ${nunito.variable}`}
     >
       <body>
         <Provider>{children}</Provider>
