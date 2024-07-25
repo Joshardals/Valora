@@ -1,8 +1,8 @@
 "use client";
 import { SideBar } from "./_components/SideBar";
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { useFetchRole } from "@/lib/hooks/userQueries";
+import { useRouter } from "next/navigation";
 
 export default function AdminLayout({
   children,

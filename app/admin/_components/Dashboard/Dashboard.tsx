@@ -1,6 +1,7 @@
 "use client";
+import { RecentActivity } from "./Activity/RecentActivity";
+import { Stats } from "./Stats/Stats";
 import { useFetchUser } from "@/lib/hooks/userQueries";
-import { Stats } from "./Stats";
 
 export function Dashboard() {
   const { data: user, isLoading, error } = useFetchUser();
@@ -15,6 +16,7 @@ export function Dashboard() {
           <h1 className="font-semibold text-2xl">Welcome, {firstName}!</h1>
         )}
         <Stats />
+        <RecentActivity />
       </div>
     </>
   );

@@ -9,7 +9,7 @@ import {
 
 export default function StatsCard() {
   return (
-    <Card className="text-primary">
+    <Card className="text-primary border-primary border-2">
       <CardHeader>
         <CardTitle className="text-md font-bold">Total Users</CardTitle>
       </CardHeader>
@@ -17,7 +17,7 @@ export default function StatsCard() {
         <h2 className="text-3xl font-bold">500</h2>
       </CardContent>
       <CardFooter>
-        <p>+20.01% from last month</p>
+        <p className="text-primary/70">+20.01% from last month</p>
       </CardFooter>
     </Card>
   );
