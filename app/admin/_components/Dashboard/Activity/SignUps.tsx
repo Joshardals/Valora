@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function SignUps() {
   return (
-    <div className="border-2 border-primary rounded-lg p-5 space-y-4">
+    <div className="border-2 border-primary rounded-lg p-5 space-y-4 bg-white">
       <div>
         <p className="font-bold">Recent Sign-ups</p>
         <p className="text-primary/70">You had 265 sign-ups this month</p>

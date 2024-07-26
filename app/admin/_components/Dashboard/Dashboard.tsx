@@ -9,7 +9,7 @@ export function Dashboard() {
 
   return (
     <>
-      <div className="space-y-14">
+      <div className="space-y-5 lg:space-y-14">
         {isLoading ? (
           <p>Loading...</p>
         ) : (

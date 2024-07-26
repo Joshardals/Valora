@@ -29,9 +29,9 @@ export default function AdminLayout({
         ) : (
           <>
             <Header />
-            <div className="flex md:space-x-[20rem]">
+            <div className="flex lg:space-x-[20rem]">
               <SideBar />
-              <div className="p-5 flex-1">{children}</div>
+              <div className="p-5 flex-1 max-lg:mt-[4.7rem]">{children}</div>
             </div>
           </>
         )}
