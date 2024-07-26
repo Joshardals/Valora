@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import {
+  isAdminMobileState,
   IsMobileState,
   MobileNavToggleState,
   UserActionActiveIndexState,
@@ -42,3 +43,10 @@ export const userActionSideBarToggle = create<UserActionSideBarState>(
     setIsOpen: (isOpen) => set(() => ({ isOpen })),
   })
 );
+
+// Admin Store
+// Store for the Admin MObile Sidebar
+export const adminSidebarToggle = create<isAdminMobileState>((set) => ({
+  adminMobileOpen: null,
+  setAdminMobileOpen: (adminMobileOpen) => set(() => ({ adminMobileOpen })),
+}));

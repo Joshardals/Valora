@@ -38,3 +38,11 @@ export interface UserActionSideBarState {
   isOpen: null | boolean;
   setIsOpen: (isOpen: UserActionSideBarState["isOpen"]) => void;
 }
+
+// Admin Typings
+
+// Typings for the Sidebar for Mobile Devices in Admin
+export interface isAdminMobileState {
+  adminMobileOpen: boolean | null;
+  setAdminMobileOpen: (mobile: isAdminMobileState["adminMobileOpen"]) => void;
+}

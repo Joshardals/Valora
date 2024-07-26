@@ -1,21 +1,16 @@
 "use client";
 
-import {
-  mobileNavToggle,
-  userActionMobileSideBarToggle,
-} from "@/lib/store/store";
+import { adminSidebarToggle } from "@/lib/store/store";
 import { MouseEvent } from "react";
 
 export default function NavToggle({ background }: { background: string }) {
-  const { isMobileNavOpen, setIsMobileNavOpen } = mobileNavToggle();
-  const { isMobileOpen, setIsMobileOpen } = userActionMobileSideBarToggle();
+  const { adminMobileOpen, setAdminMobileOpen } = adminSidebarToggle();
 
   const handleClick = (
     e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
   ) => {
     e.preventDefault();
-    setIsMobileNavOpen(!isMobileNavOpen);
-    setIsMobileOpen(!isMobileOpen);
+    setAdminMobileOpen(!adminMobileOpen);
   };
   return (
     <button
@@ -24,8 +19,8 @@ export default function NavToggle({ background }: { background: string }) {
       onClick={handleClick}
       aria-label="Toggle Navigation"
     >
-      <span className={` ${background} ${isMobileNavOpen && "active"}`}></span>
-      <span className={` ${background} ${isMobileNavOpen && "active"}`}></span>
+      <span className={` ${background} ${adminMobileOpen && "active"}`}></span>
+      <span className={` ${background} ${adminMobileOpen && "active"}`}></span>
     </button>
   );
 }

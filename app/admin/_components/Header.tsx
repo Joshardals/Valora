@@ -3,9 +3,11 @@ import NavToggle from "./Dashboard/NavToggle";
 
 export function Header() {
   return (
-    <header className="fixed bg-primary w-full text-secondary lg:hidden p-5 flex items-center justify-between">
+    <header className="fixed z-20 bg-primary w-full text-secondary lg:hidden p-5 flex items-center justify-between">
       <Logo />
-      <NavToggle background="bg-secondary" />
+      <div className="pt-1 max-h-5">
+        <NavToggle background="bg-secondary" />
+      </div>
     </header>
   );
 }
