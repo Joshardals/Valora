@@ -1,4 +1,5 @@
 "use client";
+import { Header } from "./_components/Header";
 import { SideBar } from "./_components/SideBar";
 import { useEffect } from "react";
 import { useFetchRole } from "@/lib/hooks/userQueries";
@@ -26,10 +27,13 @@ export default function AdminLayout({
         ) : error ? (
           <p>Access denied. You do not have permission to view this page.</p>
         ) : (
-          <div className="flex space-x-[20rem]">
-            <SideBar />
-            <div className="p-5 flex-1">{children}</div>
-          </div>
+          <>
+            <Header />
+            <div className="flex md:space-x-[20rem]">
+              <SideBar />
+              <div className="p-5 flex-1">{children}</div>
+            </div>
+          </>
         )}
       </main>
     </>

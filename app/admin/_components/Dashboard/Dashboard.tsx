@@ -13,7 +13,9 @@ export function Dashboard() {
         {isLoading ? (
           <p>Loading...</p>
         ) : (
-          <h1 className="font-semibold text-2xl">Welcome, {firstName}!</h1>
+          <h1 className="font-semibold text-2xl max-md:text-center">
+            Welcome, {firstName}!
+          </h1>
         )}
         <Stats />
         <RecentActivity />
