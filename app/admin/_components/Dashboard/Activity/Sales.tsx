@@ -1,4 +1,3 @@
-import useTruncateLength from "@/app/admin/_hooks/useTruncate";
 import { truncateString } from "@/lib/utils";
 import Image from "next/image";
 
@@ -20,9 +19,7 @@ export function Sales() {
 }
 
 export function SalesCard() {
-  const email = "olivia.martin@email.comssssssssssssssssssssssssssssss";
-  const truncateLength = useTruncateLength();
-  const truncatedEmail = truncateString(email, truncateLength);
+  const email = "olivia.martin@email.com";
   return (
     <div className="flex justify-start items-center gap-4">
       <div className="rounded-full">
@@ -36,7 +33,7 @@ export function SalesCard() {
       </div>
       <div className="flex-1">
         <p className="font-bold">Olivia Martin</p>
-        <p className="text-primary/70">{truncatedEmail}</p>
+        <p className="text-primary/70">{email}</p>
       </div>
       <h2 className="text-xl font-bold">+$1,990</h2>
     </div>

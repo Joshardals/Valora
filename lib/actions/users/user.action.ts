@@ -1,6 +1,6 @@
 "use server";
-
 import { databases } from "@/lib/appwrite/appwrite.config";
+import { getCurrentUser } from "../auth/auth.action";
 import { ID, Query } from "node-appwrite";
 
 interface UserInfoParams {
@@ -9,71 +9,61 @@ interface UserInfoParams {
   userId: string;
 }
 
-export const createUserInfo = async ({
-  email,
-  name,
-  userId,
-}: UserInfoParams) => {
+const { DATABASE_ID, USERS_ID } = process.env;
+
+export const createUserInfo = async (data: UserInfoParams) => {
   try {
     await databases.createDocument(
-      process.env.DATABASE_ID as string,
-      process.env.USERS_ID as string,
+      DATABASE_ID as string,
+      USERS_ID as string,
       ID.unique(),
       {
-        email,
-        name,
-        userId,
+        email: data.email,
+        name: data.name,
+        userId: data.userId,
         role: "user",
       }
     );
 
-    console.log(`User document successfully created in the db`);
+    console.log("User created successfully in the database");
+    return { success: true };
   } catch (error: any) {
     console.log(`Failed to create user document in the db: ${error.message}`);
+    return { success: false, msg: error.message };
   }
 };
 
-export const fetchUserInfo = async (userId: string) => {
+// Fetch Current User Info
+export const fetchUserInfo = async () => {
   try {
-    const response = await databases.listDocuments(
-      process.env.DATABASE_ID as string,
-      process.env.USERS_ID as string,
+    const user = await getCurrentUser();
+    const { $id: userId } = user;
+    const data = await databases.listDocuments(
+      DATABASE_ID as string,
+      USERS_ID as string,
       [Query.equal("userId", userId)]
     );
 
-    console.log("User information", response.documents[0]);
-    return response.documents[0];
+    return { success: true, userInfo: data.documents[0] };
   } catch (error: any) {
     console.log(`Failed to fetch user info. ${error.message}`);
+    return { success: false, msg: error.message };
   }
 };
 
-export const fetchUserRole = async (userId: string) => {
+// Fetch Current User Role
+export const fetchUserRole = async () => {
   try {
-    const user = await fetchUserInfo(userId);
-    const userRole = user?.role;
+    const user = await fetchUserInfo();
+    const role = user?.userInfo?.role; // Checking for the current User Role
 
-    return userRole;
+    if (role === "admin") {
+      return { success: true, admin: true };
+    }
+
+    return { success: false };
   } catch (error: any) {
     console.log(`Failed to fetch user role: ${error.message}`);
-  }
-};
-
-// Promote any User To Admin using their Id
-export const promoteToAdmin = async (userId: string) => {
-  try {
-    const user = await fetchUserInfo(userId);
-    const userProfileId = user?.$id;
-
-    await databases.updateDocument(
-      process.env.DATABASE_ID as string,
-      process.env.USERS_ID as string,
-      userProfileId!,
-      { role: "admin" }
-    );
-
-    console.log("User promoted to admin successfully");
-  } catch (error: any) {
-    console.log(`Failed to promote user: ${error.message}`);
+    return { success: false, msg: error.message };
   }
 };

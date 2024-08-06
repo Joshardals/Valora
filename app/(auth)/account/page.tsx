@@ -1,38 +1,12 @@
-"use client";
+import { getCurrentUser } from "@/lib/actions/auth/auth.action";
 import { AccountPage } from "./_components/AccountPage";
-import { currentUser } from "@/lib/actions/auth/auth.action";
-import { Loading } from "./_components/Loading";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { fetchUserInfo } from "@/lib/actions/users/user.action";
+import { redirect } from "next/navigation";
 
-export default function UserAccountPage() {
-  const [authUser, setAuthUser] = useState<boolean>(false);
-  const [userId, setUserId] = useState<string>();
-  const router = useRouter();
+export default async function UserAccountPage() {
+  const user = await getCurrentUser();
+  const userInfo = await fetchUserInfo();
+  if (!user) redirect("/");
 
-  useEffect(() => {
-    const fetchCurrentUser = async () => {
-      try {
-        const user = await currentUser();
-        if (!user) {
-          router.push("/");
-          setAuthUser(false);
-        } else {
-          setAuthUser(true);
-          setUserId(user);
-        }
-      } catch (error: any) {
-        console.log(`Error fetching User... ${error.message}`);
-      }
-    };
-
-    fetchCurrentUser();
-  }, [router]);
-
-  return (
-    <>
-      {authUser ? null : <Loading />}
-      {authUser ? <AccountPage userId={userId!} /> : null}
-    </>
-  );
+  return <AccountPage {...userInfo?.userInfo} />;
 }

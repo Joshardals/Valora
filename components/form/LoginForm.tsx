@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "../ui/input";
 import Link from "next/link";
-import { loginUser } from "@/lib/actions/auth/auth.action";
+import { signInUser } from "@/lib/actions/auth/auth.action";
 import { SignInValidation } from "@/lib/validations/form";
 import { SignInValidationType } from "@/typings/form";
 import { useForm } from "react-hook-form";
@@ -23,6 +23,7 @@ import { valueWithoutSpaces } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function LoginForm() {
+  const [error, setError] = useState<string | null>();
   const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
   const { setActiveIndex } = userActionActiveIndex();
@@ -38,9 +39,20 @@ export default function LoginForm() {
   });
 
   const onSubmit = async (values: SignInValidationType) => {
-    setLoading(true);
     try {
-      await loginUser({ email: values.email, password: values.password });
+      setError(null);
+      setLoading(true);
+
+      // Login the User
+      const result = await signInUser({
+        email: values.email,
+        password: values.password,
+      });
+
+      if (!result.success) {
+        setError(result.msg);
+        return;
+      }
 
       setActiveIndex(null);
       setIsMobileOpen(null);
@@ -48,11 +60,8 @@ export default function LoginForm() {
 
       router.push("/account");
     } catch (error: any) {
-      console.error(`Error Logging In: ${error.message}`);
+      console.log(`An unexpected error occured: ${error.message}`);
     } finally {
-      form.setValue("email", "");
-      form.setValue("password", "");
-
       setLoading(false);
     }
   };
@@ -115,6 +124,8 @@ export default function LoginForm() {
             </FormItem>
           )}
         />
+
+        {error && <p className="text-red-500 text-xs font-bold">{error}</p>}
 
         <Button disabled={loading}>
           {loading ? "Logging in..." : "Login"}

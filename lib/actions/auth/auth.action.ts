@@ -1,55 +1,93 @@
-import { account } from "@/lib/appwrite/appwrite";
-import { ID } from "appwrite";
+"use server";
+import { ID } from "node-appwrite";
+import { cookies } from "next/headers";
+import {
+  createAdminClient,
+  createSessionClient,
+} from "@/lib/appwrite/appwrite.config";
+import { AuthProps } from "@/typings/action";
+import { redirect } from "next/navigation";
 import { createUserInfo } from "../users/user.action";
 
-export const createUser = async ({
-  email,
-  name,
-  password,
-}: {
-  email: string;
-  name: string;
-  password: string;
-}) => {
+export async function getCurrentUser() {
   try {
-    const user = await account.create(ID.unique(), email, password, name);
-
-    await createUserInfo({ email, name, userId: user.$id });
-    console.log("User created successfully", user);
+    const { account } = await createSessionClient();
+    return await account.get();
   } catch (error: any) {
-    console.log(`Failed to create user: ${error.message}`);
+    return error.message;
   }
-};
+}
 
-export const currentUser = async () => {
+export async function signInUser(data: AuthProps) {
   try {
-    const userId = (await account.get()).$id;
-    return userId;
-  } catch (error: any) {
-    console.log(`Failed to fetch user account: ${error.message}`);
-  }
-};
+    const { account } = await createAdminClient();
+    const session = await account.createEmailPasswordSession(
+      data.email!,
+      data.password!
+    );
 
-export const loginUser = async ({
-  email,
-  password,
-}: {
-  email: string;
-  password: string;
-}) => {
-  try {
-    await account.createEmailPasswordSession(email, password);
-    console.log("user logged in successfully");
-  } catch (error: any) {
-    console.log(`Error logging in user: ${error.message}`);
-  }
-};
+    cookies().set("userSession", session.secret, {
+      path: "/",
+      httpOnly: true,
+      sameSite: "strict",
+      secure: true,
+    });
 
-export const logout = async () => {
-  try {
-    await account.deleteSessions();
-    console.log("User Sign-Out Successful");
+    // If Successful
+    return { success: true };
   } catch (error: any) {
-    console.log(`Failed to Sign-out user`);
+    return { success: false, msg: error.message };
   }
-};
+}
+
+// Creating A User
+export async function signUpUser(data: AuthProps) {
+  try {
+    const { account } = await createAdminClient();
+    const response = await account.create(
+      ID.unique(),
+      data.email!,
+      data.password!,
+      `${data.firstName! + " " + data.lastName!}`
+    );
+    const session = await account.createEmailPasswordSession(
+      data.email!,
+      data.password!
+    );
+
+    const { $id: userId } = response;
+    console.log(response);
+    cookies().set("userSession", session.secret, {
+      path: "/",
+      httpOnly: true,
+      sameSite: "strict",
+      secure: true,
+    });
+
+    // Creating a User collection in the database.
+    await createUserInfo({
+      email: data.email!,
+      name: `${data.firstName} ${data.lastName}`,
+      userId,
+    });
+
+    // If Successful
+    return { success: true };
+  } catch (error: any) {
+    return { success: false, msg: error.message };
+  }
+}
+
+// Sign Out User
+export async function signOutUser() {
+  try {
+    const { account } = await createSessionClient();
+
+    cookies().delete("userSession");
+    await account.deleteSession("current");
+  } catch (error: any) {
+    return error.message;
+  }
+
+  redirect("/");
+}

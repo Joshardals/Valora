@@ -1,7 +1,6 @@
 "use client";
 import { Button } from "../ui/button";
 import { ChangeEvent, useState } from "react";
-import { createUser, loginUser } from "@/lib/actions/auth/auth.action";
 import { firstCaseUpper, valueWithoutSpaces } from "@/lib/utils";
 import {
   Form,
@@ -13,11 +12,13 @@ import {
 import { Input } from "../ui/input";
 import { RegisterValidation } from "@/lib/validations/form";
 import { RegisterValidationType } from "@/typings/form";
+import { signUpUser } from "@/lib/actions/auth/auth.action";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function RegisterForm() {
+  const [error, setError] = useState<string | null>();
   const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
   const form = useForm<RegisterValidationType>({
@@ -41,29 +42,23 @@ export default function RegisterForm() {
       setLoading(true);
 
       // User Registration
-      await createUser({
+      const result = await signUpUser({
         email: values.email,
         password: values.password,
-        name: `${values.firstName} ${values.lastName}`,
+        firstName: values.firstName,
+        lastName: values.lastName,
       });
 
-      // Create a User Document in the DB
-
-      // Login the User
-      await loginUser({
-        email: values.email,
-        password: values.password,
-      });
+      if (!result.success) {
+        setError(result.msg);
+        return;
+      }
 
       router.push("/account");
     } catch (error: any) {
-      console.error(`Error Creating User: ${error.message}`);
+      console.log(`Error signing up: ${error.message}`);
+      setError("An unexpected error occurred. Please try again.");
     } finally {
-      form.setValue("firstName", "");
-      form.setValue("lastName", "");
-      form.setValue("email", "");
-      form.setValue("password", "");
-
       setLoading(false);
     }
   };

@@ -1,41 +1,32 @@
-"use client";
+import { fetchUserRole } from "@/lib/actions/users/user.action";
 import { Header } from "./_components/Header";
 import { MobileSideBar, SideBar } from "./_components/SideBar";
-import { useEffect } from "react";
-import { useFetchRole } from "@/lib/hooks/userQueries";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
+import { getCurrentUser } from "@/lib/actions/auth/auth.action";
 
-export default function AdminLayout({
+export default async function AdminLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { isLoading, error } = useFetchRole();
-  const router = useRouter();
+  const role = await fetchUserRole();
+  const currentUser = await getCurrentUser();
 
-  useEffect(() => {
-    if (!isLoading && error) {
-      router.push("/"); // Redirect to homepage if not an admin.
-    }
-  }, [isLoading, error, router]);
+  if (!role.admin && currentUser) {
+    redirect("/account");
+  } else if (!role.admin) {
+    redirect("/");
+  }
 
   return (
     <>
       <main className="bg-secondary text-primary min-h-[100svh]">
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : error ? (
-          <p>Access denied. You do not have permission to view this page.</p>
-        ) : (
-          <>
-            <Header />
-            <div className="flex lg:space-x-[20rem]">
-              <SideBar />
-              <MobileSideBar />
-              <div className="p-5 flex-1 max-lg:mt-[4.7rem]">{children}</div>
-            </div>
-          </>
-        )}
+        <Header />
+        <div className="flex lg:space-x-[20rem]">
+          <SideBar />
+          <MobileSideBar />
+          <div className="p-5 flex-1 max-lg:mt-[4.7rem]">{children}</div>
+        </div>
       </main>
     </>
   );

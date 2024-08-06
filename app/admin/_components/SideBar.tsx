@@ -1,3 +1,4 @@
+"use client";
 import { AdminLinks } from "@/components/ui/Header/NavLinks";
 import { adminSidebarToggle } from "@/lib/store/store";
 import Logo from "@/components/ui/Header/Logo";
@@ -28,6 +29,7 @@ export function MobileSideBar() {
       document.body.style.overflow = "auto";
     };
   }, [adminMobileOpen]);
+
   return (
     <div
       className={`fixed top-0 left-0 min-h-screen bg-primary text-secondary lg:hidden p-5 w-full
@@ -35,7 +37,11 @@ export function MobileSideBar() {
       adminMobileOpen ? "-translate-x-0" : "translate-x-full"
     }`}
     >
-      <div>Hey there</div>
+      <div
+        className={`${adminMobileOpen ? "fadeIn" : "opacity-0"} mt-[4.7rem]`}
+      >
+        <AdminLinks />
+      </div>
     </div>
   );
 }

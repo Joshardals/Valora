@@ -1,13 +1,26 @@
+import { signOutUser } from "@/lib/actions/auth/auth.action";
 import { adminlinks, footerLinks1, footerLinks2, links } from "@/lib/data";
+import { adminSidebarToggle } from "@/lib/store/store";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 // Admin Links Component
 export function AdminLinks() {
+  const { adminMobileOpen, setAdminMobileOpen } = adminSidebarToggle();
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    try {
+      await signOutUser();
+    } catch (error: any) {
+      console.error(`Error Logging Out: ${error.message}`);
+    }
+  };
+
   return (
     <nav>
-      <ul className="space-y-4 px-5">
+      <ul className={`space-y-4 px-5 ${adminMobileOpen && "px-0"}`}>
         {adminlinks?.map((link) => {
           const { label, href } = link;
           return (
@@ -17,6 +30,11 @@ export function AdminLinks() {
                 pathname == href && "bg-secondary text-primary"
               } py-2 px-5 hover:bg-secondary hover:text-primary
               transition-all duration-300 ease-linear rounded-md`}
+              onClick={() => {
+                if (adminMobileOpen) {
+                  setAdminMobileOpen(false);
+                }
+              }}
             >
               <Link href={href} className={`uppercase font-light`}>
                 <p> {label}</p>
@@ -24,6 +42,12 @@ export function AdminLinks() {
             </li>
           );
         })}
+        <li
+          className="px-5 cursor-pointer w-[fit-content] underline"
+          onClick={handleLogout}
+        >
+          Logout
+        </li>
       </ul>
     </nav>
   );

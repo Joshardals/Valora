@@ -7,17 +7,25 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-export default function StatsCard() {
+export default function StatsCard({
+  title,
+  content,
+  footer,
+}: {
+  title?: string;
+  content?: any;
+  footer?: string;
+}) {
   return (
     <Card className="text-primary border-primary border-2">
       <CardHeader>
-        <CardTitle className="text-md font-bold">Total Users</CardTitle>
+        <CardTitle className="text-md font-bold capitalize">{title}</CardTitle>
       </CardHeader>
       <CardContent>
-        <h2 className="text-3xl font-bold">500</h2>
+        <h2 className="text-3xl font-bold">{content}</h2>
       </CardContent>
       <CardFooter>
-        <p className="text-primary/70">+20.01% from last month</p>
+        <p className="text-primary/70">{footer}</p>
       </CardFooter>
     </Card>
   );

@@ -9,7 +9,7 @@ import {
 } from "@/lib/store/store";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-export default function RootLayout({
+export default function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;

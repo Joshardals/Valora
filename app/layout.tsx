@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { kanit, playfair, nunito } from "./fonts";
 import "animate.css";
 import "./globals.css";
-import Provider from "./_provider";
 
 export const metadata: Metadata = {
   title: "VALORA | Official Store - Shop Online Now",
@@ -27,9 +26,7 @@ export default function RootLayout({
       lang="en"
       className={`${kanit.variable} ${playfair.variable} ${nunito.variable}`}
     >
-      <body>
-        <Provider>{children}</Provider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

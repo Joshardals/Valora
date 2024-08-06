@@ -1,4 +1,4 @@
-import { currentUser } from "@/lib/actions/auth/auth.action";
+import { getCurrentUser } from "@/lib/actions/auth/auth.action";
 import { IconItems } from "@/lib/data";
 import {
   mobileNavToggle,
@@ -6,41 +6,32 @@ import {
   userActionMobileSideBarToggle,
   userActionSideBarToggle,
 } from "@/lib/store/store";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 
 export default function SecondSection() {
   const items = IconItems();
-  const router = useRouter();
   const { setActiveIndex } = userActionActiveIndex();
   const { setIsMobileNavOpen } = mobileNavToggle();
   const { setIsMobileOpen } = userActionMobileSideBarToggle();
   const { setIsOpen } = userActionSideBarToggle();
-  const [userId, setUserId] = useState<string>();
 
-  // Trying to get the current Logged In user
-  useEffect(() => {
-    const getUser = async () => {
-      const user = await currentUser();
-      setUserId(user);
-    };
+  const handleClick = async (index: number) => {
+    try {
+      const user = await getCurrentUser();
+      setIsMobileOpen(false);
+      setIsMobileNavOpen(false);
 
-    getUser();
-  }, [router]);
-
-  const handleClick = (index: number) => {
-    setIsMobileOpen(false);
-    setIsMobileNavOpen(false);
-
-    setTimeout(() => {
-      if (index === 1 && userId) {
-        null;
-      } else {
-        setIsOpen(true);
-        setIsOpen(true);
-        setActiveIndex(index);
-      }
-    }, 700);
+      setTimeout(() => {
+        if (index === 1 && user) {
+          null;
+        } else {
+          setIsOpen(true);
+          setIsOpen(true);
+          setActiveIndex(index);
+        }
+      }, 700);
+    } catch (error: any) {
+      console.log(`Error: ${error.message}`);
+    }
   };
   return (
     <section className=" py-16">
