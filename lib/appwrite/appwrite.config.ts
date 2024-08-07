@@ -1,4 +1,4 @@
-import { Client, Account, Databases } from "node-appwrite";
+import { Client, Account, Databases, Storage } from "node-appwrite";
 import { cookies } from "next/headers";
 
 export async function createSessionClient() {
@@ -45,3 +45,4 @@ const client = new Client()
   .setKey(NEXT_APPWRITE_KEY as string);
 
 export const databases = new Databases(client);
+export const storage = new Storage(client);

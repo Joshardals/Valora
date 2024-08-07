@@ -1,10 +1,20 @@
 import {
+  ProductValidationType,
   RegisterValidationType,
   SignInValidationType,
   WaitListValidationType,
 } from "@/typings/form";
 import * as z from "zod";
 
+// Product Validation
+export const ProductValidation: z.ZodType<ProductValidationType> = z.object({
+  name: z.string().min(1, "Name is required"),
+  price: z.number().positive("Price must be a positive number"),
+  description: z.string().optional(),
+  imageUrl: z.string().url("Image URL must be a valid URL").optional(),
+});
+
+// Auth Validations
 export const RegisterValidation: z.ZodType<RegisterValidationType> = z.object({
   firstName: z
     .string()

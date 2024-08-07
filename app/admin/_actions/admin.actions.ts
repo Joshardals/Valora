@@ -1,10 +1,44 @@
 "use server";
-import { databases } from "@/lib/appwrite/appwrite.config";
+import { databases, storage } from "@/lib/appwrite/appwrite.config";
+import { getCurrentUser } from "@/lib/actions/auth/auth.action";
 import { ID, Query } from "node-appwrite";
 
-const { DATABASE_ID, USERS_ID } = process.env;
+const { DATABASE_ID, USERS_ID, PRODUCTS_ID, BUCKET_ID } = process.env;
 
-// Fetch Current User Info
+interface ProductsParams {
+  name: string;
+  price: number;
+  description?: string;
+  image?: string;
+}
+
+// Create Products
+export const createProducts = async (data: ProductsParams) => {
+  try {
+    const user = await getCurrentUser();
+    const { $id: userId } = user;
+
+    await databases.createDocument(
+      DATABASE_ID as string,
+      PRODUCTS_ID as string,
+      ID.unique(),
+      {
+        name: data.name,
+        price: data.price,
+        description: data.description,
+        image: data.image,
+        userId,
+      }
+    );
+    console.log("Products created in the document.");
+    return { success: true };
+  } catch (error: any) {
+    console.log(`Error Creating Products: ${error.message}`);
+    return { success: false, msg: error.message };
+  }
+};
+
+// Fetch Total Users
 export const fetchTotalUsers = async () => {
   try {
     const data = await databases.listDocuments(
@@ -19,6 +53,7 @@ export const fetchTotalUsers = async () => {
   }
 };
 
+// Fetch Recent Signups
 export const fetchRecentSignups = async () => {
   try {
     const data = await databases.listDocuments(
@@ -30,6 +65,40 @@ export const fetchRecentSignups = async () => {
     return { success: true, recentSignups: data.documents, total: data.total };
   } catch (error: any) {
     console.log(`Failed to fetch user info. ${error.message}`);
+    return { success: false, msg: error.message };
+  }
+};
+
+// Upload product image to the PRODUCTS Storage Bucket Appwrite
+export const uploadProductImage = async (formData: FormData) => {
+  try {
+    const file = formData.get("file") as File;
+    if (!file) throw new Error("No file found in FormData");
+
+    const result = await storage.createFile(
+      BUCKET_ID as string,
+      ID.unique(),
+      file
+    );
+
+    return { success: true, fileId: result.$id };
+  } catch (error: any) {
+    console.log(`Error Uploading Product Image: ${error.message}`);
+    return { success: false, msg: error.message };
+  }
+};
+
+export const getProductImage = async (fileId: string) => {
+  try {
+    const result = await storage.getFileView(BUCKET_ID as string, fileId);
+    const arrayBuffer = await result.arrayBuffer();
+    const base64 = arrayBufferToBase64(arrayBuffer);
+    console.log(result);
+    // return { success: true, result };
+
+    return result;
+  } catch (error: any) {
+    console.log(`Error fetching product image`);
     return { success: false, msg: error.message };
   }
 };

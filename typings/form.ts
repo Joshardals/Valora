@@ -1,3 +1,10 @@
+export interface ProductValidationType {
+  name: string;
+  price: number;
+  description?: string;
+  image?: string;
+}
+
 export interface RegisterValidationType {
   firstName: string;
   lastName: string;
@@ -11,5 +18,5 @@ export interface SignInValidationType {
 }
 
 export interface WaitListValidationType {
-  email: string; 
+  email: string;
 }
