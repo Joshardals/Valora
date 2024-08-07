@@ -4,8 +4,10 @@ import { fetchUserInfo } from "@/lib/actions/users/user.action";
 import { redirect } from "next/navigation";
 
 export default async function UserAccountPage() {
-  const user = await getCurrentUser();
-  const userInfo = await fetchUserInfo();
+  const [user, userInfo] = await Promise.all([
+    await getCurrentUser(),
+    await fetchUserInfo(),
+  ]);
   if (!user) redirect("/");
 
   return <AccountPage {...userInfo?.userInfo} />;

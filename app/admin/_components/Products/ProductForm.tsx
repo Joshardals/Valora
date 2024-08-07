@@ -1,22 +1,21 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { FaSpinner } from "react-icons/fa6";
 import { Form } from "@/components/ui/form";
-import { FormInput } from "./FormInput";
+import { ButtonInput, FormInput } from "./FormInput";
 import { ProductValidation } from "@/lib/validations/form";
 import { ProductValidationType } from "@/typings/form";
 import {
   createProducts,
   getProductImage,
   uploadProductImage,
-} from "../../_actions/admin.actions";
+} from "../../_actions/product.actions";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function ProductForm() {
   const ALLOWED_FILE_TYPES = ["image/jpeg", "image/png"]; // Allowed MIME types
   const [error, setError] = useState<string | null>();
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [image, setImage] = useState<File | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const MAX_FILE_SIZE_MB = 2; // Maximum file size in MB
@@ -65,17 +64,28 @@ export default function ProductForm() {
 
       try {
         const result = await uploadProductImage(formData);
+        const imgUrl = await getProductImage(result.fileId!);
 
         if (result.success) {
           await createProducts({
             name: values.name,
             price: values.price,
             description: values.description,
-            image: result.fileId,
+            image: imgUrl.url,
           });
+
+          alert("Product created successfully!");
+
+          if (fileInputRef.current) {
+            fileInputRef.current.value = "";
+          }
         }
       } catch (error: any) {
         console.log(`Error: ${error.message}`);
+      } finally {
+        setLoading(false);
+        setImage(null);
+        form.reset();
       }
     }
   };
@@ -114,12 +124,13 @@ export default function ProductForm() {
             title="Upload Product Image"
             onChange={handleFileChange}
             accept="image/jpeg, image/png" // Restrict to JPEG and PNG
+            className=" cursor-not-allowed"
+            disabled={loading}
+            ref={fileInputRef}
           />
 
           {error && <div className="text-red-500">{error}</div>}
-          <Button className="bg-primary px-5 py-2 text-secondary rounded-lg hover:bg-primary">
-            {loading ? <FaSpinner className="animate-spin" /> : "Add Product"}
-          </Button>
+          <ButtonInput loading={loading} />
         </form>
       </Form>
     </div>

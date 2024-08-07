@@ -1,4 +1,6 @@
 "use client";
+import { Button } from "@/components/ui/button";
+import { FaSpinner } from "react-icons/fa6";
 import {
   FormControl,
   FormField,
@@ -34,10 +36,13 @@ export function FormInput({
           {textarea ? (
             <FormControl>
               <Textarea
-                className="border border-primary"
+                className={`border border-primary ${
+                  loading && "bg-white cursor-not-allowed"
+                }`}
                 placeholder={placeholder}
                 {...field}
                 name="description"
+                disabled={loading}
               />
             </FormControl>
           ) : (
@@ -48,7 +53,7 @@ export function FormInput({
                 className={`w-full text-primary ${
                   type !== "file" &&
                   "rounded-lg bg-white placeholder:text-primary/50 px-5 py-2 border border-primary"
-                }`}
+                } ${loading && "cursor-not-allowed"}`}
                 id={name}
                 placeholder={placeholder}
                 type={type}
@@ -67,5 +72,25 @@ export function FormInput({
         </FormItem>
       )}
     />
+  );
+}
+
+export function ButtonInput({ loading }: { loading: boolean }) {
+  return (
+    <Button
+      className={`bg-primary px-5 py-2 text-secondary rounded-lg hover:bg-primary ${
+        loading && "cursor-not-allowed"
+      }`}
+      disabled={loading}
+    >
+      {loading ? (
+        <div className="flex items-center space-x-2">
+          <p>Adding Products</p>
+          <FaSpinner className="animate-spin" />
+        </div>
+      ) : (
+        "Add Product"
+      )}
+    </Button>
   );
 }
