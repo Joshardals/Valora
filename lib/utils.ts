@@ -5,15 +5,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-// Utility function to convert ArrayBuffer to Base64
-export const arrayBufferToBase64 = (buffer: ArrayBuffer): string => {
-  const bytes = new Uint8Array(buffer);
-  const binary = Array.from(bytes)
-    .map((byte) => String.fromCharCode(byte))
-    .join("");
-  return window.btoa(binary);
-};
-
 export const valueWithoutSpaces = (value: string) => {
   return value.replace(/\s/g, "");
 };

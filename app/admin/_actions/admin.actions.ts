@@ -3,7 +3,13 @@ import { databases, storage } from "@/lib/appwrite/appwrite.config";
 import { getCurrentUser } from "@/lib/actions/auth/auth.action";
 import { ID, Query } from "node-appwrite";
 
-const { DATABASE_ID, USERS_ID, PRODUCTS_ID, BUCKET_ID } = process.env;
+const {
+  DATABASE_ID,
+  USERS_ID,
+  PRODUCTS_ID,
+  BUCKET_ID,
+  NEXT_PUBLIC_APPWRITE_PROJECT,
+} = process.env;
 
 interface ProductsParams {
   name: string;
@@ -90,13 +96,10 @@ export const uploadProductImage = async (formData: FormData) => {
 
 export const getProductImage = async (fileId: string) => {
   try {
-    const result = await storage.getFileView(BUCKET_ID as string, fileId);
-    const arrayBuffer = await result.arrayBuffer();
-    const base64 = arrayBufferToBase64(arrayBuffer);
-    console.log(result);
-    // return { success: true, result };
+    const url = `https://cloud.appwrite.io/v1/storage/buckets/${BUCKET_ID}/files/${fileId}/view?project=${NEXT_PUBLIC_APPWRITE_PROJECT}&mode=admin`;
 
-    return result;
+    console.log(url);
+    return { success: true, url };
   } catch (error: any) {
     console.log(`Error fetching product image`);
     return { success: false, msg: error.message };
