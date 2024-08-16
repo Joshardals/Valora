@@ -56,7 +56,6 @@ export async function signUpUser(data: AuthProps) {
     );
 
     const { $id: userId } = response;
-    console.log(response);
     cookies().set("userSession", session.secret, {
       path: "/",
       httpOnly: true,

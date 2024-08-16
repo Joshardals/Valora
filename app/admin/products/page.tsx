@@ -11,7 +11,6 @@ export const metadata: Metadata = {
 
 export default async function ManageProducts() {
   const { products } = await fetchProducts();
-  console.log(products);
   return (
     <div className="space-y-5 lg:space-y-14">
       <h1 className="font-semibold text-2xl max-md:text-center">

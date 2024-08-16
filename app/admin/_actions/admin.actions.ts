@@ -1,15 +1,8 @@
 "use server";
-import { databases, storage } from "@/lib/appwrite/appwrite.config";
-import { getCurrentUser } from "@/lib/actions/auth/auth.action";
-import { ID, Query } from "node-appwrite";
+import { databases } from "@/lib/appwrite/appwrite.config";
+import { Query } from "node-appwrite";
 
-const {
-  DATABASE_ID,
-  USERS_ID,
-  PRODUCTS_ID,
-  BUCKET_ID,
-  NEXT_PUBLIC_APPWRITE_PROJECT,
-} = process.env;
+const { DATABASE_ID, USERS_ID, PRODUCTS_ID } = process.env;
 
 // Fetch Total Users
 export const fetchTotalUsers = async () => {

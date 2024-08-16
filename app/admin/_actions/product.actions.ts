@@ -1,16 +1,11 @@
 "use server";
 import { databases, storage } from "@/lib/appwrite/appwrite.config";
 import { getCurrentUser } from "@/lib/actions/auth/auth.action";
-import { ID, Query } from "node-appwrite";
+import { ID } from "node-appwrite";
 import { revalidatePath } from "next/cache";
 
-const {
-  DATABASE_ID,
-  USERS_ID,
-  PRODUCTS_ID,
-  BUCKET_ID,
-  NEXT_PUBLIC_APPWRITE_PROJECT,
-} = process.env;
+const { DATABASE_ID, PRODUCTS_ID, BUCKET_ID, NEXT_PUBLIC_APPWRITE_PROJECT } =
+  process.env;
 
 interface ProductsParams {
   name: string;
@@ -82,13 +77,28 @@ export const fetchProducts = async () => {
   try {
     const data = await databases.listDocuments(
       DATABASE_ID as string,
-      PRODUCTS_ID as string,
-      []
+      PRODUCTS_ID as string
     );
 
     return { success: true, products: data.documents };
   } catch (error: any) {
     console.log(`Failed to fetch products: ${error.message}`);
+    return { success: false, msg: error.message };
+  }
+};
+
+// Fetch Product by a given id
+export const fetchProductsById = async (id: string) => {
+  try {
+    const data = await databases.getDocument(
+      DATABASE_ID as string,
+      PRODUCTS_ID as string,
+      id
+    );
+
+    return { success: true, product: data };
+  } catch (error: any) {
+    console.log(`Failed to fetch product by id: ${error.message}`);
     return { success: false, msg: error.message };
   }
 };

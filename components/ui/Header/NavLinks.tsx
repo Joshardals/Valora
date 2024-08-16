@@ -2,13 +2,13 @@ import { signOutUser } from "@/lib/actions/auth/auth.action";
 import { adminlinks, footerLinks1, footerLinks2, links } from "@/lib/data";
 import { adminSidebarToggle } from "@/lib/store/store";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 // Admin Links Component
 export function AdminLinks() {
   const { adminMobileOpen, setAdminMobileOpen } = adminSidebarToggle();
   const pathname = usePathname();
-  const router = useRouter();
+  const manageProducts = pathname.startsWith("/admin/products");
 
   const handleLogout = async () => {
     try {
@@ -27,7 +27,10 @@ export function AdminLinks() {
             <li
               key={label}
               className={`${
-                pathname == href && "bg-secondary text-primary"
+                pathname == href ||
+                (label === "manage products" && manageProducts)
+                  ? "bg-secondary text-primary"
+                  : ""
               } py-2 px-5 hover:bg-secondary hover:text-primary
               transition-all duration-300 ease-linear rounded-md`}
               onClick={() => {
