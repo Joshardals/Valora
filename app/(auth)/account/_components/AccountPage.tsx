@@ -12,7 +12,7 @@ import Link from "next/link";
 export function AccountPage(data: any) {
   const { isOpen, setIsOpen } = userActionSideBarToggle();
   const { setInitialRender } = userActionInitialRender();
-  const name = data?.name.split(" ")[0];
+  const name = data.name && data?.name.split(" ")[0];
 
   const handleLogout = async () => {
     try {
