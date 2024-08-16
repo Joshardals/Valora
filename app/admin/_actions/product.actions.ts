@@ -39,6 +39,7 @@ export const createProducts = async (data: ProductsParams) => {
     );
 
     revalidatePath("/admin");
+    revalidatePath("/admin/products");
     return { success: true };
   } catch (error: any) {
     console.log(`Error Creating Products: ${error.message}`);

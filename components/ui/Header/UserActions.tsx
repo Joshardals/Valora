@@ -6,7 +6,7 @@ import {
   userActionMobileSideBarToggle,
   userActionSideBarToggle,
 } from "@/lib/store/store";
-import { getCurrentUser } from "@/lib/actions/auth/auth.action";
+import { usePathname } from "next/navigation";
 
 export default function UserActions() {
   const { activeIndex, setActiveIndex } = userActionActiveIndex();
@@ -14,21 +14,17 @@ export default function UserActions() {
   const { isOpen, setIsOpen } = userActionSideBarToggle();
   const items = IconItems();
   const { isMobileNavOpen, setIsMobileNavOpen } = mobileNavToggle();
+  const pathname = usePathname();
 
   const handleClick = async (index: number) => {
-    try {
-      const user = await getCurrentUser();
-      if (index === 3) {
-        setIsMobileOpen(!isMobileOpen);
-        setIsMobileNavOpen(!isMobileNavOpen);
-      } else if (index === 1 && user) {
-        return null;
-      } else {
-        setIsOpen(true);
-        setActiveIndex(index);
-      }
-    } catch (error: any) {
-      console.log(`Error: ${error.message}`);
+    if (index === 3) {
+      setIsMobileOpen(!isMobileOpen);
+      setIsMobileNavOpen(!isMobileNavOpen);
+    } else if (index === 1 && pathname === "/account") {
+      return null;
+    } else {
+      setIsOpen(true);
+      setActiveIndex(index);
     }
   };
 

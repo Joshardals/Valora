@@ -5,6 +5,13 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export const convertAmount = (amount: string | number) => {
+  return Number(amount).toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+};
+
 export const valueWithoutSpaces = (value: string) => {
   return value.replace(/\s/g, "");
 };

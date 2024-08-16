@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     "Manage Product Section for VALORA. Efficiently manage products with a streamlined interface designed for administrators.",
 };
 
-export default async function ProductsPage() {
+export default async function ManageProducts() {
   const { products } = await fetchProducts();
   console.log(products);
   return (
@@ -18,18 +18,20 @@ export default async function ProductsPage() {
         Manage Products
       </h1>
 
-      <ProductForm />
-
       <div className="grid grid-cols-3 max-sm:grid-cols-1 gap-4">
         {products?.map((item, index) => (
           <ProductCard
             key={index}
+            id={item.$id}
             title={item.name}
             description={item.description}
             image={item.image}
+            price={item.price}
           />
         ))}
       </div>
+
+      <ProductForm />
     </div>
   );
 }
