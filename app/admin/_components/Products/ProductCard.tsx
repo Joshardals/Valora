@@ -12,7 +12,10 @@ interface Params {
 
 export function ProductCard(product: Params) {
   return (
-    <Link href={`/products/${product.id}`} className="space-y-4 font-playfair">
+    <Link
+      href={`/admin/products/${product.id}`}
+      className="space-y-4 font-playfair"
+    >
       <div className="relative w-[fit-content] cursor-pointer group">
         <Image
           src={product.image}
