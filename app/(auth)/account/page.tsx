@@ -8,6 +8,7 @@ export default async function UserAccountPage() {
     await getCurrentUser(),
     await fetchUserInfo(),
   ]);
+  console.log(userInfo);
   if (!user) redirect("/");
 
   return <AccountPage {...userInfo?.userInfo} />;

@@ -9,6 +9,7 @@ export default function ProductCard() {
           width={500}
           height={500}
           alt="Product 1"
+          className=" aspect-square"
         />
 
         {/* <div className="absolute bg-black/20 h-full w-full top-0 left-0"></div> */}

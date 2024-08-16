@@ -75,3 +75,19 @@ export const getProductImage = async (fileId: string) => {
     return { success: false, msg: error.message };
   }
 };
+
+// Fetch all Products
+export const fetchProducts = async () => {
+  try {
+    const data = await databases.listDocuments(
+      DATABASE_ID as string,
+      PRODUCTS_ID as string,
+      []
+    );
+
+    return { success: true, products: data.documents };
+  } catch (error: any) {
+    console.log(`Failed to fetch products: ${error.message}`);
+    return { success: false, msg: error.message };
+  }
+};
