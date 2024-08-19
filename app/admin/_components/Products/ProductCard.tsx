@@ -22,7 +22,7 @@ export function ProductCard(product: Params) {
           height={200}
           width={200}
           alt={product.title}
-          className="border border-primary rounded-lg "
+          className="border border-primary rounded-lg"
         />
 
         <div
