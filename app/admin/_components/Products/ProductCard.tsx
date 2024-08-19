@@ -14,7 +14,7 @@ export function ProductCard(product: Params) {
   return (
     <Link
       href={`/admin/products/${product.id}`}
-      className="space-y-4 font-playfair"
+      className="space-y-4 font-playfair w-[fit-content]"
     >
       <div className="relative w-[fit-content] cursor-pointer group">
         <Image
@@ -22,7 +22,7 @@ export function ProductCard(product: Params) {
           height={200}
           width={200}
           alt={product.title}
-          className="border border-primary rounded-lg"
+          className="border border-primary rounded-lg "
         />
 
         <div
