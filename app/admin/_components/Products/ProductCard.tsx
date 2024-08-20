@@ -16,7 +16,7 @@ export function ProductCard(product: Params) {
       href={`/admin/products/${product.id}`}
       className="space-y-4 font-playfair w-[fit-content]"
     >
-      <div className="relative w-[fit-content] cursor-pointer group">
+      <div className="relative w-[fit-content] cursor-pointer group">  
         <Image
           src={product.image}
           height={200}
