@@ -7,7 +7,7 @@ export default function Footer() {
     <div className="bg-secondary text-primary py-10">
       <div
         className="max-w-[1200px] mx-auto grid max-lg:grid-cols-1 grid-cols-2 gap-4 items-end lg:py-20 p-5
-      max-lg:space-y-12"
+      max-lg:space-y-12 "
       >
         <h1 className="font-playfair text-4xl font-light tracking-wider">
           A brand of the <br /> Transformative Kind.
