@@ -1,4 +1,4 @@
-"use client";
+"use client"; 
 import WaitListForm from "../form/WaitListForm";
 import { FooterLinks } from "../ui/Header/NavLinks";
 
